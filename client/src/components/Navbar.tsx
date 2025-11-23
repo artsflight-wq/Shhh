@@ -15,30 +15,11 @@ export function Navbar() {
             <span className="font-heading text-2xl font-bold tracking-tight">YELL</span>
         </Link>
 
-        {/* CTA */}
-        <div className="hidden md:flex items-center gap-4">
-          <Button className="rounded-full px-6 bg-primary hover:bg-primary/90 text-white shadow-[0_0_20px_-5px_hsl(var(--primary))]">
-            Contact Us
-          </Button>
-        </div>
-
-        {/* Mobile Menu Toggle */}
-        <button
-          className="md:hidden text-white"
-          onClick={() => setIsOpen(!isOpen)}
-        >
-          {isOpen ? <X /> : <Menu />}
-        </button>
+        {/* CTA - Always visible */}
+        <Button className="rounded-full px-6 bg-primary hover:bg-primary/90 text-white shadow-[0_0_20px_-5px_hsl(var(--primary))]">
+          Contact Us
+        </Button>
       </div>
-
-      {/* Mobile Menu */}
-      {isOpen && (
-        <div className="md:hidden absolute top-14 left-0 w-full bg-background border-b border-white/5 p-6 flex flex-col gap-4 animate-in slide-in-from-top-5">
-          <Button className="w-full rounded-full bg-primary hover:bg-primary/90">
-            Contact Us
-          </Button>
-        </div>
-      )}
     </nav>
   );
 }
