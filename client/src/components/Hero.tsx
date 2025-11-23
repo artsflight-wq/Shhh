@@ -26,7 +26,7 @@ export function Hero() {
   ];
 
   return (
-    <section className="relative pt-32 pb-10 md:pt-48 md:pb-20 overflow-hidden">
+    <section className="relative pt-20 pb-8 md:pt-32 md:pb-12 overflow-hidden">
       <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-4xl mx-auto text-center">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 mb-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
@@ -46,7 +46,7 @@ export function Hero() {
             Streamline server management with advanced automation.
           </p>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-20 animate-in fade-in slide-in-from-bottom-10 duration-700 delay-300">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12 animate-in fade-in slide-in-from-bottom-10 duration-700 delay-300">
             <a href="#commands">
               <Button size="lg" className="h-12 px-8 rounded-full bg-white text-black hover:bg-white/90 font-semibold text-base">
                 View Commands
