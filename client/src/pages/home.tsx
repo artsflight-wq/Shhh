@@ -9,7 +9,7 @@ export default function Home() {
     <div className="min-h-screen text-foreground overflow-x-hidden">
       {/* Liquid Glass Texture Overlay using React to handle the import correctly */}
       <div 
-        className="fixed inset-0 z-[-1] pointer-events-none opacity-30 mix-blend-overlay bg-cover bg-no-repeat bg-center"
+        className="fixed inset-0 z-[-1] pointer-events-none opacity-50 mix-blend-screen bg-cover bg-no-repeat bg-center"
         style={{ backgroundImage: `url(${liquidGlassUrl})` }}
       />
       
