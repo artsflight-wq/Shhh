@@ -1,7 +1,30 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Shield, Zap, Lock } from "lucide-react";
+import { ArrowRight, Shield, Zap, Lock, Terminal, Palette, Database, Cpu } from "lucide-react";
 
 export function Hero() {
+  const features = [
+    {
+      title: "Fast",
+      description: "8ms Latency",
+      icon: Zap
+    },
+    {
+      title: "Capable",
+      description: "300+ Commands",
+      icon: Terminal
+    },
+    {
+      title: "Stylish",
+      description: "Dynamic Embed Structure",
+      icon: Palette
+    },
+    {
+      title: "Strong",
+      description: "3-layer Caching",
+      icon: Database
+    }
+  ];
+
   return (
     <section className="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden">
       <div className="container mx-auto px-6 relative z-10">
@@ -23,7 +46,7 @@ export function Hero() {
             Streamline server management with advanced automation.
           </p>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-in fade-in slide-in-from-bottom-10 duration-700 delay-300">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-20 animate-in fade-in slide-in-from-bottom-10 duration-700 delay-300">
             <a href="#commands">
               <Button size="lg" className="h-12 px-8 rounded-full bg-white text-black hover:bg-white/90 font-semibold text-base">
                 View Commands
@@ -33,30 +56,23 @@ export function Hero() {
               Restricted Access <Lock className="ml-2 w-4 h-4" />
             </Button>
           </div>
-        </div>
-        
-        {/* Floating features */}
-        <div className="hidden md:block absolute top-1/2 left-10 -translate-y-1/2 animate-in fade-in slide-in-from-left-10 duration-1000 delay-500">
-          <div className="bg-card/50 backdrop-blur-md border border-white/10 p-4 rounded-2xl flex items-center gap-3 shadow-2xl shadow-primary/10">
-            <div className="p-2 bg-primary/20 rounded-lg text-primary">
-              <Shield className="w-5 h-5" />
-            </div>
-            <div>
-              <div className="text-sm font-bold">Anti-Nuke</div>
-              <div className="text-xs text-muted-foreground">Active Protection</div>
-            </div>
-          </div>
-        </div>
 
-        <div className="hidden md:block absolute top-2/3 right-10 -translate-y-1/2 animate-in fade-in slide-in-from-right-10 duration-1000 delay-700">
-          <div className="bg-card/50 backdrop-blur-md border border-white/10 p-4 rounded-2xl flex items-center gap-3 shadow-2xl shadow-primary/10">
-            <div className="p-2 bg-primary/20 rounded-lg text-primary">
-              <Zap className="w-5 h-5" />
-            </div>
-            <div>
-              <div className="text-sm font-bold">Auto-Mod</div>
-              <div className="text-xs text-muted-foreground">0ms Latency</div>
-            </div>
+          {/* Feature Grid */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 animate-in fade-in slide-in-from-bottom-12 duration-700 delay-400">
+            {features.map((feature, i) => (
+              <div 
+                key={feature.title}
+                className="bg-card/30 backdrop-blur-md border border-white/5 p-4 rounded-2xl flex flex-col items-center justify-center gap-3 hover:bg-card/50 transition-colors group"
+              >
+                <div className="p-3 bg-primary/10 rounded-xl text-primary group-hover:bg-primary/20 transition-colors">
+                  <feature.icon className="w-6 h-6" />
+                </div>
+                <div className="text-center">
+                  <div className="text-base font-bold text-white mb-1">{feature.title}</div>
+                  <div className="text-xs text-muted-foreground font-medium">{feature.description}</div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>
