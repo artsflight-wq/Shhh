@@ -71,6 +71,22 @@
   }
 }
 
+@layer utilities {
+  .hero-text-effect {
+    background: linear-gradient(
+      180deg,
+      #FFFFFF 0%,
+      #E0E7FF 30%,
+      hsl(221 83% 53%) 60%,
+      hsl(210 100% 30%) 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    filter: drop-shadow(0 4px 0px rgba(59, 130, 246, 0.15));
+  }
+}
+
 /* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 8px;

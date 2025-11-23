@@ -35,7 +35,7 @@ export function Hero() {
           </div>
           
           <h1 className="text-7xl md:text-9xl lg:text-[12rem] leading-none font-heading font-bold tracking-tight mb-6 animate-in fade-in slide-in-from-bottom-6 duration-700 delay-100">
-            <span className="bg-clip-text text-transparent bg-gradient-to-b from-white to-white/50">
+            <span className="hero-text-effect">
               YELL
             </span>
           </h1>
