@@ -73,17 +73,18 @@
 
 @layer utilities {
   .hero-text-effect {
+    color: rgba(255, 255, 255, 0.1);
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.4);
     background: linear-gradient(
       180deg,
-      #FFFFFF 0%,
-      #E0E7FF 30%,
-      hsl(221 83% 53%) 60%,
-      hsl(210 100% 30%) 100%
+      rgba(255, 255, 255, 0.9) 0%,
+      rgba(255, 255, 255, 0.1) 45%,
+      rgba(255, 255, 255, 0.05) 50%,
+      rgba(255, 255, 255, 0.2) 100%
     );
     -webkit-background-clip: text;
     background-clip: text;
-    color: transparent;
-    filter: drop-shadow(0 4px 0px rgba(59, 130, 246, 0.15));
+    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.5));
   }
 }
 
