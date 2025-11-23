@@ -13,9 +13,6 @@ export function Navbar() {
         {/* Logo */}
         <Link href="/">
           <a className="flex items-center gap-3 group">
-            <div className="w-10 h-10 rounded-xl bg-primary/20 flex items-center justify-center group-hover:bg-primary/30 transition-colors">
-              <img src={logoUrl} alt="YELL" className="w-6 h-6 object-contain" />
-            </div>
             <span className="font-heading text-2xl font-bold tracking-tight">YELL</span>
           </a>
         </Link>
