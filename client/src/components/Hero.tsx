@@ -62,7 +62,7 @@ export function Hero() {
             {features.map((feature, i) => (
               <div 
                 key={feature.title}
-                className="bg-card/30 backdrop-blur-md border border-white/5 p-4 rounded-2xl flex flex-col items-center justify-center gap-3 hover:bg-card/50 transition-colors group"
+                className="bg-card/60 backdrop-blur-md border border-white/5 p-4 rounded-2xl flex flex-col items-center justify-center gap-3 hover:bg-card/70 transition-colors group"
               >
                 <div className="p-3 bg-primary/10 rounded-xl text-primary group-hover:bg-primary/20 transition-colors">
                   <feature.icon className="w-6 h-6" />

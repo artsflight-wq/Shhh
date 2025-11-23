@@ -9,7 +9,7 @@ export function Navbar() {
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 border-b border-white/5 bg-background/60 backdrop-blur-xl">
-      <div className="container mx-auto px-6 h-20 flex items-center justify-between">
+      <div className="container mx-auto px-6 h-14 flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-3 group">
             <span className="font-heading text-2xl font-bold tracking-tight">YELL</span>
@@ -49,7 +49,7 @@ export function Navbar() {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="md:hidden absolute top-20 left-0 w-full bg-background border-b border-white/5 p-6 flex flex-col gap-4 animate-in slide-in-from-top-5">
+        <div className="md:hidden absolute top-14 left-0 w-full bg-background border-b border-white/5 p-6 flex flex-col gap-4 animate-in slide-in-from-top-5">
           <a href="#commands" className="text-lg font-medium text-muted-foreground hover:text-white" onClick={() => setIsOpen(false)}>
             Commands
           </a>
