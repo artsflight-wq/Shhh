@@ -11,10 +11,8 @@ export function Navbar() {
     <nav className="fixed top-0 left-0 right-0 z-50 border-b border-white/5 bg-background/60 backdrop-blur-xl">
       <div className="container mx-auto px-6 h-20 flex items-center justify-between">
         {/* Logo */}
-        <Link href="/">
-          <a className="flex items-center gap-3 group">
+        <Link href="/" className="flex items-center gap-3 group">
             <span className="font-heading text-2xl font-bold tracking-tight">YELL</span>
-          </a>
         </Link>
 
         {/* Desktop Links */}
