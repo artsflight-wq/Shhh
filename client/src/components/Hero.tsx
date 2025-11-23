@@ -34,8 +34,8 @@ export function Hero() {
             <span className="text-xs font-medium text-muted-foreground tracking-wide uppercase">System Operational</span>
           </div>
           
-          <h1 className="text-7xl md:text-9xl lg:text-[12rem] leading-none font-heading font-bold tracking-tight mb-6 animate-in fade-in slide-in-from-bottom-6 duration-700 delay-100">
-            <span className="bg-clip-text text-transparent bg-gradient-to-b from-white to-white/50">
+          <h1 className="text-8xl md:text-[10rem] lg:text-[16rem] leading-[0.8] font-heading font-bold tracking-tighter mb-4 animate-in fade-in slide-in-from-bottom-6 duration-700 delay-100 select-none">
+            <span className="bg-clip-text text-transparent bg-[url('/noise.svg'),linear-gradient(to_bottom,#fff_30%,rgba(255,255,255,0.5))] bg-cover">
               YELL
             </span>
           </h1>
