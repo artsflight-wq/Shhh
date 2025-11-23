@@ -85,7 +85,7 @@ export function CommandList() {
             >
               <div className="flex items-start justify-between mb-4">
                 <div className="font-mono text-primary font-bold text-lg flex items-center gap-2">
-                  <CommandIcon className="w-4 h-4 opacity-50" />
+                  <CommandIcon className="w-4 h-4 text-primary" />
                   {cmd.name}
                 </div>
                 <Badge variant="outline" className="bg-primary/10 text-primary border-primary/20">
