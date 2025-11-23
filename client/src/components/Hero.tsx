@@ -28,17 +28,19 @@ export function Hero() {
   return (
     <section className="relative pt-20 pb-8 md:pt-32 md:pb-12 overflow-hidden">
       <div className="container mx-auto px-6 relative z-10">
-        <div className="max-w-4xl mx-auto text-center">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 mb-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
-            <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
-            <span className="text-xs font-medium text-muted-foreground tracking-wide uppercase">System Operational</span>
+        <div className="max-w-4xl mx-auto text-center flex flex-col items-center">
+          <div className="inline-flex flex-col items-stretch">
+            <div className="flex items-center justify-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 mb-8 animate-in fade-in slide-in-from-bottom-4 duration-700 w-full">
+              <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+              <span className="text-xs font-medium text-muted-foreground tracking-wide uppercase">System Operational</span>
+            </div>
+            
+            <h1 className="text-8xl md:text-[10rem] lg:text-[16rem] leading-[0.8] font-heading font-bold tracking-tighter mb-4 animate-in fade-in slide-in-from-bottom-6 duration-700 delay-100 select-none drop-shadow-[0_0_30px_rgba(255,255,255,0.3)]">
+              <span className="bg-clip-text text-transparent bg-gradient-to-b from-white via-white/80 to-white/20">
+                YELL
+              </span>
+            </h1>
           </div>
-          
-          <h1 className="text-8xl md:text-[10rem] lg:text-[16rem] leading-[0.8] font-heading font-bold tracking-tighter mb-4 animate-in fade-in slide-in-from-bottom-6 duration-700 delay-100 select-none drop-shadow-[0_0_30px_rgba(255,255,255,0.3)]">
-            <span className="bg-clip-text text-transparent bg-gradient-to-b from-white via-white/80 to-white/20">
-              YELL
-            </span>
-          </h1>
           
           <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed animate-in fade-in slide-in-from-bottom-8 duration-700 delay-200">
             The premier Discord utility. <span className="text-white font-medium">Exclusive. Powerful. Private.</span>
