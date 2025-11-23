@@ -1,50 +1,78 @@
-import { useState } from "react";
-import { Search, ChevronRight, Command as CommandIcon } from "lucide-react";
+import { useState, useEffect } from "react";
+import { Search, ChevronRight, Command as CommandIcon, AlertCircle } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
+import { useQuery } from "@tanstack/react-query";
 
-const CATEGORIES = ["All", "General", "Moderation", "Utility", "Social", "Economy", "Music"];
+interface Command {
+  id: string;
+  name: string;
+  description: string;
+  category: string;
+  usage: string;
+  arguments: string;
+  aliases: string[];
+}
 
-const COMMANDS = [
-  { name: "ban", description: "Bans a user from the server.", category: "Moderation", usage: "/ban [user] [reason]" },
-  { name: "kick", description: "Kicks a user from the server.", category: "Moderation", usage: "/kick [user] [reason]" },
-  { name: "mute", description: "Times out a user for a specified duration.", category: "Moderation", usage: "/mute [user] [duration]" },
-  { name: "purge", description: "Deletes a specified number of messages.", category: "Moderation", usage: "/purge [amount]" },
-  { name: "lock", description: "Locks the current channel.", category: "Moderation", usage: "/lock" },
-  { name: "unlock", description: "Unlocks the current channel.", category: "Moderation", usage: "/unlock" },
-  { name: "avatar", description: "Displays a user's avatar.", category: "Utility", usage: "/avatar [user]" },
-  { name: "userinfo", description: "Displays information about a user.", category: "Utility", usage: "/userinfo [user]" },
-  { name: "serverinfo", description: "Displays information about the server.", category: "Utility", usage: "/serverinfo" },
-  { name: "ping", description: "Checks the bot's latency.", category: "General", usage: "/ping" },
-  { name: "help", description: "Displays a list of commands.", category: "General", usage: "/help" },
-  { name: "afk", description: "Sets your status to AFK.", category: "General", usage: "/afk [message]" },
-  { name: "play", description: "Plays a song from YouTube or Spotify.", category: "Music", usage: "/play [query]" },
-  { name: "skip", description: "Skips the current song.", category: "Music", usage: "/skip" },
-  { name: "stop", description: "Stops the music and clears the queue.", category: "Music", usage: "/stop" },
-  { name: "queue", description: "Displays the current music queue.", category: "Music", usage: "/queue" },
-  { name: "balance", description: "Checks your current balance.", category: "Economy", usage: "/balance" },
-  { name: "pay", description: "Transfers money to another user.", category: "Economy", usage: "/pay [user] [amount]" },
-  { name: "rank", description: "Displays your current level and rank.", category: "Social", usage: "/rank" },
-  { name: "leaderboard", description: "Displays the server leaderboard.", category: "Social", usage: "/leaderboard" },
-];
+async function fetchCommands(): Promise<Command[]> {
+  const response = await fetch("/api/commands");
+  if (!response.ok) throw new Error("Failed to fetch commands");
+  return response.json();
+}
+
+async function fetchCategories(): Promise<string[]> {
+  const response = await fetch("/api/categories");
+  if (!response.ok) throw new Error("Failed to fetch categories");
+  return response.json();
+}
 
 export function CommandList() {
   const [search, setSearch] = useState("");
-  const [activeCategory, setActiveCategory] = useState("All");
+  const [activeCategory, setActiveCategory] = useState<string | null>(null);
 
-  const filteredCommands = COMMANDS.filter((cmd) => {
+  const { data: commands = [], isLoading, error } = useQuery({
+    queryKey: ["commands"],
+    queryFn: fetchCommands,
+  });
+
+  const { data: categories = [] } = useQuery({
+    queryKey: ["categories"],
+    queryFn: fetchCategories,
+  });
+
+  // Set first category as default once loaded
+  useEffect(() => {
+    if (categories.length > 0 && activeCategory === null) {
+      setActiveCategory(categories[0]);
+    }
+  }, [categories, activeCategory]);
+
+  const filteredCommands = commands.filter((cmd: Command) => {
     const matchesSearch = cmd.name.toLowerCase().includes(search.toLowerCase()) || 
                           cmd.description.toLowerCase().includes(search.toLowerCase());
-    const matchesCategory = activeCategory === "All" || cmd.category === activeCategory;
+    const matchesCategory = activeCategory === null || cmd.category === activeCategory;
     return matchesSearch && matchesCategory;
   });
+
+  if (error) {
+    return (
+      <section id="commands" className="py-8 bg-card/30 relative">
+        <div className="container mx-auto px-6">
+          <div className="flex items-center justify-center gap-3 p-6 rounded-lg bg-red-500/10 border border-red-500/20 text-red-400">
+            <AlertCircle className="w-5 h-5" />
+            <span>Failed to load commands. Please try again later.</span>
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section id="commands" className="py-8 bg-card/30 relative">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4">System Commands</h2>
-          <p className="text-muted-foreground">Explore the full capabilities of YELL.</p>
+          <p className="text-muted-foreground">Explore the full capabilities of YELL. ({commands.length} commands available)</p>
         </div>
 
         {/* Search and Filter */}
@@ -56,11 +84,12 @@ export function CommandList() {
               placeholder="Search commands..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
+              data-testid="input-search-commands"
             />
           </div>
 
           <div className="flex flex-wrap justify-center gap-2">
-            {CATEGORIES.map((cat) => (
+            {categories.map((cat) => (
               <button
                 key={cat}
                 onClick={() => setActiveCategory(cat)}
@@ -69,6 +98,7 @@ export function CommandList() {
                     ? "bg-primary text-white shadow-lg shadow-primary/25" 
                     : "bg-secondary/30 text-muted-foreground hover:bg-secondary/60 hover:text-white"
                 }`}
+                data-testid={`button-category-${cat}`}
               >
                 {cat}
               </button>
@@ -77,40 +107,49 @@ export function CommandList() {
         </div>
 
         {/* Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-6xl mx-auto">
-          {filteredCommands.map((cmd) => (
-            <div 
-              key={cmd.name} 
-              className="group relative overflow-hidden p-6 rounded-2xl bg-gradient-to-br from-white/10 via-white/5 to-transparent backdrop-blur-xl border border-white/10 transition-all duration-500 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.1)] hover:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.2),0_8px_32px_-8px_rgba(0,0,0,0.5)] hover:-translate-y-1 after:content-[''] after:absolute after:inset-0 after:bg-[url('/noise.svg')] after:opacity-[0.03] after:pointer-events-none"
-            >
-              <div className="flex items-start justify-between mb-4">
-                <div className="font-mono text-primary font-bold text-lg flex items-center gap-2">
-                  <CommandIcon className="w-4 h-4 text-primary" />
-                  {cmd.name}
-                </div>
-                <Badge variant="outline" className="bg-primary/10 text-primary border-primary/20">
-                  {cmd.category}
-                </Badge>
-              </div>
-              <p className="text-muted-foreground text-sm mb-4 leading-relaxed">
-                {cmd.description}
-              </p>
-              <div className="pt-4 border-t border-white/5">
-                <code className="text-xs font-mono text-muted-foreground/70 bg-black/20 px-2 py-1 rounded">
-                  {cmd.usage}
-                </code>
-              </div>
-              
-              {/* Hover Glow */}
-              <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
-            </div>
-          ))}
-        </div>
-
-        {filteredCommands.length === 0 && (
-          <div className="text-center py-20 text-muted-foreground">
-            No commands found matching your search.
+        {isLoading ? (
+          <div className="flex items-center justify-center py-20">
+            <div className="text-muted-foreground">Loading commands...</div>
           </div>
+        ) : (
+          <>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-6xl mx-auto">
+              {filteredCommands.map((cmd: Command) => (
+                <div 
+                  key={cmd.id} 
+                  className="group relative overflow-hidden p-6 rounded-2xl bg-gradient-to-br from-white/10 via-white/5 to-transparent backdrop-blur-xl border border-white/10 transition-all duration-500 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.1)] hover:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.2),0_8px_32px_-8px_rgba(0,0,0,0.5)] hover:-translate-y-1 after:content-[''] after:absolute after:inset-0 after:bg-[url('/noise.svg')] after:opacity-[0.03] after:pointer-events-none"
+                  data-testid={`card-command-${cmd.id}`}
+                >
+                  <div className="flex items-start justify-between mb-4">
+                    <div className="font-mono text-primary font-bold text-lg flex items-center gap-2">
+                      <CommandIcon className="w-4 h-4 text-primary" />
+                      <span data-testid={`text-command-name-${cmd.id}`}>{cmd.name}</span>
+                    </div>
+                    <Badge variant="outline" className="bg-primary/10 text-primary border-primary/20" data-testid={`badge-category-${cmd.id}`}>
+                      {cmd.category}
+                    </Badge>
+                  </div>
+                  <p className="text-muted-foreground text-sm mb-4 leading-relaxed" data-testid={`text-description-${cmd.id}`}>
+                    {cmd.description}
+                  </p>
+                  <div className="pt-4 border-t border-white/5">
+                    <code className="text-xs font-mono text-muted-foreground/70 bg-black/20 px-2 py-1 rounded block break-words" data-testid={`code-usage-${cmd.id}`}>
+                      {cmd.usage}
+                    </code>
+                  </div>
+                  
+                  {/* Hover Glow */}
+                  <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
+                </div>
+              ))}
+            </div>
+
+            {filteredCommands.length === 0 && (
+              <div className="text-center py-20 text-muted-foreground" data-testid="text-no-commands">
+                No commands found matching your search.
+              </div>
+            )}
+          </>
         )}
       </div>
     </section>
