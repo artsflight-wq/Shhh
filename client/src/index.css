@@ -103,6 +103,60 @@
 
 /* Glassmorphism Enhancements */
 
+/* Search Bar Glow Sweep Animation */
+@keyframes glow-sweep {
+  0% {
+    transform: translateX(-100%);
+  }
+  50% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+/* Active Category Backdrop Pulse */
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(0.95);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1.05);
+  }
+}
+
+/* Rising Highlight Sweep for Active Category */
+@keyframes rise-sweep {
+  0% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+}
+
+/* Staggered Card Enter Animation */
+@keyframes card-enter {
+  0% {
+    opacity: 0;
+    filter: blur(4px);
+    transform: translateY(16px);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0px);
+    transform: translateY(0);
+  }
+}
+
 /* Ripple effect for category buttons */
 @keyframes ripple {
   0% {
@@ -128,30 +182,23 @@
   animation: ripple 0.6s ease-out;
 }
 
-/* Glass shimmer keyframes (additional support) */
-@keyframes glass-shimmer {
-  0% {
-    transform: translateX(-200%) skewX(-12deg);
-  }
-  100% {
-    transform: translateX(200%) skewX(-12deg);
-  }
-}
-
 /* Command card pop-out animation */
 .command-card {
   transform-style: preserve-3d;
   perspective: 1000px;
+  transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .command-card:hover {
   transform: translateY(-8px) scale(1.02) rotateX(2deg);
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 /* Enhanced focus states for accessibility */
 .category-button:focus-visible {
   outline: 2px solid hsl(221 83% 53%);
   outline-offset: 2px;
+  transition: outline-color 120ms ease-out;
 }
 
 /* Smooth glassmorphic transitions */

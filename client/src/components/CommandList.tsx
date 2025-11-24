@@ -121,21 +121,28 @@ export function CommandList() {
       <div className="absolute top-0 left-1/4 w-96 h-96 bg-gradient-to-br from-primary/10 to-transparent rounded-full blur-3xl opacity-20 pointer-events-none" />
       <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-gradient-to-br from-primary/5 to-transparent rounded-full blur-3xl opacity-30 pointer-events-none" />
       
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4">System Commands</h2>
-          <p className="text-muted-foreground">Explore the full capabilities of YELL. ({commands.length} commands available)</p>
+      <div className="container mx-auto px-4 sm:px-6 relative z-10">
+        <div className="text-center mb-12 sm:mb-16">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-heading font-bold mb-3 sm:mb-4">System Commands</h2>
+          <p className="text-sm sm:text-base text-muted-foreground px-4 sm:px-0">Explore the full capabilities of YELL. ({commands.length} commands available)</p>
         </div>
 
         {/* Glass Divider */}
-        <div className="h-px w-full bg-gradient-to-r from-transparent via-white/20 to-transparent mb-12" />
+        <div className="h-px w-full bg-gradient-to-r from-transparent via-white/20 to-transparent mb-8 sm:mb-12" />
 
         {/* Search and Filter */}
         <div className="max-w-4xl mx-auto mb-6 space-y-6">
-          {/* Enhanced Glassmorphic Search Bar */}
+          {/* Enhanced Glassmorphic Search Bar with Refined Glow */}
           <div className="relative group">
-            <div className="absolute inset-0 bg-gradient-to-r from-primary/20 via-primary/10 to-primary/20 rounded-2xl blur-xl opacity-0 group-focus-within:opacity-100 transition-opacity duration-500" />
-            <div className="relative bg-gradient-to-br from-white/10 via-white/5 to-transparent backdrop-blur-2xl border border-white/20 rounded-2xl p-1 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.2)]">
+            {/* Layered Halo Effect - Base Layer */}
+            <div className="absolute -inset-1 bg-gradient-to-r from-primary/12 via-primary/8 to-primary/12 rounded-2xl opacity-0 group-focus-within:opacity-100 transition-opacity duration-400" style={{ filter: 'blur(24px)' }} />
+            
+            {/* Animated Light Sweep */}
+            <div className="absolute inset-0 rounded-2xl overflow-hidden opacity-0 group-focus-within:opacity-100 transition-opacity duration-400">
+              <div className="search-glow-sweep absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-focus-within:animate-[glow-sweep_3s_ease-in-out_infinite]" />
+            </div>
+            
+            <div className="relative bg-gradient-to-br from-white/10 via-white/5 to-transparent backdrop-blur-2xl border border-white/20 group-focus-within:border-white/40 rounded-2xl p-1 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.2)] group-focus-within:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.4)] transition-all duration-300">
               <Search className="absolute left-5 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground group-focus-within:text-primary transition-colors duration-300 z-10" />
               <Input 
                 className="pl-12 h-12 bg-transparent border-0 focus-visible:ring-0 text-lg placeholder:text-muted-foreground/50 relative z-10"
@@ -147,20 +154,37 @@ export function CommandList() {
             </div>
           </div>
 
-          <div className="flex md:flex-wrap md:justify-center gap-3 overflow-x-auto md:overflow-visible pb-3 md:pb-0 scrollbar-hide scroll-smooth snap-x snap-mandatory md:snap-none">
+          <div className="flex md:flex-wrap md:justify-center gap-3 overflow-x-auto overflow-y-visible md:overflow-visible pb-3 md:pb-0 pt-3 scrollbar-hide scroll-smooth snap-x snap-mandatory md:snap-none">
             {categories.map((cat) => {
               const Icon = iconMap[cat.icon];
+              const isActive = activeCategory === cat.id;
               return (
                 <button
                   key={cat.id}
                   onClick={() => setActiveCategory(cat.id)}
-                  className={`category-button group relative overflow-hidden flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-medium transition-all duration-500 whitespace-nowrap flex-shrink-0 snap-start backdrop-blur-xl border shadow-[inset_0_1px_0_0_rgba(255,255,255,0.1)] hover:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.2),0_8px_24px_-8px_rgba(0,0,0,0.4)] after:content-[''] after:absolute after:inset-0 after:bg-[url('/noise.svg')] after:opacity-[0.03] after:pointer-events-none ${
-                    activeCategory === cat.id 
-                      ? "bg-gradient-to-br from-primary via-primary to-primary/80 text-white border-primary/20 md:scale-105 shadow-lg shadow-primary/20" 
-                      : "bg-gradient-to-br from-white/10 via-white/5 to-transparent text-muted-foreground border-white/10 hover:from-white/20 hover:via-white/10 hover:to-white/5 hover:text-white hover:border-white/20 md:hover:scale-110 hover:-translate-y-0.5"
+                  className={`category-button group relative overflow-hidden flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-medium whitespace-nowrap flex-shrink-0 snap-start backdrop-blur-xl border after:content-[''] after:absolute after:inset-0 after:bg-[url('/noise.svg')] after:opacity-[0.03] after:pointer-events-none ${
+                    isActive 
+                      ? "bg-gradient-to-br from-primary via-primary to-primary/80 text-white border-primary/20 shadow-lg shadow-primary/20 scale-105 translate-y-[-2px] transition-all duration-[220ms] ease-out" 
+                      : "bg-gradient-to-br from-white/10 via-white/5 to-transparent text-muted-foreground border-white/10 hover:from-white/20 hover:via-white/10 hover:to-white/5 hover:text-white hover:border-white/20 md:hover:scale-110 hover:-translate-y-0.5 transition-all duration-[180ms] ease-in-out opacity-100 hover:opacity-100"
                   }`}
+                  style={{
+                    transitionProperty: 'all',
+                    transitionTimingFunction: isActive ? 'cubic-bezier(0.34, 1.56, 0.64, 1)' : 'cubic-bezier(0.4, 0, 0.2, 1)'
+                  }}
                   data-testid={`button-category-${cat.id}`}
                 >
+                  {/* Active Category Backdrop Pulse */}
+                  {isActive && (
+                    <div className="absolute -inset-2 bg-primary/20 rounded-xl animate-[pulse-glow_2s_ease-in-out_infinite] pointer-events-none" style={{ filter: 'blur(16px)' }} />
+                  )}
+                  
+                  {/* Rising Highlight Sweep for Active */}
+                  {isActive && (
+                    <div className="absolute inset-0 overflow-hidden rounded-xl">
+                      <div className="absolute inset-0 bg-gradient-to-t from-white/0 via-white/10 to-white/0 translate-y-full animate-[rise-sweep_600ms_ease-out_forwards]" />
+                    </div>
+                  )}
+                  
                   {/* Glass shimmer effect on hover */}
                   <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
                     <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -skew-x-12 translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-1000" />
@@ -171,9 +195,9 @@ export function CommandList() {
                     <div className="ripple-effect" />
                   </div>
                   
-                  {Icon && <Icon className="w-4 h-4 flex-shrink-0 relative z-10 transition-transform duration-300 group-hover:scale-110" />}
+                  {Icon && <Icon className={`w-4 h-4 flex-shrink-0 relative z-10 transition-transform duration-300 ${isActive ? 'scale-110' : 'group-hover:scale-110'}`} />}
                   <span className="leading-none relative z-10">{cat.displayName}</span>
-                  <Badge variant="secondary" className={`ml-1 text-xs leading-none relative z-10 transition-all duration-300 group-hover:scale-105 ${activeCategory === cat.id ? "bg-white/20" : "bg-white/10"}`}>
+                  <Badge variant="secondary" className={`ml-1 text-xs leading-none relative z-10 transition-all duration-300 group-hover:scale-105 ${isActive ? "bg-white/20" : "bg-white/10"}`}>
                     {cat.commandCount}
                   </Badge>
                 </button>
@@ -189,11 +213,16 @@ export function CommandList() {
           </div>
         ) : (
           <>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-6xl mx-auto">
-              {filteredCommands.map((cmd: Command) => (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 max-w-6xl mx-auto">
+              {filteredCommands.map((cmd: Command, index) => (
                 <div 
                   key={cmd.id} 
-                  className="command-card group relative overflow-hidden p-6 rounded-2xl bg-gradient-to-br from-white/10 via-white/5 to-transparent backdrop-blur-xl border border-white/10 transition-all duration-700 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.1)] hover:shadow-[inset_0_2px_0_0_rgba(255,255,255,0.3),0_20px_40px_-12px_rgba(0,0,0,0.6)] hover:-translate-y-2 hover:scale-[1.02] hover:border-white/20 after:content-[''] after:absolute after:inset-0 after:bg-[url('/noise.svg')] after:opacity-[0.03] after:pointer-events-none"
+                  className="command-card group relative overflow-hidden p-6 rounded-2xl bg-gradient-to-br from-white/10 via-white/5 to-transparent backdrop-blur-xl border border-white/10 hover:shadow-[inset_0_2px_0_0_rgba(255,255,255,0.3),0_20px_40px_-12px_rgba(0,0,0,0.6)] hover:-translate-y-2 hover:scale-[1.02] hover:border-white/20 after:content-[''] after:absolute after:inset-0 after:bg-[url('/noise.svg')] after:opacity-[0.03] after:pointer-events-none animate-[card-enter_140ms_ease-out_forwards] opacity-0"
+                  style={{
+                    animationDelay: `${Math.min(index * 20, 400)}ms`,
+                    filter: 'blur(4px)',
+                    transform: 'translateY(16px)'
+                  }}
                   data-testid={`card-command-${cmd.id}`}
                 >
                   {/* Glass Reflection Layer */}
