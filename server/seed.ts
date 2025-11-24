@@ -293,7 +293,7 @@ const allCommands = [
     "usage": ",mh [[@user]]"
   },
 
-  // ========== MODERATION (55 commands) ==========
+  // ========== MODERATION (34 commands) ==========
   {
     "name": "kick",
     "aliases": [],
@@ -361,66 +361,10 @@ const allCommands = [
   {
     "name": "purge",
     "aliases": [],
-    "arguments": "[<amount>]",
+    "arguments": "[<amount> | bots/humans/@user/reactions/contains/mentions/links [amount]]",
     "description": "Purge messages with various filters",
     "category": "moderation",
-    "usage": ",purge [<amount>]"
-  },
-  {
-    "name": "purge bots",
-    "aliases": [],
-    "arguments": "[[amount]]",
-    "description": "Purge bot messages",
-    "category": "moderation",
-    "usage": ",purge bots [[amount]]"
-  },
-  {
-    "name": "purge humans",
-    "aliases": [],
-    "arguments": "[[amount]]",
-    "description": "Purge human messages",
-    "category": "moderation",
-    "usage": ",purge humans [[amount]]"
-  },
-  {
-    "name": "purge @user",
-    "aliases": [],
-    "arguments": "[@user [amount]]",
-    "description": "Purge messages from a specific user",
-    "category": "moderation",
-    "usage": ",purge @user [@user [amount]]"
-  },
-  {
-    "name": "purge contains",
-    "aliases": [],
-    "arguments": "[<text> [amount]]",
-    "description": "Purge messages containing specific text",
-    "category": "moderation",
-    "usage": ",purge contains [<text> [amount]]"
-  },
-  {
-    "name": "purge reactions",
-    "aliases": [],
-    "arguments": "[[amount]]",
-    "description": "Purge all reactions from messages",
-    "category": "moderation",
-    "usage": ",purge reactions [[amount]]"
-  },
-  {
-    "name": "purge mentions",
-    "aliases": [],
-    "arguments": "[[amount]]",
-    "description": "Purge messages with mentions",
-    "category": "moderation",
-    "usage": ",purge mentions [[amount]]"
-  },
-  {
-    "name": "purge links",
-    "aliases": [],
-    "arguments": "[[amount]]",
-    "description": "Purge messages with links",
-    "category": "moderation",
-    "usage": ",purge links [[amount]]"
+    "usage": ",purge [<amount> | bots/humans/@user/reactions/contains/mentions/links [amount]]"
   },
   {
     "name": "bc",
@@ -439,108 +383,12 @@ const allCommands = [
     "usage": ",raid [<duration> <action> | <on|off>]"
   },
   {
-    "name": "raid on",
-    "aliases": [],
-    "arguments": "[]",
-    "description": "Enable RAID protection mode",
-    "category": "moderation",
-    "usage": ",raid on []"
-  },
-  {
-    "name": "raid off",
-    "aliases": [],
-    "arguments": "[]",
-    "description": "Disable RAID protection mode",
-    "category": "moderation",
-    "usage": ",raid off []"
-  },
-  {
     "name": "r",
     "aliases": [],
-    "arguments": "[<subcommand> [args]]",
+    "arguments": "[<subcommand> [args] (see ,r for full usage)]",
     "description": "Role management (toggle/restore/rename/delete/create/dump/etc)",
     "category": "moderation",
-    "usage": ",r [<subcommand> [args]]"
-  },
-  {
-    "name": "r toggle",
-    "aliases": [],
-    "arguments": "[@user <role>]",
-    "description": "Toggle a role on/off for a user",
-    "category": "moderation",
-    "usage": ",r toggle [@user <role>]"
-  },
-  {
-    "name": "r restore",
-    "aliases": [],
-    "arguments": "[@user]",
-    "description": "Restore a user's roles after being stripped",
-    "category": "moderation",
-    "usage": ",r restore [@user]"
-  },
-  {
-    "name": "r rename",
-    "aliases": [],
-    "arguments": "[<role> <new name>]",
-    "description": "Rename a role",
-    "category": "moderation",
-    "usage": ",r rename [<role> <new name>]"
-  },
-  {
-    "name": "r delete",
-    "aliases": [],
-    "arguments": "[<role>]",
-    "description": "Delete a role",
-    "category": "moderation",
-    "usage": ",r delete [<role>]"
-  },
-  {
-    "name": "r create",
-    "aliases": [],
-    "arguments": "[<name>]",
-    "description": "Create a new role",
-    "category": "moderation",
-    "usage": ",r create [<name>]"
-  },
-  {
-    "name": "r dump",
-    "aliases": [],
-    "arguments": "[@user]",
-    "description": "Show all roles for a user",
-    "category": "moderation",
-    "usage": ",r dump [@user]"
-  },
-  {
-    "name": "r humans",
-    "aliases": [],
-    "arguments": "[<role>]",
-    "description": "Add role to all humans in server",
-    "category": "moderation",
-    "usage": ",r humans [<role>]"
-  },
-  {
-    "name": "r has",
-    "aliases": [],
-    "arguments": "[<role>]",
-    "description": "List all users with a specific role",
-    "category": "moderation",
-    "usage": ",r has [<role>]"
-  },
-  {
-    "name": "r color",
-    "aliases": [],
-    "arguments": "[<role> <color>]",
-    "description": "Change role color",
-    "category": "moderation",
-    "usage": ",r color [<role> <color>]"
-  },
-  {
-    "name": "r icon",
-    "aliases": [],
-    "arguments": "[<role> <emoji>]",
-    "description": "Set role icon",
-    "category": "moderation",
-    "usage": ",r icon [<role> <emoji>]"
+    "usage": ",r [<subcommand> [args] (see ,r for full usage)]"
   },
   {
     "name": "ir",
@@ -565,14 +413,6 @@ const allCommands = [
     "description": "Lock current channel or all channels",
     "category": "moderation",
     "usage": ",lock [[all]]"
-  },
-  {
-    "name": "lock all",
-    "aliases": [],
-    "arguments": "[]",
-    "description": "Lock all channels",
-    "category": "moderation",
-    "usage": ",lock all []"
   },
   {
     "name": "unlock",
@@ -693,14 +533,6 @@ const allCommands = [
     "description": "Setup server systems (mute/jail)",
     "category": "moderation",
     "usage": ",setup [<mute>]"
-  },
-  {
-    "name": "setupmute",
-    "aliases": [],
-    "arguments": "[]",
-    "description": "Setup mute role and permissions",
-    "category": "moderation",
-    "usage": ",setupmute []"
   },
   {
     "name": "sync",
