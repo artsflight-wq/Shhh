@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { Search, ChevronRight, Command as CommandIcon, AlertCircle, LayoutGrid, Shield, Info, Gavel, TrendingUp, Gift, HandMetal, Wrench, MessageSquare, Rocket, Ticket, Gamepad2, Mic, Crosshair, Cake } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
@@ -56,11 +56,6 @@ async function fetchCategories(): Promise<Category[]> {
 export function CommandList() {
   const [search, setSearch] = useState("");
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
-  const [blurAmount, setBlurAmount] = useState(0);
-  const scrollContainerRef = useRef<HTMLDivElement>(null);
-  const scrollTimerRef = useRef<number | undefined>(undefined);
-  const lastScrollPos = useRef(0);
-  const lastScrollTime = useRef(Date.now());
 
   const { data: commands = [], isLoading, error } = useQuery({
     queryKey: ["commands"],
@@ -78,49 +73,6 @@ export function CommandList() {
       setActiveCategory(categories[0].id);
     }
   }, [categories, activeCategory]);
-
-  // Motion blur on scroll
-  useEffect(() => {
-    const container = scrollContainerRef.current;
-    if (!container) return;
-
-    const handleScroll = () => {
-      const currentPos = container.scrollLeft;
-      const currentTime = Date.now();
-      
-      const distance = Math.abs(currentPos - lastScrollPos.current);
-      const timeDiff = Math.max(1, currentTime - lastScrollTime.current);
-      
-      // Calculate velocity (pixels per millisecond * 16.67 for ~60fps)
-      const velocity = (distance / timeDiff) * 16.67;
-      
-      // Blur amount based on velocity (max 8px)
-      const blur = Math.min(velocity * 0.4, 8);
-      setBlurAmount(blur);
-      
-      lastScrollPos.current = currentPos;
-      lastScrollTime.current = currentTime;
-      
-      // Clear existing timer
-      if (scrollTimerRef.current) {
-        clearTimeout(scrollTimerRef.current);
-      }
-      
-      // Reset blur after scrolling stops
-      scrollTimerRef.current = window.setTimeout(() => {
-        setBlurAmount(0);
-      }, 100);
-    };
-
-    container.addEventListener('scroll', handleScroll, { passive: true });
-    
-    return () => {
-      container.removeEventListener('scroll', handleScroll);
-      if (scrollTimerRef.current) {
-        clearTimeout(scrollTimerRef.current);
-      }
-    };
-  }, []);
 
   const filteredCommands = commands.filter((cmd: Command) => {
     // Enhanced search: trim and split search query into terms
@@ -185,15 +137,7 @@ export function CommandList() {
           </div>
 
           <div className="relative -mx-6 md:mx-0">
-            <div 
-              ref={scrollContainerRef}
-              className="flex md:flex-wrap md:justify-center gap-3 overflow-x-auto pb-3 md:pb-0 px-6 md:px-0 scrollbar-hide scroll-smooth snap-x snap-mandatory md:!filter-none"
-              style={{
-                filter: `blur(${blurAmount}px)`,
-                transition: blurAmount === 0 ? 'filter 0.3s ease-out' : 'none',
-                willChange: 'filter'
-              }}
-            >
+            <div className="flex md:flex-wrap md:justify-center gap-3 overflow-x-auto pb-3 md:pb-0 px-6 md:px-0 scrollbar-hide scroll-smooth snap-x snap-mandatory">
               {categories.map((cat) => {
                 const Icon = iconMap[cat.icon];
                 return (
