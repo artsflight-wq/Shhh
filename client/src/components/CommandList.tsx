@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Search, ChevronRight, Command as CommandIcon, AlertCircle, LayoutGrid, Shield, Info, Gavel, TrendingUp, Gift, HandMetal, Wrench, MessageSquare, Rocket, Ticket, Gamepad2, Mic, Crosshair, Cake } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
@@ -56,6 +56,11 @@ async function fetchCategories(): Promise<Category[]> {
 export function CommandList() {
   const [search, setSearch] = useState("");
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
+  const [blurAmount, setBlurAmount] = useState(0);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const scrollTimerRef = useRef<number | undefined>(undefined);
+  const lastScrollPos = useRef(0);
+  const lastScrollTime = useRef(Date.now());
 
   const { data: commands = [], isLoading, error } = useQuery({
     queryKey: ["commands"],
@@ -74,9 +79,72 @@ export function CommandList() {
     }
   }, [categories, activeCategory]);
 
+  // Motion blur on scroll
+  useEffect(() => {
+    const container = scrollContainerRef.current;
+    if (!container) return;
+
+    const handleScroll = () => {
+      const currentPos = container.scrollLeft;
+      const currentTime = Date.now();
+      
+      const distance = Math.abs(currentPos - lastScrollPos.current);
+      const timeDiff = Math.max(1, currentTime - lastScrollTime.current);
+      
+      // Calculate velocity (pixels per millisecond * 16.67 for ~60fps)
+      const velocity = (distance / timeDiff) * 16.67;
+      
+      // Blur amount based on velocity (max 8px)
+      const blur = Math.min(velocity * 0.4, 8);
+      setBlurAmount(blur);
+      
+      lastScrollPos.current = currentPos;
+      lastScrollTime.current = currentTime;
+      
+      // Clear existing timer
+      if (scrollTimerRef.current) {
+        clearTimeout(scrollTimerRef.current);
+      }
+      
+      // Reset blur after scrolling stops
+      scrollTimerRef.current = window.setTimeout(() => {
+        setBlurAmount(0);
+      }, 100);
+    };
+
+    container.addEventListener('scroll', handleScroll, { passive: true });
+    
+    return () => {
+      container.removeEventListener('scroll', handleScroll);
+      if (scrollTimerRef.current) {
+        clearTimeout(scrollTimerRef.current);
+      }
+    };
+  }, []);
+
   const filteredCommands = commands.filter((cmd: Command) => {
-    const matchesSearch = cmd.name.toLowerCase().includes(search.toLowerCase()) || 
-                          cmd.description.toLowerCase().includes(search.toLowerCase());
+    // Enhanced search: trim and split search query into terms
+    const searchTerms = search.trim().toLowerCase().split(/\s+/).filter(term => term.length > 0);
+    
+    // If no search terms, show all (based on category)
+    if (searchTerms.length === 0) {
+      const matchesCategory = activeCategory === null || activeCategory === "all" || cmd.category === activeCategory;
+      return matchesCategory;
+    }
+    
+    // Create searchable text from multiple fields
+    const searchableText = [
+      cmd.name,
+      cmd.description,
+      cmd.arguments,
+      cmd.usage,
+      cmd.category,
+      ...cmd.aliases
+    ].join(' ').toLowerCase();
+    
+    // Check if ALL search terms match (AND logic)
+    const matchesSearch = searchTerms.every(term => searchableText.includes(term));
+    
     // "all" category shows all commands, otherwise filter by category name
     const matchesCategory = activeCategory === null || activeCategory === "all" || cmd.category === activeCategory;
     return matchesSearch && matchesCategory;
@@ -109,35 +177,48 @@ export function CommandList() {
             <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
             <Input 
               className="pl-12 h-12 bg-secondary/50 border-white/5 focus-visible:ring-primary/50 text-lg placeholder:text-muted-foreground/50"
-              placeholder="Search commands..."
+              placeholder="Search by name, description, category, or usage..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               data-testid="input-search-commands"
             />
           </div>
 
-          <div className="flex flex-wrap justify-center gap-3">
-            {categories.map((cat) => {
-              const Icon = iconMap[cat.icon];
-              return (
-                <button
-                  key={cat.id}
-                  onClick={() => setActiveCategory(cat.id)}
-                  className={`group flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-medium transition-all duration-300 ${
-                    activeCategory === cat.id 
-                      ? "bg-primary text-white shadow-lg shadow-primary/25 scale-105" 
-                      : "bg-secondary/30 text-muted-foreground hover:bg-secondary/60 hover:text-white hover:scale-105 hover:shadow-lg hover:shadow-primary/10"
-                  }`}
-                  data-testid={`button-category-${cat.id}`}
-                >
-                  {Icon && <Icon className="w-4 h-4 flex-shrink-0" />}
-                  <span className="leading-none">{cat.displayName}</span>
-                  <Badge variant="secondary" className={`ml-1 text-xs leading-none ${activeCategory === cat.id ? "bg-white/20" : "bg-white/10"}`}>
-                    {cat.commandCount}
-                  </Badge>
-                </button>
-              );
-            })}
+          <div className="relative -mx-6 md:mx-0">
+            <div 
+              ref={scrollContainerRef}
+              className="flex md:flex-wrap md:justify-center gap-3 overflow-x-auto pb-3 md:pb-0 px-6 md:px-0 scrollbar-hide scroll-smooth snap-x snap-mandatory md:!filter-none"
+              style={{
+                filter: `blur(${blurAmount}px)`,
+                transition: blurAmount === 0 ? 'filter 0.3s ease-out' : 'none',
+                willChange: 'filter'
+              }}
+            >
+              {categories.map((cat) => {
+                const Icon = iconMap[cat.icon];
+                return (
+                  <button
+                    key={cat.id}
+                    onClick={() => setActiveCategory(cat.id)}
+                    className={`group flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-medium transition-all duration-300 whitespace-nowrap flex-shrink-0 snap-start ${
+                      activeCategory === cat.id 
+                        ? "bg-primary text-white shadow-lg shadow-primary/25 md:scale-105" 
+                        : "bg-secondary/30 text-muted-foreground hover:bg-secondary/60 hover:text-white md:hover:scale-105 hover:shadow-lg hover:shadow-primary/10"
+                    }`}
+                    data-testid={`button-category-${cat.id}`}
+                  >
+                    {Icon && <Icon className="w-4 h-4 flex-shrink-0" />}
+                    <span className="leading-none">{cat.displayName}</span>
+                    <Badge variant="secondary" className={`ml-1 text-xs leading-none ${activeCategory === cat.id ? "bg-white/20" : "bg-white/10"}`}>
+                      {cat.commandCount}
+                    </Badge>
+                  </button>
+                );
+              })}
+            </div>
+            {/* Edge fade effect for mobile */}
+            <div className="absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-[hsl(222,47%,4%)] to-transparent pointer-events-none md:hidden" />
+            <div className="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-[hsl(222,47%,4%)] to-transparent pointer-events-none md:hidden" />
           </div>
         </div>
 
