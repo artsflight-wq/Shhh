@@ -424,10 +424,10 @@ const allCommands = [
   {
     "name": "r dump",
     "aliases": [],
-    "arguments": "[@user]",
-    "description": "Show all roles for a user",
+    "arguments": "[@role]",
+    "description": "Removes that role from everyone who has it",
     "category": "moderation",
-    "usage": ",r dump [@user]"
+    "usage": ",r dump [@role]"
   },
   {
     "name": "r humans",
@@ -440,10 +440,10 @@ const allCommands = [
   {
     "name": "r has",
     "aliases": [],
-    "arguments": "[<role>]",
-    "description": "List all users with a specific role",
+    "arguments": "[@role @role]",
+    "description": "Gives the second role to everyone who has the first role",
     "category": "moderation",
-    "usage": ",r has [<role>]"
+    "usage": ",r has [@role @role]"
   },
   {
     "name": "r color",
@@ -1066,7 +1066,7 @@ const allCommands = [
     "usage": ",poj []"
   },
 
-  // ========== UTILITY (58 commands) ==========
+  // ========== UTILITY (54 commands) ==========
   {
     "name": "afk",
     "aliases": [],
@@ -1328,32 +1328,32 @@ const allCommands = [
     "aliases": [],
     "arguments": "[<caption/quote> [args]]",
     "description": "Media manipulation commands",
-    "category": "utility",
+    "category": "fun",
     "usage": ",media [<caption/quote> [args]]"
   },
   {
     "name": "media caption",
     "aliases": [],
-    "arguments": "[<caption> or <caption1>, <caption2>]",
-    "description": "Add bold caption(s) to an image with high quality",
-    "category": "utility",
-    "usage": ",media caption [<caption> or <caption1>, <caption2>]"
+    "arguments": "[(text) [attach image]]",
+    "description": "Add caption to an image",
+    "category": "fun",
+    "usage": ",media caption [(text) [attach image]]"
   },
   {
     "name": "media quote",
     "aliases": [],
-    "arguments": "[]",
-    "description": "Create a high-quality quote card from a replied message",
-    "category": "utility",
-    "usage": ",media quote []"
+    "arguments": "[[reply to message]]",
+    "description": "Create quote card for that message",
+    "category": "fun",
+    "usage": ",media quote [[reply to message]]"
   },
   {
     "name": "quote",
     "aliases": [],
-    "arguments": "[]",
-    "description": "Create a high-quality quote card from a replied message",
-    "category": "utility",
-    "usage": ",quote []"
+    "arguments": "[[reply to message]]",
+    "description": "Create quote card for that message",
+    "category": "fun",
+    "usage": ",quote [[reply to message]]"
   },
   {
     "name": "search",
@@ -1722,7 +1722,7 @@ const allCommands = [
     "usage": ",ticket support remove [<role_id>]"
   },
 
-  // ========== FUN (22 commands) ==========
+  // ========== FUN (26 commands) ==========
   {
     "name": "blacktea",
     "aliases": [],
