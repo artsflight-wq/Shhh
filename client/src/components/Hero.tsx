@@ -35,43 +35,43 @@ export function Hero() {
               <span className="text-xs font-medium text-muted-foreground tracking-wide uppercase">System Operational</span>
             </div>
             
-            <h1 className="text-6xl sm:text-8xl md:text-[10rem] lg:text-[16rem] leading-[0.8] font-heading font-bold tracking-tighter mb-4 sm:mb-6 animate-in fade-in slide-in-from-bottom-6 duration-700 delay-100 select-none drop-shadow-[0_0_30px_rgba(255,255,255,0.3)]">
+            <h1 className="text-8xl md:text-[10rem] lg:text-[16rem] leading-[0.8] font-heading font-bold tracking-tighter mb-4 animate-in fade-in slide-in-from-bottom-6 duration-700 delay-100 select-none drop-shadow-[0_0_30px_rgba(255,255,255,0.3)]">
               <span className="bg-clip-text text-transparent bg-gradient-to-b from-white via-white/80 to-white/20">
                 YELL
               </span>
             </h1>
           </div>
           
-          <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-8 sm:mb-10 leading-relaxed px-4 sm:px-0 animate-in fade-in slide-in-from-bottom-8 duration-700 delay-200">
+          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed animate-in fade-in slide-in-from-bottom-8 duration-700 delay-200">
             The premier Discord utility. <span className="text-white font-medium">Exclusive. Powerful. Private.</span>
-            <br className="hidden sm:block" />
-            <span className="sm:inline"> </span>Streamline server management with advanced automation.
+            <br />
+            Streamline server management with advanced automation.
           </p>
 
-          <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4 mb-10 sm:mb-12 w-full sm:w-auto px-4 sm:px-0 animate-in fade-in slide-in-from-bottom-10 duration-700 delay-300">
-            <a href="#commands" className="w-full sm:w-auto">
-              <Button size="lg" className="w-full sm:w-auto h-12 px-8 rounded-full bg-white text-black hover:bg-white/90 font-semibold text-base">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12 animate-in fade-in slide-in-from-bottom-10 duration-700 delay-300">
+            <a href="#commands">
+              <Button size="lg" className="h-12 px-8 rounded-full bg-white text-black hover:bg-white/90 font-semibold text-base">
                 View Commands
               </Button>
             </a>
-            <Button size="lg" variant="outline" className="w-full sm:w-auto h-12 px-8 rounded-full border-white/10 bg-white/5 hover:bg-white/10 hover:text-white text-muted-foreground backdrop-blur-sm" disabled>
+            <Button size="lg" variant="outline" className="h-12 px-8 rounded-full border-white/10 bg-white/5 hover:bg-white/10 hover:text-white text-muted-foreground backdrop-blur-sm" disabled>
               Restricted Access <Lock className="ml-2 w-4 h-4" />
             </Button>
           </div>
 
           {/* Feature Grid */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 px-4 sm:px-0 animate-in fade-in slide-in-from-bottom-12 duration-700 delay-400">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 animate-in fade-in slide-in-from-bottom-12 duration-700 delay-400">
             {features.map((feature, i) => (
               <div 
                 key={feature.title}
-                className="relative overflow-hidden bg-gradient-to-br from-white/10 via-white/5 to-transparent backdrop-blur-xl border border-white/10 p-3 sm:p-4 rounded-xl sm:rounded-2xl flex flex-col items-center justify-center gap-2 sm:gap-3 transition-all duration-500 group shadow-[inset_0_1px_0_0_rgba(255,255,255,0.1)] hover:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.2),0_8px_32px_-8px_rgba(0,0,0,0.5)] hover:-translate-y-1 after:content-[''] after:absolute after:inset-0 after:bg-[url('/noise.svg')] after:opacity-[0.03] after:pointer-events-none"
+                className="relative overflow-hidden bg-gradient-to-br from-white/10 via-white/5 to-transparent backdrop-blur-xl border border-white/10 p-4 rounded-2xl flex flex-col items-center justify-center gap-3 transition-all duration-500 group shadow-[inset_0_1px_0_0_rgba(255,255,255,0.1)] hover:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.2),0_8px_32px_-8px_rgba(0,0,0,0.5)] hover:-translate-y-1 after:content-[''] after:absolute after:inset-0 after:bg-[url('/noise.svg')] after:opacity-[0.03] after:pointer-events-none"
               >
-                <div className="p-2 sm:p-3 bg-primary/10 rounded-lg sm:rounded-xl text-primary group-hover:bg-primary/20 transition-colors">
-                  <feature.icon className="w-5 h-5 sm:w-6 sm:h-6" />
+                <div className="p-3 bg-primary/10 rounded-xl text-primary group-hover:bg-primary/20 transition-colors">
+                  <feature.icon className="w-6 h-6" />
                 </div>
                 <div className="text-center">
-                  <div className="text-sm sm:text-base font-bold text-white mb-0.5 sm:mb-1">{feature.title}</div>
-                  <div className="text-[10px] sm:text-xs text-muted-foreground font-medium">{feature.description}</div>
+                  <div className="text-base font-bold text-white mb-1">{feature.title}</div>
+                  <div className="text-xs text-muted-foreground font-medium">{feature.description}</div>
                 </div>
               </div>
             ))}
