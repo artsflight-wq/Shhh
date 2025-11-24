@@ -130,9 +130,9 @@ export function CommandList() {
                   }`}
                   data-testid={`button-category-${cat.id}`}
                 >
-                  {Icon && <Icon className="w-4 h-4" />}
-                  <span>{cat.displayName}</span>
-                  <Badge variant="secondary" className={`ml-1 text-xs ${activeCategory === cat.id ? "bg-white/20" : "bg-white/10"}`}>
+                  {Icon && <Icon className="w-4 h-4 flex-shrink-0" />}
+                  <span className="leading-none">{cat.displayName}</span>
+                  <Badge variant="secondary" className={`ml-1 text-xs leading-none ${activeCategory === cat.id ? "bg-white/20" : "bg-white/10"}`}>
                     {cat.commandCount}
                   </Badge>
                 </button>
