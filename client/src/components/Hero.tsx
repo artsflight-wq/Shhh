@@ -27,6 +27,18 @@ export function Hero() {
 
   return (
     <section className="relative pt-20 pb-8 md:pt-32 md:pb-12 overflow-hidden">
+      {/* Enhanced Grid Accent Elements */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        {/* Radial grid highlight - top center */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px]">
+          <div className="absolute inset-0 bg-gradient-to-b from-primary/10 via-primary/5 to-transparent rounded-full blur-3xl" />
+        </div>
+        {/* Glass accent dots at grid intersections */}
+        <div className="absolute top-32 left-1/4 w-2 h-2 rounded-full bg-white/20 blur-sm" />
+        <div className="absolute top-48 right-1/3 w-2 h-2 rounded-full bg-primary/30 blur-sm animate-pulse" style={{animationDuration: '3s'}} />
+        <div className="absolute bottom-20 left-1/3 w-2 h-2 rounded-full bg-white/20 blur-sm" />
+      </div>
+      
       <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-4xl mx-auto text-center flex flex-col items-center">
           <div className="inline-flex flex-col items-stretch">
