@@ -1,6 +1,87 @@
 import { storage } from "./storage";
 
 const allCommands = [
+
+  {
+    "name": "an",
+    "aliases": [],
+    "arguments": "[<module> <on/off> [flags]]",
+    "description": "Antinuke configuration system",
+    "category": "security",
+    "usage": ",an [<module> <on/off> [flags]]"
+  },
+  {
+    "name": "bc",
+    "aliases": [],
+    "arguments": "[[amount]]",
+    "description": "Clean bot messages (legacy alias for purge bots)",
+    "category": "moderation",
+    "usage": ",bc [[amount]]"
+  },
+  {
+    "name": "fp",
+    "aliases": [],
+    "arguments": "[<grant/remove/list/reset> [args]]",
+    "description": "Manage fake permissions for users and roles",
+    "category": "permissions",
+    "usage": ",fp [<grant/remove/list/reset> [args]]"
+  },
+  {
+    "name": "gw",
+    "aliases": [],
+    "arguments": "[<start/end/edit/reroll> [args]]",
+    "description": "Giveaway system - create and manage giveaways",
+    "category": "giveaways",
+    "usage": ",gw [<start/end/edit/reroll> [args]]"
+  },
+  {
+    "name": "lb",
+    "aliases": [],
+    "arguments": "[<global/fg> [#channel]]",
+    "description": "Leaderboard system management",
+    "category": "config",
+    "usage": ",lb [<global/fg> [#channel]]"
+  },
+  {
+    "name": "levels",
+    "aliases": [],
+    "arguments": "[<subcommand> [args]]",
+    "description": "Levels/XP system commands",
+    "category": "leveling",
+    "usage": ",levels [<subcommand> [args]]"
+  },
+  {
+    "name": "media",
+    "aliases": [],
+    "arguments": "[<caption/quote> [args]]",
+    "description": "Media manipulation commands",
+    "category": "utility",
+    "usage": ",media [<caption/quote> [args]]"
+  },
+  {
+    "name": "panick",
+    "aliases": [],
+    "arguments": "[<on/off> [reason]]",
+    "description": "Emergency server lockdown mode",
+    "category": "security",
+    "usage": ",panick [<on/off> [reason]]"
+  },
+  {
+    "name": "r",
+    "aliases": [],
+    "arguments": "[<subcommand> [args] (see ,r for full usage)]",
+    "description": "Role management (toggle/restore/rename/delete/create/dump/etc)",
+    "category": "roles",
+    "usage": ",r [<subcommand> [args] (see ,r for full usage)]"
+  },
+  {
+    "name": "vc",
+    "aliases": [],
+    "arguments": "[<setup/category/name/bypass/kick/ban/lock> [args]]",
+    "description": "VoiceMaster system - temporary voice channels",
+    "category": "voice",
+    "usage": ",vc [<setup/category/name/bypass/kick/ban/lock> [args]]"
+  },
   {
     "name": "help",
     "aliases": [],
@@ -8,14 +89,6 @@ const allCommands = [
     "description": "Hierarchical help system with pagination and subcommand display",
     "category": "info",
     "usage": ",help [query]"
-  },
-  {
-    "name": "h",
-    "aliases": [],
-    "arguments": "[query]",
-    "description": "Alias for help command",
-    "category": "info",
-    "usage": ",h [query]"
   },
   {
     "name": "docs",
@@ -34,36 +107,12 @@ const allCommands = [
     "usage": ",mc []"
   },
   {
-    "name": "membercount",
-    "aliases": [],
-    "arguments": "[]",
-    "description": "Alias for mc command",
-    "category": "info",
-    "usage": ",membercount []"
-  },
-  {
     "name": "ui",
     "aliases": [],
     "arguments": "[@user]",
     "description": "Display detailed user information and avatar",
     "category": "info",
     "usage": ",ui [@user]"
-  },
-  {
-    "name": "userinfo",
-    "aliases": [],
-    "arguments": "[@user]",
-    "description": "Alias for ui command",
-    "category": "info",
-    "usage": ",userinfo [@user]"
-  },
-  {
-    "name": "whois",
-    "aliases": [],
-    "arguments": "[@user]",
-    "description": "Alias for ui command",
-    "category": "info",
-    "usage": ",whois [@user]"
   },
   {
     "name": "ri",
@@ -74,28 +123,12 @@ const allCommands = [
     "usage": ",ri [@role]"
   },
   {
-    "name": "roleinfo",
-    "aliases": [],
-    "arguments": "[@role]",
-    "description": "Alias for ri command",
-    "category": "info",
-    "usage": ",roleinfo [@role]"
-  },
-  {
     "name": "si",
     "aliases": [],
     "arguments": "[]",
     "description": "Display detailed server information and statistics",
     "category": "info",
     "usage": ",si []"
-  },
-  {
-    "name": "serverinfo",
-    "aliases": [],
-    "arguments": "[]",
-    "description": "Alias for si command",
-    "category": "info",
-    "usage": ",serverinfo []"
   },
   {
     "name": "ci",
@@ -106,28 +139,12 @@ const allCommands = [
     "usage": ",ci [#channel]"
   },
   {
-    "name": "channelinfo",
-    "aliases": [],
-    "arguments": "[#channel]",
-    "description": "Alias for ci command",
-    "category": "info",
-    "usage": ",channelinfo [#channel]"
-  },
-  {
     "name": "ii",
     "aliases": [],
     "arguments": "[invite]",
     "description": "Display detailed Discord invite information",
     "category": "info",
     "usage": ",ii [invite]"
-  },
-  {
-    "name": "inviteinfo",
-    "aliases": [],
-    "arguments": "[invite]",
-    "description": "Alias for ii command",
-    "category": "info",
-    "usage": ",inviteinfo [invite]"
   },
   {
     "name": "roles",
@@ -162,22 +179,6 @@ const allCommands = [
     "usage": ",tz [@user]"
   },
   {
-    "name": "timezone set",
-    "aliases": [],
-    "arguments": "[timezone]",
-    "description": "Alias for tz set command",
-    "category": "utility",
-    "usage": ",timezone set [timezone]"
-  },
-  {
-    "name": "timezone",
-    "aliases": [],
-    "arguments": "[@user]",
-    "description": "Alias for tz command",
-    "category": "utility",
-    "usage": ",timezone [@user]"
-  },
-  {
     "name": "ping",
     "aliases": [],
     "arguments": "[mode]",
@@ -210,14 +211,6 @@ const allCommands = [
     "usage": ",kick [@user] [reason]"
   },
   {
-    "name": "k",
-    "aliases": [],
-    "arguments": "[@user] [reason]",
-    "description": "Alias for kick command",
-    "category": "moderation",
-    "usage": ",k [@user] [reason]"
-  },
-  {
     "name": "ban",
     "aliases": [],
     "arguments": "[@user] [reason]",
@@ -234,28 +227,12 @@ const allCommands = [
     "usage": ",unban [user_id] [reason]"
   },
   {
-    "name": "ub",
-    "aliases": [],
-    "arguments": "[user_id] [reason]",
-    "description": "Alias for unban command",
-    "category": "moderation",
-    "usage": ",ub [user_id] [reason]"
-  },
-  {
     "name": "unbanall",
     "aliases": [],
     "arguments": "[]",
     "description": "Mass unban all banned users except hardbanned users (requires confirmation)",
     "category": "moderation",
     "usage": ",unbanall []"
-  },
-  {
-    "name": "massunban",
-    "aliases": [],
-    "arguments": "[]",
-    "description": "Alias for unbanall command",
-    "category": "moderation",
-    "usage": ",massunban []"
   },
   {
     "name": "timeout",
@@ -266,28 +243,12 @@ const allCommands = [
     "usage": ",timeout [@user] [duration] [reason]"
   },
   {
-    "name": "to",
-    "aliases": [],
-    "arguments": "[@user] [duration] [reason]",
-    "description": "Alias for timeout command",
-    "category": "moderation",
-    "usage": ",to [@user] [duration] [reason]"
-  },
-  {
     "name": "untimeout",
     "aliases": [],
     "arguments": "[@user] [reason]",
     "description": "Remove timeout from member",
     "category": "moderation",
     "usage": ",untimeout [@user] [reason]"
-  },
-  {
-    "name": "uto",
-    "aliases": [],
-    "arguments": "[@user] [reason]",
-    "description": "Alias for untimeout command",
-    "category": "moderation",
-    "usage": ",uto [@user] [reason]"
   },
   {
     "name": "softban",
@@ -304,22 +265,6 @@ const allCommands = [
     "description": "Preemptive ban before user joins server (cannot be unbanned except by antinuke admins)",
     "category": "moderation",
     "usage": ",hackban [user_id] [reason]"
-  },
-  {
-    "name": "hb",
-    "aliases": [],
-    "arguments": "[user_id] [reason]",
-    "description": "Alias for hackban command",
-    "category": "moderation",
-    "usage": ",hb [user_id] [reason]"
-  },
-  {
-    "name": "hardban",
-    "aliases": [],
-    "arguments": "[user_id] [reason]",
-    "description": "Alias for hackban command",
-    "category": "moderation",
-    "usage": ",hardban [user_id] [reason]"
   },
   {
     "name": "raid",
@@ -344,30 +289,6 @@ const allCommands = [
     "description": "Disable server lockdown mode and restore permissions",
     "category": "moderation",
     "usage": ",raid off []"
-  },
-  {
-    "name": "raidmode",
-    "aliases": [],
-    "arguments": "[duration] [kick|ban|jail]",
-    "description": "Alias for raid command",
-    "category": "moderation",
-    "usage": ",raidmode [duration] [kick|ban|jail]"
-  },
-  {
-    "name": "raidmode on",
-    "aliases": [],
-    "arguments": "[]",
-    "description": "Alias for raid on command",
-    "category": "moderation",
-    "usage": ",raidmode on []"
-  },
-  {
-    "name": "raidmode off",
-    "aliases": [],
-    "arguments": "[]",
-    "description": "Alias for raid off command",
-    "category": "moderation",
-    "usage": ",raidmode off []"
   },
   {
     "name": "purge",
@@ -432,38 +353,6 @@ const allCommands = [
     "description": "Delete messages containing links",
     "category": "moderation",
     "usage": ",purge links [amount]"
-  },
-  {
-    "name": "clear",
-    "aliases": [],
-    "arguments": "[amount]",
-    "description": "Alias for purge command",
-    "category": "moderation",
-    "usage": ",clear [amount]"
-  },
-  {
-    "name": "prune",
-    "aliases": [],
-    "arguments": "[amount]",
-    "description": "Alias for purge command",
-    "category": "moderation",
-    "usage": ",prune [amount]"
-  },
-  {
-    "name": "c",
-    "aliases": [],
-    "arguments": "[amount]",
-    "description": "Alias for purge command",
-    "category": "moderation",
-    "usage": ",c [amount]"
-  },
-  {
-    "name": "bc",
-    "aliases": [],
-    "arguments": "[amount]",
-    "description": "Clean bot messages (legacy alias for purge bots)",
-    "category": "moderation",
-    "usage": ",bc [amount]"
   },
   {
     "name": "setup",
@@ -682,100 +571,12 @@ const allCommands = [
     "usage": ",r icon [@role] [emoji/url]"
   },
   {
-    "name": "role toggle",
-    "aliases": [],
-    "arguments": "[@user] [@role]",
-    "description": "Alias for r toggle command",
-    "category": "roles",
-    "usage": ",role toggle [@user] [@role]"
-  },
-  {
-    "name": "role restore",
-    "aliases": [],
-    "arguments": "[@user]",
-    "description": "Alias for r restore command",
-    "category": "roles",
-    "usage": ",role restore [@user]"
-  },
-  {
-    "name": "role rename",
-    "aliases": [],
-    "arguments": "[@role] [name]",
-    "description": "Alias for r rename command",
-    "category": "roles",
-    "usage": ",role rename [@role] [name]"
-  },
-  {
-    "name": "role delete",
-    "aliases": [],
-    "arguments": "[@role]",
-    "description": "Alias for r delete command",
-    "category": "roles",
-    "usage": ",role delete [@role]"
-  },
-  {
-    "name": "role create",
-    "aliases": [],
-    "arguments": "[name] [color]",
-    "description": "Alias for r create command",
-    "category": "roles",
-    "usage": ",role create [name] [color]"
-  },
-  {
-    "name": "role dump",
-    "aliases": [],
-    "arguments": "[@role]",
-    "description": "Alias for r dump command",
-    "category": "roles",
-    "usage": ",role dump [@role]"
-  },
-  {
-    "name": "role humans",
-    "aliases": [],
-    "arguments": "[@role]",
-    "description": "Alias for r humans command",
-    "category": "roles",
-    "usage": ",role humans [@role]"
-  },
-  {
-    "name": "role has",
-    "aliases": [],
-    "arguments": "[@user] [@role]",
-    "description": "Alias for r has command",
-    "category": "roles",
-    "usage": ",role has [@user] [@role]"
-  },
-  {
-    "name": "role color",
-    "aliases": [],
-    "arguments": "[@role] [color]",
-    "description": "Alias for r color command",
-    "category": "roles",
-    "usage": ",role color [@role] [color]"
-  },
-  {
-    "name": "role icon",
-    "aliases": [],
-    "arguments": "[@role] [emoji/url]",
-    "description": "Alias for r icon command",
-    "category": "roles",
-    "usage": ",role icon [@role] [emoji/url]"
-  },
-  {
     "name": "ir",
     "aliases": [],
     "arguments": "[@role]",
     "description": "List all members with specific role (in-role)",
     "category": "roles",
     "usage": ",ir [@role]"
-  },
-  {
-    "name": "inrole",
-    "aliases": [],
-    "arguments": "[@role]",
-    "description": "Alias for ir command",
-    "category": "roles",
-    "usage": ",inrole [@role]"
   },
   {
     "name": "autorole add",
@@ -816,14 +617,6 @@ const allCommands = [
     "description": "Force member's nickname (prevents self-changing)",
     "category": "roles",
     "usage": ",fn [@user] [nickname]"
-  },
-  {
-    "name": "forcenick",
-    "aliases": [],
-    "arguments": "[@user] [nickname]",
-    "description": "Alias for fn command",
-    "category": "roles",
-    "usage": ",forcenick [@user] [nickname]"
   },
   {
     "name": "talk",
@@ -874,14 +667,6 @@ const allCommands = [
     "usage": ",d [@user] [voice channel]"
   },
   {
-    "name": "drag",
-    "aliases": [],
-    "arguments": "[@user] [voice channel]",
-    "description": "Alias for d command",
-    "category": "voice",
-    "usage": ",drag [@user] [voice channel]"
-  },
-  {
     "name": "massmute",
     "aliases": [],
     "arguments": "[]",
@@ -912,22 +697,6 @@ const allCommands = [
     "description": "View moderation history and cases for user",
     "category": "modlog",
     "usage": ",mh [@user]"
-  },
-  {
-    "name": "modhistory",
-    "aliases": [],
-    "arguments": "[@user]",
-    "description": "Alias for mh command",
-    "category": "modlog",
-    "usage": ",modhistory [@user]"
-  },
-  {
-    "name": "cases",
-    "aliases": [],
-    "arguments": "[@user]",
-    "description": "Alias for mh command",
-    "category": "modlog",
-    "usage": ",cases [@user]"
   },
   {
     "name": "rank",
@@ -1282,46 +1051,6 @@ const allCommands = [
     "usage": ",gw history []"
   },
   {
-    "name": "giveaway start",
-    "aliases": [],
-    "arguments": "[duration] [#channel] [winners] [prize]",
-    "description": "Alias for gw start command",
-    "category": "giveaways",
-    "usage": ",giveaway start [duration] [#channel] [winners] [prize]"
-  },
-  {
-    "name": "giveaway end",
-    "aliases": [],
-    "arguments": "[message_link]",
-    "description": "Alias for gw end command",
-    "category": "giveaways",
-    "usage": ",giveaway end [message_link]"
-  },
-  {
-    "name": "giveaway edit",
-    "aliases": [],
-    "arguments": "[message_link] [host|duration|prize] [value]",
-    "description": "Alias for gw edit command",
-    "category": "giveaways",
-    "usage": ",giveaway edit [message_link] [host|duration|prize] [value]"
-  },
-  {
-    "name": "giveaway reroll",
-    "aliases": [],
-    "arguments": "[message_link]",
-    "description": "Alias for gw reroll command",
-    "category": "giveaways",
-    "usage": ",giveaway reroll [message_link]"
-  },
-  {
-    "name": "giveaway history",
-    "aliases": [],
-    "arguments": "[]",
-    "description": "Alias for gw history command",
-    "category": "giveaways",
-    "usage": ",giveaway history []"
-  },
-  {
     "name": "prefix",
     "aliases": [],
     "arguments": "[prefix]",
@@ -1352,30 +1081,6 @@ const allCommands = [
     "description": "Send preview of welcome message",
     "category": "config",
     "usage": ",welc preview []"
-  },
-  {
-    "name": "welcome channel",
-    "aliases": [],
-    "arguments": "[#channel]",
-    "description": "Alias for welc channel command",
-    "category": "config",
-    "usage": ",welcome channel [#channel]"
-  },
-  {
-    "name": "welcome edit",
-    "aliases": [],
-    "arguments": "[message]",
-    "description": "Alias for welc edit command",
-    "category": "config",
-    "usage": ",welcome edit [message]"
-  },
-  {
-    "name": "welcome preview",
-    "aliases": [],
-    "arguments": "[]",
-    "description": "Alias for welc preview command",
-    "category": "config",
-    "usage": ",welcome preview []"
   },
   {
     "name": "goodbye channel",
@@ -1514,38 +1219,6 @@ const allCommands = [
     "usage": ",ec disable []"
   },
   {
-    "name": "eventcontrol add",
-    "aliases": [],
-    "arguments": "[@role]",
-    "description": "Alias for ec add command",
-    "category": "config",
-    "usage": ",eventcontrol add [@role]"
-  },
-  {
-    "name": "eventcontrol remove",
-    "aliases": [],
-    "arguments": "[@role]",
-    "description": "Alias for ec remove command",
-    "category": "config",
-    "usage": ",eventcontrol remove [@role]"
-  },
-  {
-    "name": "eventcontrol list",
-    "aliases": [],
-    "arguments": "[]",
-    "description": "Alias for ec list command",
-    "category": "config",
-    "usage": ",eventcontrol list []"
-  },
-  {
-    "name": "eventcontrol disable",
-    "aliases": [],
-    "arguments": "[]",
-    "description": "Alias for ec disable command",
-    "category": "config",
-    "usage": ",eventcontrol disable []"
-  },
-  {
     "name": "vcpush toggle",
     "aliases": [],
     "arguments": "[]",
@@ -1618,70 +1291,6 @@ const allCommands = [
     "usage": ",fp reset []"
   },
   {
-    "name": "fakepermissions grant",
-    "aliases": [],
-    "arguments": "[@user/@role] [permission(s)]",
-    "description": "Alias for fp grant command",
-    "category": "permissions",
-    "usage": ",fakepermissions grant [@user/@role] [permission(s)]"
-  },
-  {
-    "name": "fakepermissions remove",
-    "aliases": [],
-    "arguments": "[@user/@role] [permission(s)]",
-    "description": "Alias for fp remove command",
-    "category": "permissions",
-    "usage": ",fakepermissions remove [@user/@role] [permission(s)]"
-  },
-  {
-    "name": "fakepermissions list",
-    "aliases": [],
-    "arguments": "[@user/@role]",
-    "description": "Alias for fp list command",
-    "category": "permissions",
-    "usage": ",fakepermissions list [@user/@role]"
-  },
-  {
-    "name": "fakepermissions reset",
-    "aliases": [],
-    "arguments": "[]",
-    "description": "Alias for fp reset command",
-    "category": "permissions",
-    "usage": ",fakepermissions reset []"
-  },
-  {
-    "name": "fakeperms grant",
-    "aliases": [],
-    "arguments": "[@user/@role] [permission(s)]",
-    "description": "Alias for fp grant command",
-    "category": "permissions",
-    "usage": ",fakeperms grant [@user/@role] [permission(s)]"
-  },
-  {
-    "name": "fakeperms remove",
-    "aliases": [],
-    "arguments": "[@user/@role] [permission(s)]",
-    "description": "Alias for fp remove command",
-    "category": "permissions",
-    "usage": ",fakeperms remove [@user/@role] [permission(s)]"
-  },
-  {
-    "name": "fakeperms list",
-    "aliases": [],
-    "arguments": "[@user/@role]",
-    "description": "Alias for fp list command",
-    "category": "permissions",
-    "usage": ",fakeperms list [@user/@role]"
-  },
-  {
-    "name": "fakeperms reset",
-    "aliases": [],
-    "arguments": "[]",
-    "description": "Alias for fp reset command",
-    "category": "permissions",
-    "usage": ",fakeperms reset []"
-  },
-  {
     "name": "lb global",
     "aliases": [],
     "arguments": "[#channel]",
@@ -1752,14 +1361,6 @@ const allCommands = [
     "description": "Set server profile picture from attachment or URL",
     "category": "config",
     "usage": ",setpfp [image]"
-  },
-  {
-    "name": "seticon",
-    "aliases": [],
-    "arguments": "[image]",
-    "description": "Alias for setpfp command",
-    "category": "config",
-    "usage": ",seticon [image]"
   },
   {
     "name": "setbanner",
@@ -1938,166 +1539,6 @@ const allCommands = [
     "usage": ",vc unhide []"
   },
   {
-    "name": "vm setup",
-    "aliases": [],
-    "arguments": "[@role]",
-    "description": "Alias for vc setup command",
-    "category": "voice",
-    "usage": ",vm setup [@role]"
-  },
-  {
-    "name": "vm intr",
-    "aliases": [],
-    "arguments": "[]",
-    "description": "Alias for vc intr command",
-    "category": "voice",
-    "usage": ",vm intr []"
-  },
-  {
-    "name": "vm category",
-    "aliases": [],
-    "arguments": "[category]",
-    "description": "Alias for vc category command",
-    "category": "voice",
-    "usage": ",vm category [category]"
-  },
-  {
-    "name": "vm name",
-    "aliases": [],
-    "arguments": "[format]",
-    "description": "Alias for vc name command",
-    "category": "voice",
-    "usage": ",vm name [format]"
-  },
-  {
-    "name": "vm bypass add",
-    "aliases": [],
-    "arguments": "[@role]",
-    "description": "Alias for vc bypass add command",
-    "category": "voice",
-    "usage": ",vm bypass add [@role]"
-  },
-  {
-    "name": "vm bypass remove",
-    "aliases": [],
-    "arguments": "[@role]",
-    "description": "Alias for vc bypass remove command",
-    "category": "voice",
-    "usage": ",vm bypass remove [@role]"
-  },
-  {
-    "name": "vm bypass list",
-    "aliases": [],
-    "arguments": "[]",
-    "description": "Alias for vc bypass list command",
-    "category": "voice",
-    "usage": ",vm bypass list []"
-  },
-  {
-    "name": "vm bypass sync",
-    "aliases": [],
-    "arguments": "[]",
-    "description": "Alias for vc bypass sync command",
-    "category": "voice",
-    "usage": ",vm bypass sync []"
-  },
-  {
-    "name": "vm kick",
-    "aliases": [],
-    "arguments": "[@user]",
-    "description": "Alias for vc kick command",
-    "category": "voice",
-    "usage": ",vm kick [@user]"
-  },
-  {
-    "name": "vm ban",
-    "aliases": [],
-    "arguments": "[@user]",
-    "description": "Alias for vc ban command",
-    "category": "voice",
-    "usage": ",vm ban [@user]"
-  },
-  {
-    "name": "vm unban",
-    "aliases": [],
-    "arguments": "[@user]",
-    "description": "Alias for vc unban command",
-    "category": "voice",
-    "usage": ",vm unban [@user]"
-  },
-  {
-    "name": "vm permit",
-    "aliases": [],
-    "arguments": "[@user]",
-    "description": "Alias for vc permit command",
-    "category": "voice",
-    "usage": ",vm permit [@user]"
-  },
-  {
-    "name": "vm rename",
-    "aliases": [],
-    "arguments": "[name]",
-    "description": "Alias for vc rename command",
-    "category": "voice",
-    "usage": ",vm rename [name]"
-  },
-  {
-    "name": "vm transfer",
-    "aliases": [],
-    "arguments": "[@user]",
-    "description": "Alias for vc transfer command",
-    "category": "voice",
-    "usage": ",vm transfer [@user]"
-  },
-  {
-    "name": "vm lock",
-    "aliases": [],
-    "arguments": "[]",
-    "description": "Alias for vc lock command",
-    "category": "voice",
-    "usage": ",vm lock []"
-  },
-  {
-    "name": "vm unlock",
-    "aliases": [],
-    "arguments": "[]",
-    "description": "Alias for vc unlock command",
-    "category": "voice",
-    "usage": ",vm unlock []"
-  },
-  {
-    "name": "vm limit",
-    "aliases": [],
-    "arguments": "[number]",
-    "description": "Alias for vc limit command",
-    "category": "voice",
-    "usage": ",vm limit [number]"
-  },
-  {
-    "name": "vm claim",
-    "aliases": [],
-    "arguments": "[]",
-    "description": "Alias for vc claim command",
-    "category": "voice",
-    "usage": ",vm claim []"
-  },
-  {
-    "name": "vm hide",
-    "aliases": [],
-    "arguments": "[]",
-    "description": "Alias for vc hide command",
-    "category": "voice",
-    "usage": ",vm hide []"
-  },
-  {
-    "name": "vm unhide",
-    "aliases": [],
-    "arguments": "[]",
-    "description": "Alias for vc unhide command",
-    "category": "voice",
-    "usage": ",vm unhide []"
-  },
-  {
     "name": "family marry",
     "aliases": [],
     "arguments": "[@user]",
@@ -2120,14 +1561,6 @@ const allCommands = [
     "description": "Cheat on partner with another user",
     "category": "family",
     "usage": ",family cuck [@user]"
-  },
-  {
-    "name": "family cheat",
-    "aliases": [],
-    "arguments": "[@user]",
-    "description": "Alias for family cuck command",
-    "category": "family",
-    "usage": ",family cheat [@user]"
   },
   {
     "name": "family partner",
@@ -2170,44 +1603,12 @@ const allCommands = [
     "usage": ",family parent [@user]"
   },
   {
-    "name": "family parents",
-    "aliases": [],
-    "arguments": "[@user]",
-    "description": "Alias for family parent command",
-    "category": "family",
-    "usage": ",family parents [@user]"
-  },
-  {
     "name": "family relate",
     "aliases": [],
     "arguments": "[@user1] [@user2]",
     "description": "Check how two users are related",
     "category": "family",
     "usage": ",family relate [@user1] [@user2]"
-  },
-  {
-    "name": "family rls",
-    "aliases": [],
-    "arguments": "[@user1] [@user2]",
-    "description": "Alias for family relate command",
-    "category": "family",
-    "usage": ",family rls [@user1] [@user2]"
-  },
-  {
-    "name": "family relationship",
-    "aliases": [],
-    "arguments": "[@user1] [@user2]",
-    "description": "Alias for family relate command",
-    "category": "family",
-    "usage": ",family relationship [@user1] [@user2]"
-  },
-  {
-    "name": "family relation",
-    "aliases": [],
-    "arguments": "[@user1] [@user2]",
-    "description": "Alias for family relate command",
-    "category": "family",
-    "usage": ",family relation [@user1] [@user2]"
   },
   {
     "name": "family ship",
@@ -2224,14 +1625,6 @@ const allCommands = [
     "description": "Display family tree visualization with Graphviz",
     "category": "family",
     "usage": ",family tree [@user]"
-  },
-  {
-    "name": "family familytree",
-    "aliases": [],
-    "arguments": "[@user]",
-    "description": "Alias for family tree command",
-    "category": "family",
-    "usage": ",family familytree [@user]"
   },
   {
     "name": "family game quiz",
@@ -2282,150 +1675,6 @@ const allCommands = [
     "usage": ",family admin cleantest []"
   },
   {
-    "name": "marry",
-    "aliases": [],
-    "arguments": "[@user]",
-    "description": "Top-level alias for family marry command",
-    "category": "family",
-    "usage": ",marry [@user]"
-  },
-  {
-    "name": "divorce",
-    "aliases": [],
-    "arguments": "[]",
-    "description": "Top-level alias for family divorce command",
-    "category": "family",
-    "usage": ",divorce []"
-  },
-  {
-    "name": "cuck",
-    "aliases": [],
-    "arguments": "[@user]",
-    "description": "Top-level alias for family cuck command",
-    "category": "family",
-    "usage": ",cuck [@user]"
-  },
-  {
-    "name": "cheat",
-    "aliases": [],
-    "arguments": "[@user]",
-    "description": "Top-level alias for family cheat command",
-    "category": "family",
-    "usage": ",cheat [@user]"
-  },
-  {
-    "name": "partner",
-    "aliases": [],
-    "arguments": "[@user]",
-    "description": "Top-level alias for family partner command",
-    "category": "family",
-    "usage": ",partner [@user]"
-  },
-  {
-    "name": "adopt",
-    "aliases": [],
-    "arguments": "[@user]",
-    "description": "Top-level alias for family adopt command",
-    "category": "family",
-    "usage": ",adopt [@user]"
-  },
-  {
-    "name": "runaway",
-    "aliases": [],
-    "arguments": "[]",
-    "description": "Top-level alias for family runaway command",
-    "category": "family",
-    "usage": ",runaway []"
-  },
-  {
-    "name": "disown",
-    "aliases": [],
-    "arguments": "[@user]",
-    "description": "Top-level alias for family disown command",
-    "category": "family",
-    "usage": ",disown [@user]"
-  },
-  {
-    "name": "parent",
-    "aliases": [],
-    "arguments": "[@user]",
-    "description": "Top-level alias for family parent command",
-    "category": "family",
-    "usage": ",parent [@user]"
-  },
-  {
-    "name": "parents",
-    "aliases": [],
-    "arguments": "[@user]",
-    "description": "Top-level alias for family parents command",
-    "category": "family",
-    "usage": ",parents [@user]"
-  },
-  {
-    "name": "relate",
-    "aliases": [],
-    "arguments": "[@user1] [@user2]",
-    "description": "Top-level alias for family relate command",
-    "category": "family",
-    "usage": ",relate [@user1] [@user2]"
-  },
-  {
-    "name": "rls",
-    "aliases": [],
-    "arguments": "[@user1] [@user2]",
-    "description": "Top-level alias for family rls command",
-    "category": "family",
-    "usage": ",rls [@user1] [@user2]"
-  },
-  {
-    "name": "relationship",
-    "aliases": [],
-    "arguments": "[@user1] [@user2]",
-    "description": "Top-level alias for family relationship command",
-    "category": "family",
-    "usage": ",relationship [@user1] [@user2]"
-  },
-  {
-    "name": "relation",
-    "aliases": [],
-    "arguments": "[@user1] [@user2]",
-    "description": "Top-level alias for family relation command",
-    "category": "family",
-    "usage": ",relation [@user1] [@user2]"
-  },
-  {
-    "name": "ship",
-    "aliases": [],
-    "arguments": "[@user1] [@user2]",
-    "description": "Top-level alias for family ship command",
-    "category": "family",
-    "usage": ",ship [@user1] [@user2]"
-  },
-  {
-    "name": "tree",
-    "aliases": [],
-    "arguments": "[@user]",
-    "description": "Top-level alias for family tree command",
-    "category": "family",
-    "usage": ",tree [@user]"
-  },
-  {
-    "name": "familytree",
-    "aliases": [],
-    "arguments": "[@user]",
-    "description": "Top-level alias for family familytree command",
-    "category": "family",
-    "usage": ",familytree [@user]"
-  },
-  {
-    "name": "lq",
-    "aliases": [],
-    "arguments": "[]",
-    "description": "Top-level alias for family game quiz command",
-    "category": "family",
-    "usage": ",lq []"
-  },
-  {
     "name": "blacktea",
     "aliases": [],
     "arguments": "[]",
@@ -2442,28 +1691,12 @@ const allCommands = [
     "usage": ",media caption [caption]"
   },
   {
-    "name": "media c",
-    "aliases": [],
-    "arguments": "[caption]",
-    "description": "Alias for media caption command",
-    "category": "media",
-    "usage": ",media c [caption]"
-  },
-  {
     "name": "media quote",
     "aliases": [],
     "arguments": "[]",
     "description": "Create quote card from replied message with avatar",
     "category": "media",
     "usage": ",media quote []"
-  },
-  {
-    "name": "media q",
-    "aliases": [],
-    "arguments": "[]",
-    "description": "Alias for media quote command",
-    "category": "media",
-    "usage": ",media q []"
   },
   {
     "name": "search",
@@ -2480,14 +1713,6 @@ const allCommands = [
     "description": "Search for images using Google Images",
     "category": "media",
     "usage": ",image [query]"
-  },
-  {
-    "name": "i",
-    "aliases": [],
-    "arguments": "[query]",
-    "description": "Alias for image command",
-    "category": "media",
-    "usage": ",i [query]"
   },
   {
     "name": "define",
@@ -2682,14 +1907,6 @@ const allCommands = [
     "usage": ",list [list_type]"
   },
   {
-    "name": "nuketimer",
-    "aliases": [],
-    "arguments": "[subcommand]",
-    "description": "Manage nuke timers (alias for timerlist)",
-    "category": "chat",
-    "usage": ",nuketimer [subcommand]"
-  },
-  {
     "name": "wipe",
     "aliases": [],
     "arguments": "[]",
@@ -2706,44 +1923,12 @@ const allCommands = [
     "usage": ",pinghere [args]"
   },
   {
-    "name": "here",
-    "aliases": [],
-    "arguments": "[args]",
-    "description": "Alias for pinghere command",
-    "category": "chat",
-    "usage": ",here [args]"
-  },
-  {
-    "name": "athere",
-    "aliases": [],
-    "arguments": "[args]",
-    "description": "Alias for pinghere command",
-    "category": "chat",
-    "usage": ",athere [args]"
-  },
-  {
     "name": "pingeveryone",
     "aliases": [],
     "arguments": "[args]",
     "description": "Ping @everyone with custom message",
     "category": "chat",
     "usage": ",pingeveryone [args]"
-  },
-  {
-    "name": "everyone",
-    "aliases": [],
-    "arguments": "[args]",
-    "description": "Alias for pingeveryone command",
-    "category": "chat",
-    "usage": ",everyone [args]"
-  },
-  {
-    "name": "ateveryone",
-    "aliases": [],
-    "arguments": "[args]",
-    "description": "Alias for pingeveryone command",
-    "category": "chat",
-    "usage": ",ateveryone [args]"
   },
   {
     "name": "emoji add",
@@ -2760,14 +1945,6 @@ const allCommands = [
     "description": "Remove emojis from server by name or emoji",
     "category": "emoji",
     "usage": ",emoji remove [emojis...]"
-  },
-  {
-    "name": "emoji delete",
-    "aliases": [],
-    "arguments": "[emojis...]",
-    "description": "Alias for emoji remove command",
-    "category": "emoji",
-    "usage": ",emoji delete [emojis...]"
   },
   {
     "name": "emoji info",
@@ -2802,14 +1979,6 @@ const allCommands = [
     "usage": ",sticker remove [sticker_names...]"
   },
   {
-    "name": "sticker delete",
-    "aliases": [],
-    "arguments": "[sticker_names...]",
-    "description": "Alias for sticker remove command",
-    "category": "emoji",
-    "usage": ",sticker delete [sticker_names...]"
-  },
-  {
     "name": "sticker info",
     "aliases": [],
     "arguments": "[sticker_name]",
@@ -2834,28 +2003,12 @@ const allCommands = [
     "usage": ",summarise []"
   },
   {
-    "name": "yap",
-    "aliases": [],
-    "arguments": "[]",
-    "description": "Alias for summarise command",
-    "category": "messages",
-    "usage": ",yap []"
-  },
-  {
     "name": "s",
     "aliases": [],
     "arguments": "[index]",
     "description": "Display deleted message from current channel by index",
     "category": "messages",
     "usage": ",s [index]"
-  },
-  {
-    "name": "snipe",
-    "aliases": [],
-    "arguments": "[index]",
-    "description": "Alias for s command",
-    "category": "messages",
-    "usage": ",snipe [index]"
   },
   {
     "name": "es",
@@ -2866,14 +2019,6 @@ const allCommands = [
     "usage": ",es [index]"
   },
   {
-    "name": "editsnipe",
-    "aliases": [],
-    "arguments": "[index]",
-    "description": "Alias for es command",
-    "category": "messages",
-    "usage": ",editsnipe [index]"
-  },
-  {
     "name": "rs",
     "aliases": [],
     "arguments": "[index]",
@@ -2882,28 +2027,12 @@ const allCommands = [
     "usage": ",rs [index]"
   },
   {
-    "name": "reactionsnipe",
-    "aliases": [],
-    "arguments": "[index]",
-    "description": "Alias for rs command",
-    "category": "messages",
-    "usage": ",reactionsnipe [index]"
-  },
-  {
     "name": "cs",
     "aliases": [],
     "arguments": "[channel|server]",
     "description": "Clear snipe data for channel or entire server",
     "category": "messages",
     "usage": ",cs [channel|server]"
-  },
-  {
-    "name": "clearsnipe",
-    "aliases": [],
-    "arguments": "[channel|server]",
-    "description": "Alias for cs command",
-    "category": "messages",
-    "usage": ",clearsnipe [channel|server]"
   },
   {
     "name": "afk",
@@ -2962,86 +2091,6 @@ const allCommands = [
     "usage": ",autoresponder reset []"
   },
   {
-    "name": "ar add",
-    "aliases": [],
-    "arguments": "[trigger, response]",
-    "description": "Alias for autoresponder add command",
-    "category": "autoresponder",
-    "usage": ",ar add [trigger, response]"
-  },
-  {
-    "name": "ar remove",
-    "aliases": [],
-    "arguments": "[trigger]",
-    "description": "Alias for autoresponder remove command",
-    "category": "autoresponder",
-    "usage": ",ar remove [trigger]"
-  },
-  {
-    "name": "ar update",
-    "aliases": [],
-    "arguments": "[trigger, new_response]",
-    "description": "Alias for autoresponder update command",
-    "category": "autoresponder",
-    "usage": ",ar update [trigger, new_response]"
-  },
-  {
-    "name": "ar list",
-    "aliases": [],
-    "arguments": "[]",
-    "description": "Alias for autoresponder list command",
-    "category": "autoresponder",
-    "usage": ",ar list []"
-  },
-  {
-    "name": "ar reset",
-    "aliases": [],
-    "arguments": "[]",
-    "description": "Alias for autoresponder reset command",
-    "category": "autoresponder",
-    "usage": ",ar reset []"
-  },
-  {
-    "name": "aur add",
-    "aliases": [],
-    "arguments": "[trigger, response]",
-    "description": "Alias for autoresponder add command",
-    "category": "autoresponder",
-    "usage": ",aur add [trigger, response]"
-  },
-  {
-    "name": "aur remove",
-    "aliases": [],
-    "arguments": "[trigger]",
-    "description": "Alias for autoresponder remove command",
-    "category": "autoresponder",
-    "usage": ",aur remove [trigger]"
-  },
-  {
-    "name": "aur update",
-    "aliases": [],
-    "arguments": "[trigger, new_response]",
-    "description": "Alias for autoresponder update command",
-    "category": "autoresponder",
-    "usage": ",aur update [trigger, new_response]"
-  },
-  {
-    "name": "aur list",
-    "aliases": [],
-    "arguments": "[]",
-    "description": "Alias for autoresponder list command",
-    "category": "autoresponder",
-    "usage": ",aur list []"
-  },
-  {
-    "name": "aur reset",
-    "aliases": [],
-    "arguments": "[]",
-    "description": "Alias for autoresponder reset command",
-    "category": "autoresponder",
-    "usage": ",aur reset []"
-  },
-  {
     "name": "reaction add",
     "aliases": [],
     "arguments": "[emoji] [trigger]",
@@ -3072,38 +2121,6 @@ const allCommands = [
     "description": "View all configured reaction triggers",
     "category": "autoresponder",
     "usage": ",reaction list []"
-  },
-  {
-    "name": "react add",
-    "aliases": [],
-    "arguments": "[emoji] [trigger]",
-    "description": "Alias for reaction add command",
-    "category": "autoresponder",
-    "usage": ",react add [emoji] [trigger]"
-  },
-  {
-    "name": "react remove",
-    "aliases": [],
-    "arguments": "[emoji] [trigger]",
-    "description": "Alias for reaction remove command",
-    "category": "autoresponder",
-    "usage": ",react remove [emoji] [trigger]"
-  },
-  {
-    "name": "react removeall",
-    "aliases": [],
-    "arguments": "[trigger]",
-    "description": "Alias for reaction removeall command",
-    "category": "autoresponder",
-    "usage": ",react removeall [trigger]"
-  },
-  {
-    "name": "react list",
-    "aliases": [],
-    "arguments": "[]",
-    "description": "Alias for reaction list command",
-    "category": "autoresponder",
-    "usage": ",react list []"
   },
   {
     "name": "ticket setup",
@@ -3258,14 +2275,6 @@ const allCommands = [
     "usage": ",timerlist []"
   },
   {
-    "name": "nuketimers",
-    "aliases": [],
-    "arguments": "[]",
-    "description": "Alias for timerlist command",
-    "category": "other",
-    "usage": ",nuketimers []"
-  },
-  {
     "name": "panick on",
     "aliases": [],
     "arguments": "[reason]",
@@ -3288,30 +2297,6 @@ const allCommands = [
     "description": "View current panic mode status and settings",
     "category": "other",
     "usage": ",panick status []"
-  },
-  {
-    "name": "sentry on",
-    "aliases": [],
-    "arguments": "[reason]",
-    "description": "Alias for panick on command",
-    "category": "other",
-    "usage": ",sentry on [reason]"
-  },
-  {
-    "name": "sentry off",
-    "aliases": [],
-    "arguments": "[]",
-    "description": "Alias for panick off command",
-    "category": "other",
-    "usage": ",sentry off []"
-  },
-  {
-    "name": "sentry status",
-    "aliases": [],
-    "arguments": "[]",
-    "description": "Alias for panick status command",
-    "category": "other",
-    "usage": ",sentry status []"
   },
   {
     "name": "an ban on",
@@ -3506,198 +2491,6 @@ const allCommands = [
     "usage": ",an list []"
   },
   {
-    "name": "antinuke ban on",
-    "aliases": [],
-    "arguments": "[--command/--bot/--threshold N/--punishment]",
-    "description": "Alias for an ban on command",
-    "category": "antinuke",
-    "usage": ",antinuke ban on [--command/--bot/--threshold N/--punishment]"
-  },
-  {
-    "name": "antinuke ban off",
-    "aliases": [],
-    "arguments": "[]",
-    "description": "Alias for an ban off command",
-    "category": "antinuke",
-    "usage": ",antinuke ban off []"
-  },
-  {
-    "name": "antinuke kick on",
-    "aliases": [],
-    "arguments": "[--command/--bot/--threshold N/--punishment]",
-    "description": "Alias for an kick on command",
-    "category": "antinuke",
-    "usage": ",antinuke kick on [--command/--bot/--threshold N/--punishment]"
-  },
-  {
-    "name": "antinuke kick off",
-    "aliases": [],
-    "arguments": "[]",
-    "description": "Alias for an kick off command",
-    "category": "antinuke",
-    "usage": ",antinuke kick off []"
-  },
-  {
-    "name": "antinuke webhook on",
-    "aliases": [],
-    "arguments": "[--threshold N/--punishment]",
-    "description": "Alias for an webhook on command",
-    "category": "antinuke",
-    "usage": ",antinuke webhook on [--threshold N/--punishment]"
-  },
-  {
-    "name": "antinuke webhook off",
-    "aliases": [],
-    "arguments": "[]",
-    "description": "Alias for an webhook off command",
-    "category": "antinuke",
-    "usage": ",antinuke webhook off []"
-  },
-  {
-    "name": "antinuke channel on",
-    "aliases": [],
-    "arguments": "[--create/--delete/--update/--threshold N/--punishment]",
-    "description": "Alias for an channel on",
-    "category": "antinuke",
-    "usage": ",antinuke channel on [--create/--delete/--update/--threshold N/--punishment]"
-  },
-  {
-    "name": "antinuke channel off",
-    "aliases": [],
-    "arguments": "[]",
-    "description": "Alias for an channel off command",
-    "category": "antinuke",
-    "usage": ",antinuke channel off []"
-  },
-  {
-    "name": "antinuke role on",
-    "aliases": [],
-    "arguments": "[--create/--delete/--update/--threshold N/--punishment]",
-    "description": "Alias for an role on command",
-    "category": "antinuke",
-    "usage": ",antinuke role on [--create/--delete/--update/--threshold N/--punishment]"
-  },
-  {
-    "name": "antinuke role off",
-    "aliases": [],
-    "arguments": "[]",
-    "description": "Alias for an role off command",
-    "category": "antinuke",
-    "usage": ",antinuke role off []"
-  },
-  {
-    "name": "antinuke ping on",
-    "aliases": [],
-    "arguments": "[--threshold N/--punishment]",
-    "description": "Alias for an ping on command",
-    "category": "antinuke",
-    "usage": ",antinuke ping on [--threshold N/--punishment]"
-  },
-  {
-    "name": "antinuke ping off",
-    "aliases": [],
-    "arguments": "[]",
-    "description": "Alias for an ping off command",
-    "category": "antinuke",
-    "usage": ",antinuke ping off []"
-  },
-  {
-    "name": "antinuke vanity on",
-    "aliases": [],
-    "arguments": "[--punishment]",
-    "description": "Alias for an vanity on command",
-    "category": "antinuke",
-    "usage": ",antinuke vanity on [--punishment]"
-  },
-  {
-    "name": "antinuke vanity off",
-    "aliases": [],
-    "arguments": "[]",
-    "description": "Alias for an vanity off command",
-    "category": "antinuke",
-    "usage": ",antinuke vanity off []"
-  },
-  {
-    "name": "antinuke botadd on",
-    "aliases": [],
-    "arguments": "[--threshold N/--punishment]",
-    "description": "Alias for an botadd on command",
-    "category": "antinuke",
-    "usage": ",antinuke botadd on [--threshold N/--punishment]"
-  },
-  {
-    "name": "antinuke botadd off",
-    "aliases": [],
-    "arguments": "[]",
-    "description": "Alias for an botadd off command",
-    "category": "antinuke",
-    "usage": ",antinuke botadd off []"
-  },
-  {
-    "name": "antinuke permission on",
-    "aliases": [],
-    "arguments": "[--threshold N/--punishment]",
-    "description": "Alias for an permission on command",
-    "category": "antinuke",
-    "usage": ",antinuke permission on [--threshold N/--punishment]"
-  },
-  {
-    "name": "antinuke permission off",
-    "aliases": [],
-    "arguments": "[]",
-    "description": "Alias for an permission off command",
-    "category": "antinuke",
-    "usage": ",antinuke permission off []"
-  },
-  {
-    "name": "antinuke admin",
-    "aliases": [],
-    "arguments": "[@user]",
-    "description": "Alias for an admin command",
-    "category": "antinuke",
-    "usage": ",antinuke admin [@user]"
-  },
-  {
-    "name": "antinuke unadmin",
-    "aliases": [],
-    "arguments": "[@user]",
-    "description": "Alias for an unadmin command",
-    "category": "antinuke",
-    "usage": ",antinuke unadmin [@user]"
-  },
-  {
-    "name": "antinuke whitelist",
-    "aliases": [],
-    "arguments": "[@user/@role]",
-    "description": "Alias for an whitelist command",
-    "category": "antinuke",
-    "usage": ",antinuke whitelist [@user/@role]"
-  },
-  {
-    "name": "antinuke unwhitelist",
-    "aliases": [],
-    "arguments": "[@user/@role]",
-    "description": "Alias for an unwhitelist command",
-    "category": "antinuke",
-    "usage": ",antinuke unwhitelist [@user/@role]"
-  },
-  {
-    "name": "antinuke config",
-    "aliases": [],
-    "arguments": "[]",
-    "description": "Alias for an config command",
-    "category": "antinuke",
-    "usage": ",antinuke config []"
-  },
-  {
-    "name": "antinuke list",
-    "aliases": [],
-    "arguments": "[]",
-    "description": "Alias for an list command",
-    "category": "antinuke",
-    "usage": ",antinuke list []"
-  },
-  {
     "name": "backup create",
     "aliases": [],
     "arguments": "[]",
@@ -3746,116 +2539,12 @@ const allCommands = [
     "usage": ",birthday role reset []"
   },
   {
-    "name": "birthday role remove",
-    "aliases": [],
-    "arguments": "[]",
-    "description": "Alias for birthday role reset command",
-    "category": "birthday",
-    "usage": ",birthday role remove []"
-  },
-  {
     "name": "birthday role view",
     "aliases": [],
     "arguments": "[]",
     "description": "View currently configured birthday role",
     "category": "birthday",
     "usage": ",birthday role view []"
-  },
-  {
-    "name": "bday set",
-    "aliases": [],
-    "arguments": "[date]",
-    "description": "Alias for birthday set command",
-    "category": "birthday",
-    "usage": ",bday set [date]"
-  },
-  {
-    "name": "bday view",
-    "aliases": [],
-    "arguments": "[@user]",
-    "description": "Alias for birthday view command",
-    "category": "birthday",
-    "usage": ",bday view [@user]"
-  },
-  {
-    "name": "bday role set",
-    "aliases": [],
-    "arguments": "[@role]",
-    "description": "Alias for birthday role set command",
-    "category": "birthday",
-    "usage": ",bday role set [@role]"
-  },
-  {
-    "name": "bday role reset",
-    "aliases": [],
-    "arguments": "[]",
-    "description": "Alias for birthday role reset command",
-    "category": "birthday",
-    "usage": ",bday role reset []"
-  },
-  {
-    "name": "bday role remove",
-    "aliases": [],
-    "arguments": "[]",
-    "description": "Alias for birthday role remove command",
-    "category": "birthday",
-    "usage": ",bday role remove []"
-  },
-  {
-    "name": "bday role view",
-    "aliases": [],
-    "arguments": "[]",
-    "description": "Alias for birthday role view command",
-    "category": "birthday",
-    "usage": ",bday role view []"
-  },
-  {
-    "name": "bd set",
-    "aliases": [],
-    "arguments": "[date]",
-    "description": "Alias for birthday set command",
-    "category": "birthday",
-    "usage": ",bd set [date]"
-  },
-  {
-    "name": "bd view",
-    "aliases": [],
-    "arguments": "[@user]",
-    "description": "Alias for birthday view command",
-    "category": "birthday",
-    "usage": ",bd view [@user]"
-  },
-  {
-    "name": "bd role set",
-    "aliases": [],
-    "arguments": "[@role]",
-    "description": "Alias for birthday role set command",
-    "category": "birthday",
-    "usage": ",bd role set [@role]"
-  },
-  {
-    "name": "bd role reset",
-    "aliases": [],
-    "arguments": "[]",
-    "description": "Alias for birthday role reset command",
-    "category": "birthday",
-    "usage": ",bd role reset []"
-  },
-  {
-    "name": "bd role remove",
-    "aliases": [],
-    "arguments": "[]",
-    "description": "Alias for birthday role remove command",
-    "category": "birthday",
-    "usage": ",bd role remove []"
-  },
-  {
-    "name": "bd role view",
-    "aliases": [],
-    "arguments": "[]",
-    "description": "Alias for birthday role view command",
-    "category": "birthday",
-    "usage": ",bd role view []"
   },
   {
     "name": "filter invites on",
@@ -3904,54 +2593,6 @@ const allCommands = [
     "description": "Remove user or role from filter exemptions",
     "category": "filters",
     "usage": ",filter exempt remove [@user/@role]"
-  },
-  {
-    "name": "f invites on",
-    "aliases": [],
-    "arguments": "[]",
-    "description": "Alias for filter invites on command",
-    "category": "filters",
-    "usage": ",f invites on []"
-  },
-  {
-    "name": "f invites off",
-    "aliases": [],
-    "arguments": "[]",
-    "description": "Alias for filter invites off command",
-    "category": "filters",
-    "usage": ",f invites off []"
-  },
-  {
-    "name": "f spam on",
-    "aliases": [],
-    "arguments": "[]",
-    "description": "Alias for filter spam on command",
-    "category": "filters",
-    "usage": ",f spam on []"
-  },
-  {
-    "name": "f spam off",
-    "aliases": [],
-    "arguments": "[]",
-    "description": "Alias for filter spam off command",
-    "category": "filters",
-    "usage": ",f spam off []"
-  },
-  {
-    "name": "f exempt add",
-    "aliases": [],
-    "arguments": "[@user/@role]",
-    "description": "Alias for filter exempt add command",
-    "category": "filters",
-    "usage": ",f exempt add [@user/@role]"
-  },
-  {
-    "name": "f exempt remove",
-    "aliases": [],
-    "arguments": "[@user/@role]",
-    "description": "Alias for filter exempt remove command",
-    "category": "filters",
-    "usage": ",f exempt remove [@user/@role]"
   },
   {
     "name": "log add",
@@ -4016,14 +2657,6 @@ const allCommands = [
     "description": "Change your booster role color using hex or name",
     "category": "birthday",
     "usage": ",boosterrole color [color]"
-  },
-  {
-    "name": "boosterrole colour",
-    "aliases": [],
-    "arguments": "[color]",
-    "description": "Alias for boosterrole color command",
-    "category": "birthday",
-    "usage": ",boosterrole colour [color]"
   },
   {
     "name": "boosterrole icon",
@@ -4098,118 +2731,6 @@ const allCommands = [
     "usage": ",boosterrole award remove []"
   },
   {
-    "name": "br base",
-    "aliases": [],
-    "arguments": "[@role]",
-    "description": "Alias for boosterrole base command",
-    "category": "birthday",
-    "usage": ",br base [@role]"
-  },
-  {
-    "name": "br",
-    "aliases": [],
-    "arguments": "[color] [name]",
-    "description": "Alias for boosterrole command",
-    "category": "birthday",
-    "usage": ",br [color] [name]"
-  },
-  {
-    "name": "br rename",
-    "aliases": [],
-    "arguments": "[name]",
-    "description": "Alias for boosterrole rename command",
-    "category": "birthday",
-    "usage": ",br rename [name]"
-  },
-  {
-    "name": "br color",
-    "aliases": [],
-    "arguments": "[color]",
-    "description": "Alias for boosterrole color command",
-    "category": "birthday",
-    "usage": ",br color [color]"
-  },
-  {
-    "name": "br colour",
-    "aliases": [],
-    "arguments": "[color]",
-    "description": "Alias for boosterrole colour command",
-    "category": "birthday",
-    "usage": ",br colour [color]"
-  },
-  {
-    "name": "br icon",
-    "aliases": [],
-    "arguments": "[emoji/url]",
-    "description": "Alias for boosterrole icon command",
-    "category": "birthday",
-    "usage": ",br icon [emoji/url]"
-  },
-  {
-    "name": "br remove",
-    "aliases": [],
-    "arguments": "[]",
-    "description": "Alias for boosterrole remove command",
-    "category": "birthday",
-    "usage": ",br remove []"
-  },
-  {
-    "name": "br share",
-    "aliases": [],
-    "arguments": "[@user]",
-    "description": "Alias for boosterrole share command",
-    "category": "birthday",
-    "usage": ",br share [@user]"
-  },
-  {
-    "name": "br unshare",
-    "aliases": [],
-    "arguments": "[@user]",
-    "description": "Alias for boosterrole unshare command",
-    "category": "birthday",
-    "usage": ",br unshare [@user]"
-  },
-  {
-    "name": "br list",
-    "aliases": [],
-    "arguments": "[]",
-    "description": "Alias for boosterrole list command",
-    "category": "birthday",
-    "usage": ",br list []"
-  },
-  {
-    "name": "br cleanup",
-    "aliases": [],
-    "arguments": "[]",
-    "description": "Alias for boosterrole cleanup command",
-    "category": "birthday",
-    "usage": ",br cleanup []"
-  },
-  {
-    "name": "br award",
-    "aliases": [],
-    "arguments": "[@role]",
-    "description": "Alias for boosterrole award command",
-    "category": "birthday",
-    "usage": ",br award [@role]"
-  },
-  {
-    "name": "br award view",
-    "aliases": [],
-    "arguments": "[]",
-    "description": "Alias for boosterrole award view command",
-    "category": "birthday",
-    "usage": ",br award view []"
-  },
-  {
-    "name": "br award remove",
-    "aliases": [],
-    "arguments": "[]",
-    "description": "Alias for boosterrole award remove command",
-    "category": "birthday",
-    "usage": ",br award remove []"
-  },
-  {
     "name": "timer add",
     "aliases": [],
     "arguments": "[#channel] [interval] [message]",
@@ -4242,13 +2763,198 @@ const allCommands = [
     "usage": ",timer view [#channel]"
   },
   {
-    "name": "timer preview",
+    "name": "autoresponder",
     "aliases": [],
-    "arguments": "[#channel]",
-    "description": "Alias for timer view command",
-    "category": "timers",
-    "usage": ",timer preview [#channel]"
+    "arguments": "[]",
+    "description": "Manage autoresponder triggers that send custom messages",
+    "category": "automation",
+    "usage": ",autoresponder []"
+  },
+  {
+    "name": "autorole",
+    "aliases": [],
+    "arguments": "[<add|remove> <role>]",
+    "description": "Auto-assign roles to new members",
+    "category": "roles",
+    "usage": ",autorole [<add|remove> <role>]"
+  },
+  {
+    "name": "backup",
+    "aliases": [],
+    "arguments": "[create | load]",
+    "description": "Advanced server backup and restoration system - only server owner/bot owner",
+    "category": "admin",
+    "usage": ",backup [create | load]"
+  },
+  {
+    "name": "doj",
+    "aliases": [],
+    "arguments": "[<preview/set/on/off>]",
+    "description": "DM On Join system - Send DMs to new members",
+    "category": "config",
+    "usage": ",doj [<preview/set/on/off>]"
+  },
+  {
+    "name": "ec",
+    "aliases": [],
+    "arguments": "[<feature> <on/off>]",
+    "description": "Event Control - manage server events and restrictions",
+    "category": "config",
+    "usage": ",ec [<feature> <on/off>]"
+  },
+  {
+    "name": "family",
+    "aliases": [],
+    "arguments": "[<subcommand>]",
+    "description": "Family tree management system",
+    "category": "family",
+    "usage": ",family [<subcommand>]"
+  },
+  {
+    "name": "family admin",
+    "aliases": [],
+    "arguments": "[family admin <wipe|reset>]",
+    "description": "[ADMIN] Family admin commands",
+    "category": "family",
+    "usage": ",family admin [family admin <wipe|reset>]"
+  },
+  {
+    "name": "family game",
+    "aliases": [],
+    "arguments": "[<game>]",
+    "description": "Play family games with your partner",
+    "category": "family",
+    "usage": ",family game [<game>]"
+  },
+  {
+    "name": "family test",
+    "aliases": [],
+    "arguments": "[family test <married|full>]",
+    "description": "Generate sample family trees for testing",
+    "category": "family",
+    "usage": ",family test [family test <married|full>]"
+  },
+  {
+    "name": "filter",
+    "aliases": [],
+    "arguments": "[<invites|spam> <on|off>]",
+    "description": "Configure message filters for invite links and spam detection",
+    "category": "security",
+    "usage": ",filter [<invites|spam> <on|off>]"
+  },
+  {
+    "name": "filter exempt",
+    "aliases": [],
+    "arguments": "[<add|remove> <@user|@role>]",
+    "description": "Manage filter exemptions for users and roles",
+    "category": "security",
+    "usage": ",filter exempt [<add|remove> <@user|@role>]"
+  },
+  {
+    "name": "filter invites",
+    "aliases": [],
+    "arguments": "[<on|off>]",
+    "description": "Enable or disable invite link filter. Deletes messages with Discord invites and times out offenders for 1 minute",
+    "category": "security",
+    "usage": ",filter invites [<on|off>]"
+  },
+  {
+    "name": "filter spam",
+    "aliases": [],
+    "arguments": "[<on|off>]",
+    "description": "Enable or disable spam filter. Detects spam using frequency (5+ msgs in 10s) and similarity (0.8+ match). Times out offenders for 1 minute and purges their last 50 messages",
+    "category": "security",
+    "usage": ",filter spam [<on|off>]"
+  },
+  {
+    "name": "log",
+    "aliases": [],
+    "arguments": "[<add/remove/ignore>]",
+    "description": "Manage server logging system",
+    "category": "utility",
+    "usage": ",log [<add/remove/ignore>]"
+  },
+  {
+    "name": "log ignore",
+    "aliases": [],
+    "arguments": "[<add/remove> <target>]",
+    "description": "Manage logging ignore list",
+    "category": "utility",
+    "usage": ",log ignore [<add/remove> <target>]"
+  },
+  {
+    "name": "quote",
+    "aliases": [],
+    "arguments": "[]",
+    "description": "Create a high-quality quote card from a replied message",
+    "category": "utility",
+    "usage": ",quote []"
+  },
+  {
+    "name": "reaction",
+    "aliases": [],
+    "arguments": "[]",
+    "description": "Manage auto-reaction triggers for messages",
+    "category": "automation",
+    "usage": ",reaction []"
+  },
+  {
+    "name": "reaction owner",
+    "aliases": [],
+    "arguments": "[<trigger>]",
+    "description": "View who added a reaction trigger",
+    "category": "automation",
+    "usage": ",reaction owner [<trigger>]"
+  },
+  {
+    "name": "reaction reset",
+    "aliases": [],
+    "arguments": "[]",
+    "description": "Remove all reaction triggers",
+    "category": "automation",
+    "usage": ",reaction reset []"
+  },
+  {
+    "name": "ticket",
+    "aliases": [],
+    "arguments": "[]",
+    "description": "Ticket system management",
+    "category": "tickets",
+    "usage": ",ticket []"
+  },
+  {
+    "name": "ticket support",
+    "aliases": [],
+    "arguments": "[]",
+    "description": "Manage support roles for ticket system",
+    "category": "tickets",
+    "usage": ",ticket support []"
+  },
+  {
+    "name": "timer",
+    "aliases": [],
+    "arguments": "[<add/remove/list/view>]",
+    "description": "Manage automated message timers",
+    "category": "automation",
+    "usage": ",timer [<add/remove/list/view>]"
+  },
+  {
+    "name": "vc bypass",
+    "aliases": [],
+    "arguments": "[]",
+    "description": "Manage roles that can bypass channel locks",
+    "category": "voice",
+    "usage": ",vc bypass []"
+  },
+  {
+    "name": "welc",
+    "aliases": [],
+    "arguments": "[<channel/edit/preview>]",
+    "description": "Welcoming system management",
+    "category": "config",
+    "usage": ",welc [<channel/edit/preview>]"
   }
+
 ];
 
 export async function seedDatabase() {
