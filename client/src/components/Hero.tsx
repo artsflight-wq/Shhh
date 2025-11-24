@@ -58,7 +58,7 @@ export function Hero() {
           </div>
           
           <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed animate-in fade-in slide-in-from-bottom-8 duration-700 delay-200">
-            The premier Discord utility. <span className="text-white font-medium">Advanced. Powerful. Private.</span>
+            The premier Discord utility. <span className="glass-text font-semibold" data-text="Advanced. Powerful. Private.">Advanced. Powerful. Private.</span>
             <br />
             Streamline server management with advanced automation.
           </p>
