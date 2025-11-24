@@ -2343,7 +2343,7 @@ const allCommands = [
   }
 ];
 
-export async function seed() {
+export async function seedDatabase() {
   try {
     const existingCategories = new Set();
     
