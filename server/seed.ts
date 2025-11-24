@@ -284,7 +284,7 @@ const allCommands = [
     "category": "info",
     "usage": ",perms [[@user]]"
   },
-  // ========== MODERATION (35 commands) ==========
+  // ========== MODERATION (45 commands) ==========
   {
     "name": "kick",
     "aliases": [],
@@ -376,10 +376,90 @@ const allCommands = [
   {
     "name": "r",
     "aliases": [],
-    "arguments": "[<subcommand> [args] (see ,r for full usage)]",
-    "description": "Role management (toggle/restore/rename/delete/create/dump/etc)",
+    "arguments": "[<subcommand> [args]]",
+    "description": "Role management - see subcommands below",
     "category": "moderation",
-    "usage": ",r [<subcommand> [args] (see ,r for full usage)]"
+    "usage": ",r [<subcommand> [args]]"
+  },
+  {
+    "name": "r toggle",
+    "aliases": [],
+    "arguments": "[@user <role>]",
+    "description": "Toggle a role on/off for a user",
+    "category": "moderation",
+    "usage": ",r toggle [@user <role>]"
+  },
+  {
+    "name": "r restore",
+    "aliases": [],
+    "arguments": "[@user]",
+    "description": "Restore a user's roles after being stripped",
+    "category": "moderation",
+    "usage": ",r restore [@user]"
+  },
+  {
+    "name": "r rename",
+    "aliases": [],
+    "arguments": "[<role> <new name>]",
+    "description": "Rename a role",
+    "category": "moderation",
+    "usage": ",r rename [<role> <new name>]"
+  },
+  {
+    "name": "r delete",
+    "aliases": [],
+    "arguments": "[<role>]",
+    "description": "Delete a role",
+    "category": "moderation",
+    "usage": ",r delete [<role>]"
+  },
+  {
+    "name": "r create",
+    "aliases": [],
+    "arguments": "[<name>]",
+    "description": "Create a new role",
+    "category": "moderation",
+    "usage": ",r create [<name>]"
+  },
+  {
+    "name": "r dump",
+    "aliases": [],
+    "arguments": "[@user]",
+    "description": "Show all roles for a user",
+    "category": "moderation",
+    "usage": ",r dump [@user]"
+  },
+  {
+    "name": "r humans",
+    "aliases": [],
+    "arguments": "[<role>]",
+    "description": "Add role to all humans in server",
+    "category": "moderation",
+    "usage": ",r humans [<role>]"
+  },
+  {
+    "name": "r has",
+    "aliases": [],
+    "arguments": "[<role>]",
+    "description": "List all users with a specific role",
+    "category": "moderation",
+    "usage": ",r has [<role>]"
+  },
+  {
+    "name": "r color",
+    "aliases": [],
+    "arguments": "[<role> <color>]",
+    "description": "Change role color",
+    "category": "moderation",
+    "usage": ",r color [<role> <color>]"
+  },
+  {
+    "name": "r icon",
+    "aliases": [],
+    "arguments": "[<role> <emoji>]",
+    "description": "Set role icon",
+    "category": "moderation",
+    "usage": ",r icon [<role> <emoji>]"
   },
   {
     "name": "ir",
@@ -856,13 +936,12 @@ const allCommands = [
     "usage": ",lb [<global/fg> [#channel]]"
   },
 
-  // ========== GIVEAWAY (6 commands) ==========
   {
     "name": "gw",
     "aliases": [],
     "arguments": "[<start/end/edit/reroll> [args]]",
     "description": "Giveaway system - create and manage giveaways",
-    "category": "giveaway",
+    "category": "utility",
     "usage": ",gw [<start/end/edit/reroll> [args]]"
   },
   {
@@ -870,7 +949,7 @@ const allCommands = [
     "aliases": [],
     "arguments": "[{message_link} <host/duration/prize> {value}]",
     "description": "Edit giveaway host, duration, or prize",
-    "category": "giveaway",
+    "category": "utility",
     "usage": ",gw edit [{message_link} <host/duration/prize> {value}]"
   },
   {
@@ -878,7 +957,7 @@ const allCommands = [
     "aliases": [],
     "arguments": "[{message_link}]",
     "description": "Manually end an active giveaway",
-    "category": "giveaway",
+    "category": "utility",
     "usage": ",gw end [{message_link}]"
   },
   {
@@ -886,7 +965,7 @@ const allCommands = [
     "aliases": [],
     "arguments": "[]",
     "description": "Show giveaway history from the last 6 hours",
-    "category": "giveaway",
+    "category": "utility",
     "usage": ",gw history []"
   },
   {
@@ -894,7 +973,7 @@ const allCommands = [
     "aliases": [],
     "arguments": "[[message_link]]",
     "description": "Reroll winners for an ended giveaway",
-    "category": "giveaway",
+    "category": "utility",
     "usage": ",gw reroll [[message_link]]"
   },
   {
@@ -902,17 +981,16 @@ const allCommands = [
     "aliases": [],
     "arguments": "[{duration} [#channel] {winners} {prize} [--requirements]]",
     "description": "Start a new giveaway with optional requirements",
-    "category": "giveaway",
+    "category": "utility",
     "usage": ",gw start [{duration} [#channel] {winners} {prize} [--requirements]]"
   },
 
-  // ========== WELCOMING (10 commands) ==========
   {
     "name": "welc",
     "aliases": [],
     "arguments": "[<channel/edit/preview>]",
     "description": "Welcoming system management",
-    "category": "welcoming",
+    "category": "utility",
     "usage": ",welc [<channel/edit/preview>]"
   },
   {
@@ -920,7 +998,7 @@ const allCommands = [
     "aliases": [],
     "arguments": "[#channel]",
     "description": "Set the welcome channel for new member messages",
-    "category": "welcoming",
+    "category": "utility",
     "usage": ",welc channel [#channel]"
   },
   {
@@ -928,7 +1006,7 @@ const allCommands = [
     "aliases": [],
     "arguments": "[<message>]",
     "description": "Edit the welcome message template",
-    "category": "welcoming",
+    "category": "utility",
     "usage": ",welc edit [<message>]"
   },
   {
@@ -936,7 +1014,7 @@ const allCommands = [
     "aliases": [],
     "arguments": "[]",
     "description": "Send a preview welcome message to the welcome channel",
-    "category": "welcoming",
+    "category": "utility",
     "usage": ",welc preview []"
   },
   {
@@ -944,7 +1022,7 @@ const allCommands = [
     "aliases": [],
     "arguments": "[<preview/set/on/off>]",
     "description": "DM On Join system - Send DMs to new members",
-    "category": "welcoming",
+    "category": "utility",
     "usage": ",doj [<preview/set/on/off>]"
   },
   {
@@ -952,7 +1030,7 @@ const allCommands = [
     "aliases": [],
     "arguments": "[]",
     "description": "Disable the DOJ system",
-    "category": "welcoming",
+    "category": "utility",
     "usage": ",doj off []"
   },
   {
@@ -960,7 +1038,7 @@ const allCommands = [
     "aliases": [],
     "arguments": "[]",
     "description": "Enable the DOJ system",
-    "category": "welcoming",
+    "category": "utility",
     "usage": ",doj on []"
   },
   {
@@ -968,7 +1046,7 @@ const allCommands = [
     "aliases": [],
     "arguments": "[]",
     "description": "Send a test DM with the DOJ message",
-    "category": "welcoming",
+    "category": "utility",
     "usage": ",doj preview []"
   },
   {
@@ -976,7 +1054,7 @@ const allCommands = [
     "aliases": [],
     "arguments": "[]",
     "description": "Set the DOJ message interactively",
-    "category": "welcoming",
+    "category": "utility",
     "usage": ",doj set []"
   },
   {
@@ -984,11 +1062,11 @@ const allCommands = [
     "aliases": [],
     "arguments": "[]",
     "description": "Ping On Join admin panel for ghost pinging new members",
-    "category": "welcoming",
+    "category": "utility",
     "usage": ",poj []"
   },
 
-  // ========== UTILITY (38 commands) ==========
+  // ========== UTILITY (58 commands) ==========
   {
     "name": "afk",
     "aliases": [],
@@ -1644,7 +1722,7 @@ const allCommands = [
     "usage": ",ticket support remove [<role_id>]"
   },
 
-  // ========== FUN (20 commands) ==========
+  // ========== FUN (22 commands) ==========
   {
     "name": "blacktea",
     "aliases": [],
@@ -1804,6 +1882,22 @@ const allCommands = [
     "description": "Display family tree image",
     "category": "fun",
     "usage": ",family tree [[user]]"
+  },
+  {
+    "name": "ttt",
+    "aliases": [],
+    "arguments": "[@user]",
+    "description": "Play tic tac toe with someone",
+    "category": "fun",
+    "usage": ",ttt [@user]"
+  },
+  {
+    "name": "ttt stats",
+    "aliases": [],
+    "arguments": "[]",
+    "description": "Check all time tic tac toe stats",
+    "category": "fun",
+    "usage": ",ttt stats []"
   },
 
   // ========== VOICE (21 commands) ==========
@@ -2010,13 +2104,12 @@ const allCommands = [
     "usage": ",cs [[channel|server]]"
   },
 
-  // ========== BIRTHDAY (4 commands) ==========
   {
     "name": "birthday set",
     "aliases": [],
     "arguments": "[<date>]",
     "description": "Set your birthday. Accepts formats like: 25 Dec, Dec 25, 25/12, 12/25, December 25",
-    "category": "birthday",
+    "category": "utility",
     "usage": ",birthday set [<date>]"
   },
   {
@@ -2024,7 +2117,7 @@ const allCommands = [
     "aliases": [],
     "arguments": "[@role]",
     "description": "Admins can set a role to auto-assign on birthdays. Requires 'Manage Server' permission",
-    "category": "birthday",
+    "category": "utility",
     "usage": ",birthday role set [@role]"
   },
   {
@@ -2032,7 +2125,7 @@ const allCommands = [
     "aliases": [],
     "arguments": "[]",
     "description": "Admins can remove the birthday role setting",
-    "category": "birthday",
+    "category": "utility",
     "usage": ",birthday role reset []"
   },
   {
@@ -2040,7 +2133,7 @@ const allCommands = [
     "aliases": [],
     "arguments": "[]",
     "description": "View the currently configured birthday role",
-    "category": "birthday",
+    "category": "utility",
     "usage": ",birthday role view []"
   }
 ];

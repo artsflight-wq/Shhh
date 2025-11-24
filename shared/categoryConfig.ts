@@ -40,7 +40,7 @@ export const CATEGORIES: CategoryMetadata[] = [
     name: "utility",
     displayName: "Utility",
     icon: "Wrench",
-    description: "AFK, logging, backups, timers, and server customization"
+    description: "Server utilities including welcoming, giveaways, birthdays, AFK, logging, backups, and customization"
   },
   {
     id: "ticket",
@@ -48,13 +48,6 @@ export const CATEGORIES: CategoryMetadata[] = [
     displayName: "Ticket",
     icon: "Ticket",
     description: "Support ticket system"
-  },
-  {
-    id: "welcoming",
-    name: "welcoming",
-    displayName: "Welcoming",
-    icon: "HandMetal",
-    description: "Welcome messages and DM on join"
   },
   {
     id: "autoresponder",
@@ -78,13 +71,6 @@ export const CATEGORIES: CategoryMetadata[] = [
     description: "Levels, streaks, pledges, and friend groups"
   },
   {
-    id: "giveaway",
-    name: "giveaway",
-    displayName: "Giveaway",
-    icon: "Gift",
-    description: "Create and manage giveaways"
-  },
-  {
     id: "voice",
     name: "voice",
     displayName: "Voice",
@@ -104,13 +90,6 @@ export const CATEGORIES: CategoryMetadata[] = [
     displayName: "Snipe",
     icon: "Crosshair",
     description: "View deleted and edited messages"
-  },
-  {
-    id: "birthday",
-    name: "birthday",
-    displayName: "Birthday",
-    icon: "Cake",
-    description: "Birthday tracking and celebrations"
   }
 ];
 
