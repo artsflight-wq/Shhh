@@ -195,7 +195,7 @@ const allCommands = [
     "usage": ",fp reset []"
   },
 
-  // ========== INFO (12 commands) ==========
+  // ========== INFO (11 commands) ==========
   {
     "name": "ui",
     "aliases": [],
@@ -284,16 +284,7 @@ const allCommands = [
     "category": "info",
     "usage": ",perms [[@user]]"
   },
-  {
-    "name": "mh",
-    "aliases": [],
-    "arguments": "[[@user]]",
-    "description": "View moderation history for a user",
-    "category": "info",
-    "usage": ",mh [[@user]]"
-  },
-
-  // ========== MODERATION (34 commands) ==========
+  // ========== MODERATION (35 commands) ==========
   {
     "name": "kick",
     "aliases": [],
@@ -565,6 +556,14 @@ const allCommands = [
     "description": "Force a user's nickname (prevents changes)",
     "category": "moderation",
     "usage": ",fn [@user <nickname>]"
+  },
+  {
+    "name": "mh",
+    "aliases": [],
+    "arguments": "[[@user]]",
+    "description": "View moderation history for a user",
+    "category": "moderation",
+    "usage": ",mh [[@user]]"
   },
 
   // ========== ENGAGEMENT (36 commands) ==========

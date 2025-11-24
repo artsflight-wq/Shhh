@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Search, ChevronRight, Command as CommandIcon, AlertCircle } from "lucide-react";
+import { Search, ChevronRight, Command as CommandIcon, AlertCircle, LayoutGrid, Shield, Info, Gavel, TrendingUp, Gift, HandMetal, Wrench, MessageSquare, Rocket, Ticket, Gamepad2, Mic, Crosshair, Cake } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { useQuery } from "@tanstack/react-query";
@@ -14,13 +14,40 @@ interface Command {
   aliases: string[];
 }
 
+interface Category {
+  id: string;
+  name: string;
+  displayName: string;
+  icon: string;
+  description: string;
+  commandCount: number;
+}
+
+const iconMap: Record<string, any> = {
+  LayoutGrid,
+  Shield,
+  Info,
+  Gavel,
+  TrendingUp,
+  Gift,
+  HandMetal,
+  Wrench,
+  MessageSquare,
+  Rocket,
+  Ticket,
+  Gamepad2,
+  Mic,
+  Crosshair,
+  Cake
+};
+
 async function fetchCommands(): Promise<Command[]> {
   const response = await fetch("/api/commands");
   if (!response.ok) throw new Error("Failed to fetch commands");
   return response.json();
 }
 
-async function fetchCategories(): Promise<string[]> {
+async function fetchCategories(): Promise<Category[]> {
   const response = await fetch("/api/categories");
   if (!response.ok) throw new Error("Failed to fetch categories");
   return response.json();
@@ -40,17 +67,18 @@ export function CommandList() {
     queryFn: fetchCategories,
   });
 
-  // Set first category as default once loaded
+  // Set first category ("all") as default once loaded
   useEffect(() => {
     if (categories.length > 0 && activeCategory === null) {
-      setActiveCategory(categories[0]);
+      setActiveCategory(categories[0].id);
     }
   }, [categories, activeCategory]);
 
   const filteredCommands = commands.filter((cmd: Command) => {
     const matchesSearch = cmd.name.toLowerCase().includes(search.toLowerCase()) || 
                           cmd.description.toLowerCase().includes(search.toLowerCase());
-    const matchesCategory = activeCategory === null || cmd.category === activeCategory;
+    // "all" category shows all commands, otherwise filter by category name
+    const matchesCategory = activeCategory === null || activeCategory === "all" || cmd.category === activeCategory;
     return matchesSearch && matchesCategory;
   });
 
@@ -88,21 +116,28 @@ export function CommandList() {
             />
           </div>
 
-          <div className="flex flex-wrap justify-center gap-2">
-            {categories.map((cat) => (
-              <button
-                key={cat}
-                onClick={() => setActiveCategory(cat)}
-                className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
-                  activeCategory === cat 
-                    ? "bg-primary text-white shadow-lg shadow-primary/25" 
-                    : "bg-secondary/30 text-muted-foreground hover:bg-secondary/60 hover:text-white"
-                }`}
-                data-testid={`button-category-${cat}`}
-              >
-                {cat}
-              </button>
-            ))}
+          <div className="flex flex-wrap justify-center gap-3">
+            {categories.map((cat) => {
+              const Icon = iconMap[cat.icon];
+              return (
+                <button
+                  key={cat.id}
+                  onClick={() => setActiveCategory(cat.id)}
+                  className={`group flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-medium transition-all duration-300 ${
+                    activeCategory === cat.id 
+                      ? "bg-primary text-white shadow-lg shadow-primary/25 scale-105" 
+                      : "bg-secondary/30 text-muted-foreground hover:bg-secondary/60 hover:text-white hover:scale-105 hover:shadow-lg hover:shadow-primary/10"
+                  }`}
+                  data-testid={`button-category-${cat.id}`}
+                >
+                  {Icon && <Icon className="w-4 h-4" />}
+                  <span>{cat.displayName}</span>
+                  <Badge variant="secondary" className={`ml-1 text-xs ${activeCategory === cat.id ? "bg-white/20" : "bg-white/10"}`}>
+                    {cat.commandCount}
+                  </Badge>
+                </button>
+              );
+            })}
           </div>
         </div>
 

@@ -3,6 +3,7 @@ import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { seedDatabase } from "./seed";
 import { z } from "zod";
+import { CATEGORIES } from "@shared/categoryConfig";
 
 let seedInitialized = false;
 
@@ -51,12 +52,31 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  // Get command categories
+  // Get command categories with metadata
   app.get("/api/categories", async (req, res) => {
     try {
       const commands = await storage.getAllCommands();
-      const categories = Array.from(new Set(commands.map((cmd) => cmd.category))).sort();
-      res.json(categories);
+      
+      // Calculate command counts per category
+      const categoryCounts = commands.reduce((acc, cmd) => {
+        acc[cmd.category] = (acc[cmd.category] || 0) + 1;
+        return acc;
+      }, {} as Record<string, number>);
+      
+      // Add "all" category with total count
+      const totalCount = commands.length;
+      
+      // Map categories to include metadata and counts
+      const categoriesWithMetadata = CATEGORIES.map(cat => ({
+        id: cat.id,
+        name: cat.name,
+        displayName: cat.displayName,
+        icon: cat.icon,
+        description: cat.description,
+        commandCount: cat.id === "all" ? totalCount : (categoryCounts[cat.name] || 0)
+      }));
+      
+      res.json(categoriesWithMetadata);
     } catch (error) {
       console.error("Error fetching categories:", error);
       res.status(500).json({ error: "Failed to fetch categories" });
