@@ -124,7 +124,7 @@ export function CommandList() {
       <div className="container mx-auto px-6 relative z-10">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4">System Commands</h2>
-          <p className="text-muted-foreground">Explore the full capabilities of YELL. ({commands.length} commands available)</p>
+          <p className="text-muted-foreground">Explore the full capabilities of Yell.</p>
         </div>
 
         {/* Glass Divider */}
