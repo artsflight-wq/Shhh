@@ -124,7 +124,7 @@ export function CommandList() {
         </div>
 
         {/* Search and Filter */}
-        <div className="max-w-4xl mx-auto mb-12 space-y-6">
+        <div className="max-w-4xl mx-auto mb-6 space-y-6">
           <div className="relative">
             <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
             <Input 
@@ -136,33 +136,28 @@ export function CommandList() {
             />
           </div>
 
-          <div className="relative -mx-6 md:mx-0">
-            <div className="flex md:flex-wrap md:justify-center gap-3 overflow-x-auto pb-3 md:pb-0 px-6 md:px-0 scrollbar-hide scroll-smooth snap-x snap-mandatory">
-              {categories.map((cat) => {
-                const Icon = iconMap[cat.icon];
-                return (
-                  <button
-                    key={cat.id}
-                    onClick={() => setActiveCategory(cat.id)}
-                    className={`group flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-medium transition-all duration-300 whitespace-nowrap flex-shrink-0 snap-start ${
-                      activeCategory === cat.id 
-                        ? "bg-primary text-white shadow-lg shadow-primary/25 md:scale-105" 
-                        : "bg-secondary/30 text-muted-foreground hover:bg-secondary/60 hover:text-white md:hover:scale-105 hover:shadow-lg hover:shadow-primary/10"
-                    }`}
-                    data-testid={`button-category-${cat.id}`}
-                  >
-                    {Icon && <Icon className="w-4 h-4 flex-shrink-0" />}
-                    <span className="leading-none">{cat.displayName}</span>
-                    <Badge variant="secondary" className={`ml-1 text-xs leading-none ${activeCategory === cat.id ? "bg-white/20" : "bg-white/10"}`}>
-                      {cat.commandCount}
-                    </Badge>
-                  </button>
-                );
-              })}
-            </div>
-            {/* Edge fade effect for mobile */}
-            <div className="absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-[hsl(222,47%,4%)] to-transparent pointer-events-none md:hidden" />
-            <div className="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-[hsl(222,47%,4%)] to-transparent pointer-events-none md:hidden" />
+          <div className="flex md:flex-wrap md:justify-center gap-3 overflow-x-auto md:overflow-visible pb-3 md:pb-0 scrollbar-hide scroll-smooth snap-x snap-mandatory md:snap-none">
+            {categories.map((cat) => {
+              const Icon = iconMap[cat.icon];
+              return (
+                <button
+                  key={cat.id}
+                  onClick={() => setActiveCategory(cat.id)}
+                  className={`group relative overflow-hidden flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-medium transition-all duration-300 whitespace-nowrap flex-shrink-0 snap-start backdrop-blur-xl border shadow-[inset_0_1px_0_0_rgba(255,255,255,0.1)] after:content-[''] after:absolute after:inset-0 after:bg-[url('/noise.svg')] after:opacity-[0.03] after:pointer-events-none ${
+                    activeCategory === cat.id 
+                      ? "bg-gradient-to-br from-primary via-primary to-primary/80 text-white border-primary/20 md:scale-105" 
+                      : "bg-gradient-to-br from-white/10 via-white/5 to-transparent text-muted-foreground border-white/10 hover:from-white/15 hover:via-white/10 hover:to-transparent hover:text-white md:hover:scale-105"
+                  }`}
+                  data-testid={`button-category-${cat.id}`}
+                >
+                  {Icon && <Icon className="w-4 h-4 flex-shrink-0 relative z-10" />}
+                  <span className="leading-none relative z-10">{cat.displayName}</span>
+                  <Badge variant="secondary" className={`ml-1 text-xs leading-none relative z-10 ${activeCategory === cat.id ? "bg-white/20" : "bg-white/10"}`}>
+                    {cat.commandCount}
+                  </Badge>
+                </button>
+              );
+            })}
           </div>
         </div>
 
