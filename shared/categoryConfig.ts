@@ -15,6 +15,13 @@ export const CATEGORIES: CategoryMetadata[] = [
     description: "All available commands"
   },
   {
+    id: "moderation",
+    name: "moderation",
+    displayName: "Moderation",
+    icon: "Gavel",
+    description: "Kick, ban, timeout, purge, and role management"
+  },
+  {
     id: "security",
     name: "security",
     displayName: "Security",
@@ -29,25 +36,18 @@ export const CATEGORIES: CategoryMetadata[] = [
     description: "User, server, channel, and role information"
   },
   {
-    id: "moderation",
-    name: "moderation",
-    displayName: "Moderation",
-    icon: "Gavel",
-    description: "Kick, ban, timeout, purge, and role management"
+    id: "utility",
+    name: "utility",
+    displayName: "Utility",
+    icon: "Wrench",
+    description: "AFK, logging, backups, timers, and server customization"
   },
   {
-    id: "engagement",
-    name: "engagement",
-    displayName: "Engagement",
-    icon: "TrendingUp",
-    description: "Levels, streaks, pledges, and friend groups"
-  },
-  {
-    id: "giveaway",
-    name: "giveaway",
-    displayName: "Giveaway",
-    icon: "Gift",
-    description: "Create and manage giveaways"
+    id: "ticket",
+    name: "ticket",
+    displayName: "Ticket",
+    icon: "Ticket",
+    description: "Support ticket system"
   },
   {
     id: "welcoming",
@@ -55,13 +55,6 @@ export const CATEGORIES: CategoryMetadata[] = [
     displayName: "Welcoming",
     icon: "HandMetal",
     description: "Welcome messages and DM on join"
-  },
-  {
-    id: "utility",
-    name: "utility",
-    displayName: "Utility",
-    icon: "Wrench",
-    description: "AFK, logging, backups, timers, and server customization"
   },
   {
     id: "autoresponder",
@@ -78,18 +71,18 @@ export const CATEGORIES: CategoryMetadata[] = [
     description: "Custom booster roles and perks"
   },
   {
-    id: "ticket",
-    name: "ticket",
-    displayName: "Ticket",
-    icon: "Ticket",
-    description: "Support ticket system"
+    id: "engagement",
+    name: "engagement",
+    displayName: "Engagement",
+    icon: "TrendingUp",
+    description: "Levels, streaks, pledges, and friend groups"
   },
   {
-    id: "fun",
-    name: "fun",
-    displayName: "Fun",
-    icon: "Gamepad2",
-    description: "Games, family system, and entertainment"
+    id: "giveaway",
+    name: "giveaway",
+    displayName: "Giveaway",
+    icon: "Gift",
+    description: "Create and manage giveaways"
   },
   {
     id: "voice",
@@ -97,6 +90,13 @@ export const CATEGORIES: CategoryMetadata[] = [
     displayName: "Voice",
     icon: "Mic",
     description: "VoiceMaster and voice channel controls"
+  },
+  {
+    id: "fun",
+    name: "fun",
+    displayName: "Fun",
+    icon: "Gamepad2",
+    description: "Games, family system, and entertainment"
   },
   {
     id: "snipe",
