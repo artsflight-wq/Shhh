@@ -27,16 +27,19 @@ export function Hero() {
 
   return (
     <section className="relative pt-20 pb-8 md:pt-32 md:pb-12 overflow-hidden">
-      {/* Enhanced Grid Accent Elements */}
+      {/* Subtle Blue Light Bursts reflecting on grid */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        {/* Radial grid highlight - top center */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px]">
-          <div className="absolute inset-0 bg-gradient-to-b from-primary/10 via-primary/5 to-transparent rounded-full blur-3xl" />
-        </div>
-        {/* Glass accent dots at grid intersections */}
-        <div className="absolute top-32 left-1/4 w-2 h-2 rounded-full bg-white/20 blur-sm" />
-        <div className="absolute top-48 right-1/3 w-2 h-2 rounded-full bg-primary/30 blur-sm animate-pulse" style={{animationDuration: '3s'}} />
-        <div className="absolute bottom-20 left-1/3 w-2 h-2 rounded-full bg-white/20 blur-sm" />
+        {/* Small light bursts at various positions - subtle and scattered */}
+        <div className="absolute top-20 left-[15%] w-32 h-32 bg-primary/15 rounded-full blur-2xl opacity-60 animate-pulse" style={{animationDuration: '4s'}} />
+        <div className="absolute top-48 right-[20%] w-24 h-24 bg-primary/12 rounded-full blur-2xl opacity-50" />
+        <div className="absolute top-32 left-[65%] w-28 h-28 bg-primary/10 rounded-full blur-2xl opacity-70 animate-pulse" style={{animationDuration: '5s'}} />
+        <div className="absolute top-64 left-[40%] w-20 h-20 bg-primary/8 rounded-full blur-xl opacity-40" />
+        
+        {/* Light reflections on grid intersections */}
+        <div className="absolute top-32 left-1/4 w-3 h-3 rounded-full bg-primary/40 blur-sm shadow-[0_0_20px_rgba(88,101,242,0.3)]" />
+        <div className="absolute top-48 right-1/3 w-3 h-3 rounded-full bg-primary/50 blur-sm animate-pulse shadow-[0_0_25px_rgba(88,101,242,0.4)]" style={{animationDuration: '3s'}} />
+        <div className="absolute top-56 left-[45%] w-2 h-2 rounded-full bg-primary/30 blur-sm shadow-[0_0_15px_rgba(88,101,242,0.2)]" />
+        <div className="absolute bottom-20 left-1/3 w-2 h-2 rounded-full bg-white/30 blur-sm shadow-[0_0_10px_rgba(255,255,255,0.2)]" />
       </div>
       
       <div className="container mx-auto px-6 relative z-10">
@@ -91,8 +94,8 @@ export function Hero() {
         </div>
       </div>
       
-      {/* Background Glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/20 rounded-full blur-[120px] -z-10 pointer-events-none opacity-50"></div>
+      {/* Subtle background ambient glow - much softer */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/8 rounded-full blur-[100px] -z-10 pointer-events-none opacity-40"></div>
     </section>
   );
 }
