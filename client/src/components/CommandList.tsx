@@ -1,24 +1,8 @@
 import { useState, useEffect } from "react";
-import { Search, ChevronRight, Command as CommandIcon, AlertCircle, Shield, Info, Gavel, TrendingUp, Gift, HandMetal, Wrench, MessageSquare, Rocket, Ticket, Gamepad2, Mic, Crosshair } from "lucide-react";
+import { Search, ChevronRight, Command as CommandIcon, AlertCircle } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { useQuery } from "@tanstack/react-query";
-
-const categoryIcons: Record<string, React.ComponentType<{className?: string}>> = {
-  security: Shield,
-  info: Info,
-  moderation: Gavel,
-  levels: TrendingUp,
-  giveaway: Gift,
-  welcoming: HandMetal,
-  utility: Wrench,
-  autoresponder: MessageSquare,
-  booster: Rocket,
-  ticket: Ticket,
-  fun: Gamepad2,
-  voice: Mic,
-  snipe: Crosshair
-};
 
 interface Command {
   id: string;
@@ -87,7 +71,7 @@ export function CommandList() {
     <section id="commands" className="py-8 bg-card/30 relative">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4 text-glow">System Commands</h2>
+          <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4">System Commands</h2>
           <p className="text-muted-foreground">Explore the full capabilities of YELL. ({commands.length} commands available)</p>
         </div>
 
@@ -105,26 +89,20 @@ export function CommandList() {
           </div>
 
           <div className="flex flex-wrap justify-center gap-2">
-            {categories.map((cat) => {
-              const Icon = categoryIcons[cat];
-              const count = commands.filter((cmd: Command) => cmd.category === cat).length;
-              return (
-                <button
-                  key={cat}
-                  onClick={() => setActiveCategory(cat)}
-                  className={`glass-reflection shimmer flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
-                    activeCategory === cat 
-                      ? "bg-primary text-white shadow-lg shadow-primary/25 light-spot" 
-                      : "bg-secondary/30 text-muted-foreground hover:bg-secondary/60 hover:text-white hover:light-spot"
-                  }`}
-                  data-testid={`button-category-${cat}`}
-                >
-                  {Icon && <Icon className="w-4 h-4" />}
-                  <span className="capitalize">{cat}</span>
-                  <Badge variant="secondary" className="text-xs px-2 py-0.5 ml-1">{count}</Badge>
-                </button>
-              );
-            })}
+            {categories.map((cat) => (
+              <button
+                key={cat}
+                onClick={() => setActiveCategory(cat)}
+                className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
+                  activeCategory === cat 
+                    ? "bg-primary text-white shadow-lg shadow-primary/25" 
+                    : "bg-secondary/30 text-muted-foreground hover:bg-secondary/60 hover:text-white"
+                }`}
+                data-testid={`button-category-${cat}`}
+              >
+                {cat}
+              </button>
+            ))}
           </div>
         </div>
 
@@ -139,29 +117,29 @@ export function CommandList() {
               {filteredCommands.map((cmd: Command) => (
                 <div 
                   key={cmd.id} 
-                  className="glass-reflection shimmer group relative overflow-hidden p-6 rounded-2xl bg-gradient-to-br from-white/10 via-white/5 to-transparent backdrop-blur-xl border border-white/10 transition-all duration-500 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.1)] hover:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.2),0_8px_32px_-8px_rgba(0,0,0,0.5)] hover:-translate-y-1 light-spot after:content-[''] after:absolute after:inset-0 after:bg-[url('/noise.svg')] after:opacity-[0.03] after:pointer-events-none after:z-10"
+                  className="group relative overflow-hidden p-6 rounded-2xl bg-gradient-to-br from-white/10 via-white/5 to-transparent backdrop-blur-xl border border-white/10 transition-all duration-500 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.1)] hover:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.2),0_8px_32px_-8px_rgba(0,0,0,0.5)] hover:-translate-y-1 after:content-[''] after:absolute after:inset-0 after:bg-[url('/noise.svg')] after:opacity-[0.03] after:pointer-events-none"
                   data-testid={`card-command-${cmd.id}`}
                 >
-                  <div className="flex items-start justify-between mb-4 relative z-20">
+                  <div className="flex items-start justify-between mb-4">
                     <div className="font-mono text-primary font-bold text-lg flex items-center gap-2">
-                      <CommandIcon className="w-4 h-4 text-primary drop-shadow-[0_0_8px_rgba(74,144,226,0.6)]" />
-                      <span data-testid={`text-command-name-${cmd.id}`} className="drop-shadow-[0_0_8px_rgba(74,144,226,0.4)]">{cmd.name}</span>
+                      <CommandIcon className="w-4 h-4 text-primary" />
+                      <span data-testid={`text-command-name-${cmd.id}`}>{cmd.name}</span>
                     </div>
-                    <Badge variant="outline" className="bg-primary/10 text-primary border-primary/20 shimmer" data-testid={`badge-category-${cmd.id}`}>
+                    <Badge variant="outline" className="bg-primary/10 text-primary border-primary/20" data-testid={`badge-category-${cmd.id}`}>
                       {cmd.category}
                     </Badge>
                   </div>
-                  <p className="text-muted-foreground text-sm mb-4 leading-relaxed relative z-20" data-testid={`text-description-${cmd.id}`}>
+                  <p className="text-muted-foreground text-sm mb-4 leading-relaxed" data-testid={`text-description-${cmd.id}`}>
                     {cmd.description}
                   </p>
-                  <div className="pt-4 border-t border-white/5 relative z-20">
+                  <div className="pt-4 border-t border-white/5">
                     <code className="text-xs font-mono text-muted-foreground/70 bg-black/20 px-2 py-1 rounded block break-words" data-testid={`code-usage-${cmd.id}`}>
                       {cmd.usage}
                     </code>
                   </div>
                   
                   {/* Hover Glow */}
-                  <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-10"></div>
+                  <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
                 </div>
               ))}
             </div>
