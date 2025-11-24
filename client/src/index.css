@@ -158,3 +158,129 @@
 * {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
+
+/* Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+/* Feature cards 3D transform */
+.feature-card {
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+.feature-card:hover {
+  transform: translateY(-8px) scale(1.05) rotateX(2deg);
+}
+
+/* Stats cards animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.stats-card {
+  animation: fadeInUp 0.6s ease-out forwards;
+  opacity: 0;
+}
+
+.stats-card:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.stats-card:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.stats-card:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+.stats-card:nth-child(4) {
+  animation-delay: 0.4s;
+}
+
+/* Improved backdrop blur for better performance */
+@supports (backdrop-filter: blur(0px)) {
+  .backdrop-blur-xl {
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+  }
+  
+  .backdrop-blur-2xl {
+    backdrop-filter: blur(40px);
+    -webkit-backdrop-filter: blur(40px);
+  }
+}
+
+/* Prevent layout shift during animations */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Mobile Optimizations */
+@media (max-width: 768px) {
+  /* Better touch targets */
+  button, a {
+    min-height: 44px;
+  }
+  
+  /* Optimize glassmorphism for mobile performance */
+  .backdrop-blur-xl {
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+  }
+  
+  .backdrop-blur-2xl {
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+  }
+  
+  /* Reduce blur intensity on background elements for performance */
+  .blur-3xl {
+    filter: blur(60px);
+  }
+  
+  /* Prevent horizontal scroll on mobile */
+  body {
+    overflow-x: hidden;
+  }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+  /* Remove hover effects on touch devices */
+  .command-card:hover,
+  .category-button:hover,
+  .feature-card:hover,
+  .stats-card:hover {
+    transform: none !important;
+  }
+  
+  /* Add active states for better touch feedback */
+  .command-card:active {
+    transform: scale(0.98);
+  }
+  
+  .category-button:active {
+    transform: scale(0.95);
+  }
+  
+  button:active {
+    transform: scale(0.97);
+  }
+}
