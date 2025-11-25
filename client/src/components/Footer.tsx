@@ -20,7 +20,7 @@ export function Footer() {
           </div>
           <div className="flex items-center gap-6">
             <Link href="/tos">
-              <a className="text-sm text-muted-foreground hover:text-white transition-colors" data-testid="link-footer-tos">Terms & Privacy</a>
+              <span className="text-sm text-muted-foreground hover:text-white transition-colors cursor-pointer" data-testid="link-footer-tos">Terms & Privacy</span>
             </Link>
             <a href="https://discord.gg/yell" className="text-sm text-muted-foreground hover:text-white transition-colors" data-testid="link-footer-contact">Contact</a>
           </div>

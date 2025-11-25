@@ -12,10 +12,10 @@ export default function ToS() {
       {/* Back to Home */}
       <div className="fixed top-6 left-6 z-50">
         <Link href="/">
-          <a className="flex items-center gap-2 px-4 py-2 bg-white/10 hover:bg-white/20 backdrop-blur-xl border border-white/10 rounded-xl transition-all duration-300 text-foreground hover:text-primary" data-testid="link-back-home">
+          <span className="flex items-center gap-2 px-4 py-2 bg-white/10 hover:bg-white/20 backdrop-blur-xl border border-white/10 rounded-xl transition-all duration-300 text-foreground hover:text-primary cursor-pointer" data-testid="link-back-home">
             <ArrowLeft className="w-4 h-4" />
             <span>Back to Home</span>
-          </a>
+          </span>
         </Link>
       </div>
 
@@ -36,6 +36,10 @@ export default function ToS() {
             Table of Contents
           </h2>
           <nav className="grid md:grid-cols-2 gap-4">
+            <a href="#guidelines" className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors" data-testid="link-toc-guidelines">
+              <Users className="w-4 h-4" />
+              Community Guidelines
+            </a>
             <a href="#source-code" className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors" data-testid="link-toc-source">
               <Lock className="w-4 h-4" />
               Source Code Notice
@@ -52,12 +56,114 @@ export default function ToS() {
               <Scale className="w-4 h-4" />
               Privacy Policy
             </a>
-            <a href="#guidelines" className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors" data-testid="link-toc-guidelines">
-              <Users className="w-4 h-4" />
-              Community Guidelines
-            </a>
           </nav>
         </div>
+
+        {/* Community Guidelines */}
+        <section id="guidelines" className="mb-16">
+          <div className="relative bg-gradient-to-br from-white/10 via-white/5 to-transparent backdrop-blur-2xl border border-white/10 rounded-2xl p-8 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.1),0_8px_32px_rgba(0,0,0,0.3)] after:content-[''] after:absolute after:inset-0 after:bg-[url('/noise.svg')] after:opacity-[0.03] after:pointer-events-none after:rounded-2xl">
+            <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
+              <Users className="w-8 h-8 text-primary" />
+              Community Guidelines
+            </h2>
+            <div className="space-y-6 text-foreground/80 prose prose-invert max-w-none">
+              <p>These Community Guidelines define behavioral standards for our community, ensuring everyone can express themselves and find community without compromising safety or well-being.</p>
+
+              <h3 className="text-2xl font-semibold text-white mt-8">Section 1: Respect Each Other</h3>
+              
+              <h4 className="text-xl font-semibold text-white/90 mt-6">1. Harassment and Bullying</h4>
+              <p><strong>DO NOT:</strong> Engage in targeted harassment, participate in bullying campaigns, coordinate harassment, make repeated unwanted contact, spread rumors, publicly mock members, or make targeted personal attacks.</p>
+
+              <h4 className="text-xl font-semibold text-white/90 mt-6">2. Threats and Violence</h4>
+              <p><strong>DO NOT:</strong> Make threats against individuals or groups, make threats of violence or illegal action, encourage harm, share plans to commit violence, glorify violence, or issue death/rape/assault threats.</p>
+
+              <h4 className="text-xl font-semibold text-white/90 mt-6">3. Doxxing (Personal Information)</h4>
+              <p><strong>DO NOT:</strong> Share someone's personal information without consent, including addresses, phone numbers, real names, workplace, school, financial information, or social media accounts.</p>
+
+              <h4 className="text-xl font-semibold text-white/90 mt-6">4. Hate Speech and Hateful Conduct</h4>
+              <p><strong>DO NOT:</strong> Use hate speech targeting race, ethnicity, national origin, religion, sexual orientation, gender identity, disability, health status, or political beliefs. Do not use slurs, dehumanizing language, hate symbols, or deny historical atrocities.</p>
+
+              <h4 className="text-xl font-semibold text-white/90 mt-6">5. Violent Extremism</h4>
+              <p><strong>DO NOT:</strong> Promote, coordinate, or participate in violent extremism, share manifestos from violent groups, glorify violence, encourage extremist ideology, coordinate violent acts, or recruit for extremist causes.</p>
+
+              <h4 className="text-xl font-semibold text-white/90 mt-6">6. Child Sexual Abuse Material (CSAM)</h4>
+              <div className="relative bg-gradient-to-br from-red-500/30 via-red-500/20 to-transparent backdrop-blur-xl border-2 border-red-500/50 rounded-xl p-6 my-4 shadow-[inset_0_1px_0_0_rgba(255,50,50,0.4),0_4px_16px_rgba(255,0,0,0.3)]">
+                <div className="flex items-start gap-3">
+                  <AlertTriangle className="w-6 h-6 text-red-400 flex-shrink-0 mt-1" />
+                  <div className="space-y-2">
+                    <p className="text-red-300 font-bold text-lg">ABSOLUTELY PROHIBITED - ZERO TOLERANCE</p>
+                    <p className="text-foreground/90">Any images, videos, text, drawings, or animations depicting child sexual abuse. Any CSAM (real, fictional, or AI-generated), grooming behavior toward minors, or solicitation/distribution of CSAM.</p>
+                    <p className="text-red-200 font-semibold">⚠️ We report all suspected CSAM to the National Center for Missing & Exploited Children and law enforcement immediately.</p>
+                  </div>
+                </div>
+              </div>
+
+              <h4 className="text-xl font-semibold text-white/90 mt-6">7. Teen and Child Safety</h4>
+              <div className="relative bg-gradient-to-br from-orange-500/20 via-orange-500/10 to-transparent backdrop-blur-xl border-2 border-orange-500/40 rounded-xl p-6 my-4 shadow-[inset_0_1px_0_0_rgba(255,150,0,0.3),0_4px_16px_rgba(255,150,0,0.2)]">
+                <div className="flex items-start gap-3">
+                  <Shield className="w-6 h-6 text-orange-400 flex-shrink-0 mt-1" />
+                  <div className="space-y-3">
+                    <p className="text-orange-200 font-bold text-lg">Protecting Minors - Important Safety Rules</p>
+                    <div>
+                      <p className="text-white font-semibold mb-1">If you are under 18:</p>
+                      <p className="text-foreground/90">Do not engage in sexual conduct, share sexual content, participate in dating spaces, or share personal information with strangers. Report adults attempting sexual contact immediately.</p>
+                    </div>
+                    <div>
+                      <p className="text-white font-semibold mb-1">If you are an adult:</p>
+                      <p className="text-foreground/90">Do not engage sexually with anyone under 18, solicit sexual content from minors, groom/exploit minors, or create dating spaces for teens.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <h4 className="text-xl font-semibold text-white/90 mt-6">8. Self-Harm and Suicide</h4>
+              <div className="relative bg-gradient-to-br from-purple-500/20 via-purple-500/10 to-transparent backdrop-blur-xl border-2 border-purple-500/40 rounded-xl p-6 my-4 shadow-[inset_0_1px_0_0_rgba(150,100,255,0.3),0_4px_16px_rgba(150,100,255,0.2)]">
+                <div className="flex items-start gap-3">
+                  <AlertTriangle className="w-6 h-6 text-purple-400 flex-shrink-0 mt-1" />
+                  <div className="space-y-3">
+                    <p className="text-purple-200 font-bold text-lg">Mental Health & Self-Harm - Critical Guidelines</p>
+                    <div>
+                      <p className="text-white font-semibold mb-1">DO NOT:</p>
+                      <p className="text-foreground/90">Share content encouraging self-harm, provide self-harm instructions, glorify suicide, normalize eating disorders, or use self-harm as manipulation.</p>
+                    </div>
+                    <div>
+                      <p className="text-white font-semibold mb-1">DO:</p>
+                      <p className="text-foreground/90">Take suicide threats seriously, report concerning discussions, share mental health resources.</p>
+                    </div>
+                    <div className="bg-black/30 rounded-lg p-3 mt-2">
+                      <p className="text-purple-200 font-semibold mb-1">Crisis Resources:</p>
+                      <p className="text-foreground/90">📞 National Suicide Prevention Lifeline: <span className="text-white font-mono">988</span></p>
+                      <p className="text-foreground/90">💬 Crisis Text Line: Text <span className="text-white font-mono">HOME</span> to <span className="text-white font-mono">741741</span></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <h3 className="text-2xl font-semibold text-white mt-8">Section 2: Respect the Community</h3>
+
+              <h4 className="text-xl font-semibold text-white/90 mt-6">9. Spam and Unwanted Messages</h4>
+              <p><strong>DO NOT:</strong> Send bulk messages, spam channels with repetitive content, promote products/services repeatedly, send phishing/scam messages, create spam bots, or hijack conversations for advertising.</p>
+
+              <h4 className="text-xl font-semibold text-white/90 mt-6">10. Impersonation and Identity Fraud</h4>
+              <p><strong>DO NOT:</strong> Pretend to be someone else, impersonate staff/moderators, create fake profiles, use misleading usernames, claim to represent organizations falsely, or use deceptive practices.</p>
+
+              <h4 className="text-xl font-semibold text-white/90 mt-6">11. Misinformation and Disinformation</h4>
+              <p><strong>DO NOT:</strong> Spread false information knowingly, share misleading content, spread harmful conspiracy theories, distribute health/election misinformation, or create panic with false claims.</p>
+              <p><strong>DO:</strong> Check sources before sharing, fact-check surprising claims, correct misinformation when discovered, and share from reputable sources.</p>
+
+              <h4 className="text-xl font-semibold text-white/90 mt-6">12. Scams and Security</h4>
+              <p><strong>DO NOT:</strong> Attempt scams or fraud, engage in phishing, create fake opportunities, distribute malware, attempt unauthorized access, or compromise server security.</p>
+
+              <h3 className="text-2xl font-semibold text-white mt-8">Section 3: Follow Applicable Laws</h3>
+              <p>All members must comply with local, state, national, and international laws, including laws prohibiting harassment, protecting children, prohibiting fraud, intellectual property laws, and laws against illegal goods/services.</p>
+
+              <h3 className="text-2xl font-semibold text-white mt-8">Enforcement</h3>
+              <p>Violations may result in warnings, temporary suspension, permanent removal, content deletion, or reporting to authorities. Some violations (CSAM, serious threats, illegal activity) result in immediate permanent removal.</p>
+
+              <p className="mt-8 text-sm italic">If you observe violations, report to community moderators with clear descriptions and evidence. Do not abuse the report system.</p>
+            </div>
+          </div>
+        </section>
 
         {/* Source Code Notice */}
         <section id="source-code" className="mb-16">
@@ -264,112 +370,6 @@ export default function ToS() {
 
               <h3 className="text-2xl font-semibold text-white mt-8">9. Data Protection Compliance</h3>
               <p>We strive to comply with GDPR (for EU users), CCPA (for California residents), and other applicable privacy laws.</p>
-            </div>
-          </div>
-        </section>
-
-        {/* Community Guidelines */}
-        <section id="guidelines" className="mb-16">
-          <div className="relative bg-gradient-to-br from-white/10 via-white/5 to-transparent backdrop-blur-2xl border border-white/10 rounded-2xl p-8 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.1),0_8px_32px_rgba(0,0,0,0.3)] after:content-[''] after:absolute after:inset-0 after:bg-[url('/noise.svg')] after:opacity-[0.03] after:pointer-events-none after:rounded-2xl">
-            <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
-              <Users className="w-8 h-8 text-primary" />
-              Community Guidelines
-            </h2>
-            <div className="space-y-6 text-foreground/80 prose prose-invert max-w-none">
-              <p>These Community Guidelines define behavioral standards for our community, ensuring everyone can express themselves and find community without compromising safety or well-being.</p>
-
-              <h3 className="text-2xl font-semibold text-white mt-8">Section 1: Respect Each Other</h3>
-              
-              <h4 className="text-xl font-semibold text-white/90 mt-6">1. Harassment and Bullying</h4>
-              <p><strong>DO NOT:</strong> Engage in targeted harassment, participate in bullying campaigns, coordinate harassment, make repeated unwanted contact, spread rumors, publicly mock members, or make targeted personal attacks.</p>
-
-              <h4 className="text-xl font-semibold text-white/90 mt-6">2. Threats and Violence</h4>
-              <p><strong>DO NOT:</strong> Make threats against individuals or groups, make threats of violence or illegal action, encourage harm, share plans to commit violence, glorify violence, or issue death/rape/assault threats.</p>
-
-              <h4 className="text-xl font-semibold text-white/90 mt-6">3. Doxxing (Personal Information)</h4>
-              <p><strong>DO NOT:</strong> Share someone's personal information without consent, including addresses, phone numbers, real names, workplace, school, financial information, or social media accounts.</p>
-
-              <h4 className="text-xl font-semibold text-white/90 mt-6">4. Hate Speech and Hateful Conduct</h4>
-              <p><strong>DO NOT:</strong> Use hate speech targeting race, ethnicity, national origin, religion, sexual orientation, gender identity, disability, health status, or political beliefs. Do not use slurs, dehumanizing language, hate symbols, or deny historical atrocities.</p>
-
-              <h4 className="text-xl font-semibold text-white/90 mt-6">5. Violent Extremism</h4>
-              <p><strong>DO NOT:</strong> Promote, coordinate, or participate in violent extremism, share manifestos from violent groups, glorify violence, encourage extremist ideology, coordinate violent acts, or recruit for extremist causes.</p>
-
-              <h4 className="text-xl font-semibold text-white/90 mt-6">6. Child Sexual Abuse Material (CSAM)</h4>
-              <div className="relative bg-gradient-to-br from-red-500/30 via-red-500/20 to-transparent backdrop-blur-xl border-2 border-red-500/50 rounded-xl p-6 my-4 shadow-[inset_0_1px_0_0_rgba(255,50,50,0.4),0_4px_16px_rgba(255,0,0,0.3)]">
-                <div className="flex items-start gap-3">
-                  <AlertTriangle className="w-6 h-6 text-red-400 flex-shrink-0 mt-1" />
-                  <div className="space-y-2">
-                    <p className="text-red-300 font-bold text-lg">ABSOLUTELY PROHIBITED - ZERO TOLERANCE</p>
-                    <p className="text-foreground/90">Any images, videos, text, drawings, or animations depicting child sexual abuse. Any CSAM (real, fictional, or AI-generated), grooming behavior toward minors, or solicitation/distribution of CSAM.</p>
-                    <p className="text-red-200 font-semibold">⚠️ We report all suspected CSAM to the National Center for Missing & Exploited Children and law enforcement immediately.</p>
-                  </div>
-                </div>
-              </div>
-
-              <h4 className="text-xl font-semibold text-white/90 mt-6">7. Teen and Child Safety</h4>
-              <div className="relative bg-gradient-to-br from-orange-500/20 via-orange-500/10 to-transparent backdrop-blur-xl border-2 border-orange-500/40 rounded-xl p-6 my-4 shadow-[inset_0_1px_0_0_rgba(255,150,0,0.3),0_4px_16px_rgba(255,150,0,0.2)]">
-                <div className="flex items-start gap-3">
-                  <Shield className="w-6 h-6 text-orange-400 flex-shrink-0 mt-1" />
-                  <div className="space-y-3">
-                    <p className="text-orange-200 font-bold text-lg">Protecting Minors - Important Safety Rules</p>
-                    <div>
-                      <p className="text-white font-semibold mb-1">If you are under 18:</p>
-                      <p className="text-foreground/90">Do not engage in sexual conduct, share sexual content, participate in dating spaces, or share personal information with strangers. Report adults attempting sexual contact immediately.</p>
-                    </div>
-                    <div>
-                      <p className="text-white font-semibold mb-1">If you are an adult:</p>
-                      <p className="text-foreground/90">Do not engage sexually with anyone under 18, solicit sexual content from minors, groom/exploit minors, or create dating spaces for teens.</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <h4 className="text-xl font-semibold text-white/90 mt-6">8. Self-Harm and Suicide</h4>
-              <div className="relative bg-gradient-to-br from-purple-500/20 via-purple-500/10 to-transparent backdrop-blur-xl border-2 border-purple-500/40 rounded-xl p-6 my-4 shadow-[inset_0_1px_0_0_rgba(150,100,255,0.3),0_4px_16px_rgba(150,100,255,0.2)]">
-                <div className="flex items-start gap-3">
-                  <AlertTriangle className="w-6 h-6 text-purple-400 flex-shrink-0 mt-1" />
-                  <div className="space-y-3">
-                    <p className="text-purple-200 font-bold text-lg">Mental Health & Self-Harm - Critical Guidelines</p>
-                    <div>
-                      <p className="text-white font-semibold mb-1">DO NOT:</p>
-                      <p className="text-foreground/90">Share content encouraging self-harm, provide self-harm instructions, glorify suicide, normalize eating disorders, or use self-harm as manipulation.</p>
-                    </div>
-                    <div>
-                      <p className="text-white font-semibold mb-1">DO:</p>
-                      <p className="text-foreground/90">Take suicide threats seriously, report concerning discussions, share mental health resources.</p>
-                    </div>
-                    <div className="bg-black/30 rounded-lg p-3 mt-2">
-                      <p className="text-purple-200 font-semibold mb-1">Crisis Resources:</p>
-                      <p className="text-foreground/90">📞 National Suicide Prevention Lifeline: <span className="text-white font-mono">988</span></p>
-                      <p className="text-foreground/90">💬 Crisis Text Line: Text <span className="text-white font-mono">HOME</span> to <span className="text-white font-mono">741741</span></p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <h3 className="text-2xl font-semibold text-white mt-8">Section 2: Respect the Community</h3>
-
-              <h4 className="text-xl font-semibold text-white/90 mt-6">9. Spam and Unwanted Messages</h4>
-              <p><strong>DO NOT:</strong> Send bulk messages, spam channels with repetitive content, promote products/services repeatedly, send phishing/scam messages, create spam bots, or hijack conversations for advertising.</p>
-
-              <h4 className="text-xl font-semibold text-white/90 mt-6">10. Impersonation and Identity Fraud</h4>
-              <p><strong>DO NOT:</strong> Pretend to be someone else, impersonate staff/moderators, create fake profiles, use misleading usernames, claim to represent organizations falsely, or use deceptive practices.</p>
-
-              <h4 className="text-xl font-semibold text-white/90 mt-6">11. Misinformation and Disinformation</h4>
-              <p><strong>DO NOT:</strong> Spread false information knowingly, share misleading content, spread harmful conspiracy theories, distribute health/election misinformation, or create panic with false claims.</p>
-              <p><strong>DO:</strong> Check sources before sharing, fact-check surprising claims, correct misinformation when discovered, and share from reputable sources.</p>
-
-              <h4 className="text-xl font-semibold text-white/90 mt-6">12. Scams and Security</h4>
-              <p><strong>DO NOT:</strong> Attempt scams or fraud, engage in phishing, create fake opportunities, distribute malware, attempt unauthorized access, or compromise server security.</p>
-
-              <h3 className="text-2xl font-semibold text-white mt-8">Section 3: Follow Applicable Laws</h3>
-              <p>All members must comply with local, state, national, and international laws, including laws prohibiting harassment, protecting children, prohibiting fraud, intellectual property laws, and laws against illegal goods/services.</p>
-
-              <h3 className="text-2xl font-semibold text-white mt-8">Enforcement</h3>
-              <p>Violations may result in warnings, temporary suspension, permanent removal, content deletion, or reporting to authorities. Some violations (CSAM, serious threats, illegal activity) result in immediate permanent removal.</p>
-
-              <p className="mt-8 text-sm italic">If you observe violations, report to community moderators with clear descriptions and evidence. Do not abuse the report system.</p>
             </div>
           </div>
         </section>
