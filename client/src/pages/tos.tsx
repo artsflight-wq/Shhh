@@ -1,9 +1,14 @@
 import { Link } from 'wouter';
-import { ArrowLeft, Scale, Shield, Users, Lock, FileText } from 'lucide-react';
+import { ArrowLeft, Scale, Shield, Users, Lock, FileText, AlertTriangle } from 'lucide-react';
 
 export default function ToS() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-background/95 relative overflow-x-hidden">
+      {/* Enhanced Glass Background Effect */}
+      <div className="fixed inset-0 pointer-events-none">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-primary/5 via-transparent to-transparent opacity-50" />
+        <div className="absolute inset-0 bg-[url('/noise.svg')] opacity-[0.02]" />
+      </div>
       {/* Back to Home */}
       <div className="fixed top-6 left-6 z-50">
         <Link href="/">
@@ -25,7 +30,7 @@ export default function ToS() {
         </div>
 
         {/* Table of Contents */}
-        <div className="bg-gradient-to-br from-white/10 via-white/5 to-transparent backdrop-blur-xl border border-white/10 rounded-2xl p-8 mb-12 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.1)]">
+        <div className="relative bg-gradient-to-br from-white/10 via-white/5 to-transparent backdrop-blur-2xl border border-white/10 rounded-2xl p-8 mb-12 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.1),0_8px_32px_rgba(0,0,0,0.3)] after:content-[''] after:absolute after:inset-0 after:bg-[url('/noise.svg')] after:opacity-[0.03] after:pointer-events-none after:rounded-2xl">
           <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
             <FileText className="w-6 h-6 text-primary" />
             Table of Contents
@@ -56,7 +61,7 @@ export default function ToS() {
 
         {/* Source Code Notice */}
         <section id="source-code" className="mb-16">
-          <div className="bg-gradient-to-br from-red-500/10 via-red-500/5 to-transparent backdrop-blur-xl border border-red-500/20 rounded-2xl p-8 shadow-[inset_0_1px_0_0_rgba(255,100,100,0.2)]">
+          <div className="relative bg-gradient-to-br from-red-500/10 via-red-500/5 to-transparent backdrop-blur-2xl border border-red-500/20 rounded-2xl p-8 shadow-[inset_0_1px_0_0_rgba(255,100,100,0.2),0_8px_32px_rgba(255,0,0,0.1)] after:content-[''] after:absolute after:inset-0 after:bg-[url('/noise.svg')] after:opacity-[0.03] after:pointer-events-none after:rounded-2xl">
             <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
               <Lock className="w-8 h-8 text-red-400" />
               Source Code - Completely Private
@@ -91,7 +96,7 @@ export default function ToS() {
 
         {/* Bot Usage Terms */}
         <section id="bot-usage" className="mb-16">
-          <div className="bg-gradient-to-br from-white/10 via-white/5 to-transparent backdrop-blur-xl border border-white/10 rounded-2xl p-8 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.1)]">
+          <div className="relative bg-gradient-to-br from-white/10 via-white/5 to-transparent backdrop-blur-2xl border border-white/10 rounded-2xl p-8 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.1),0_8px_32px_rgba(0,0,0,0.3)] after:content-[''] after:absolute after:inset-0 after:bg-[url('/noise.svg')] after:opacity-[0.03] after:pointer-events-none after:rounded-2xl">
             <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
               <Shield className="w-8 h-8 text-primary" />
               Bot Usage Terms
@@ -160,7 +165,7 @@ export default function ToS() {
 
         {/* Community Participation */}
         <section id="community" className="mb-16">
-          <div className="bg-gradient-to-br from-white/10 via-white/5 to-transparent backdrop-blur-xl border border-white/10 rounded-2xl p-8 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.1)]">
+          <div className="relative bg-gradient-to-br from-white/10 via-white/5 to-transparent backdrop-blur-2xl border border-white/10 rounded-2xl p-8 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.1),0_8px_32px_rgba(0,0,0,0.3)] after:content-[''] after:absolute after:inset-0 after:bg-[url('/noise.svg')] after:opacity-[0.03] after:pointer-events-none after:rounded-2xl">
             <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
               <Users className="w-8 h-8 text-primary" />
               Community Participation Terms
@@ -203,7 +208,7 @@ export default function ToS() {
 
         {/* Privacy Policy */}
         <section id="privacy" className="mb-16">
-          <div className="bg-gradient-to-br from-white/10 via-white/5 to-transparent backdrop-blur-xl border border-white/10 rounded-2xl p-8 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.1)]">
+          <div className="relative bg-gradient-to-br from-white/10 via-white/5 to-transparent backdrop-blur-2xl border border-white/10 rounded-2xl p-8 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.1),0_8px_32px_rgba(0,0,0,0.3)] after:content-[''] after:absolute after:inset-0 after:bg-[url('/noise.svg')] after:opacity-[0.03] after:pointer-events-none after:rounded-2xl">
             <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
               <Scale className="w-8 h-8 text-primary" />
               Privacy Policy
@@ -244,7 +249,15 @@ export default function ToS() {
               <p>You have the right to access your personal data, request correction of inaccurate information, request deletion (subject to legal requirements), and request data in a portable format. Contact us through support channels to exercise these rights.</p>
 
               <h3 className="text-2xl font-semibold text-white mt-8">7. Children's Privacy</h3>
-              <p>The Bot is not directed toward children under 13. We do not knowingly collect information from children under 13. If we become aware of such collection, we will delete the information and terminate the account.</p>
+              <div className="relative bg-gradient-to-br from-yellow-500/20 via-yellow-500/10 to-transparent backdrop-blur-xl border-2 border-yellow-500/40 rounded-xl p-6 my-4 shadow-[inset_0_1px_0_0_rgba(255,200,0,0.3),0_4px_16px_rgba(255,200,0,0.2)]">
+                <div className="flex items-start gap-3">
+                  <AlertTriangle className="w-6 h-6 text-yellow-400 flex-shrink-0 mt-1" />
+                  <div className="space-y-2">
+                    <p className="text-yellow-200 font-bold text-lg">Child Safety Notice</p>
+                    <p className="text-foreground/90">The Bot is not directed toward children under 13. We do not knowingly collect information from children under 13. If we become aware of such collection, we will delete the information and terminate the account immediately.</p>
+                  </div>
+                </div>
+              </div>
 
               <h3 className="text-2xl font-semibold text-white mt-8">8. International Data Transfers</h3>
               <p>Your information may be transferred to, stored in, and processed in countries other than your country of residence. By using the Bot, you consent to such transfers.</p>
@@ -257,7 +270,7 @@ export default function ToS() {
 
         {/* Community Guidelines */}
         <section id="guidelines" className="mb-16">
-          <div className="bg-gradient-to-br from-white/10 via-white/5 to-transparent backdrop-blur-xl border border-white/10 rounded-2xl p-8 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.1)]">
+          <div className="relative bg-gradient-to-br from-white/10 via-white/5 to-transparent backdrop-blur-2xl border border-white/10 rounded-2xl p-8 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.1),0_8px_32px_rgba(0,0,0,0.3)] after:content-[''] after:absolute after:inset-0 after:bg-[url('/noise.svg')] after:opacity-[0.03] after:pointer-events-none after:rounded-2xl">
             <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
               <Users className="w-8 h-8 text-primary" />
               Community Guidelines
@@ -283,16 +296,57 @@ export default function ToS() {
               <p><strong>DO NOT:</strong> Promote, coordinate, or participate in violent extremism, share manifestos from violent groups, glorify violence, encourage extremist ideology, coordinate violent acts, or recruit for extremist causes.</p>
 
               <h4 className="text-xl font-semibold text-white/90 mt-6">6. Child Sexual Abuse Material (CSAM)</h4>
-              <p className="text-red-400 font-bold">ABSOLUTELY PROHIBITED:</p>
-              <p>Any images, videos, text, drawings, or animations depicting child sexual abuse. Any CSAM (real, fictional, or AI-generated), grooming behavior toward minors, or solicitation/distribution of CSAM. We report all suspected CSAM to law enforcement.</p>
+              <div className="relative bg-gradient-to-br from-red-500/30 via-red-500/20 to-transparent backdrop-blur-xl border-2 border-red-500/50 rounded-xl p-6 my-4 shadow-[inset_0_1px_0_0_rgba(255,50,50,0.4),0_4px_16px_rgba(255,0,0,0.3)]">
+                <div className="flex items-start gap-3">
+                  <AlertTriangle className="w-6 h-6 text-red-400 flex-shrink-0 mt-1" />
+                  <div className="space-y-2">
+                    <p className="text-red-300 font-bold text-lg">ABSOLUTELY PROHIBITED - ZERO TOLERANCE</p>
+                    <p className="text-foreground/90">Any images, videos, text, drawings, or animations depicting child sexual abuse. Any CSAM (real, fictional, or AI-generated), grooming behavior toward minors, or solicitation/distribution of CSAM.</p>
+                    <p className="text-red-200 font-semibold">⚠️ We report all suspected CSAM to the National Center for Missing & Exploited Children and law enforcement immediately.</p>
+                  </div>
+                </div>
+              </div>
 
               <h4 className="text-xl font-semibold text-white/90 mt-6">7. Teen and Child Safety</h4>
-              <p><strong>If under 18:</strong> Do not engage in sexual conduct, share sexual content, participate in dating spaces, or share personal information with strangers. Report adults attempting sexual contact.</p>
-              <p><strong>If an adult:</strong> Do not engage sexually with anyone under 18, solicit sexual content from minors, groom/exploit minors, or create dating spaces for teens.</p>
+              <div className="relative bg-gradient-to-br from-orange-500/20 via-orange-500/10 to-transparent backdrop-blur-xl border-2 border-orange-500/40 rounded-xl p-6 my-4 shadow-[inset_0_1px_0_0_rgba(255,150,0,0.3),0_4px_16px_rgba(255,150,0,0.2)]">
+                <div className="flex items-start gap-3">
+                  <Shield className="w-6 h-6 text-orange-400 flex-shrink-0 mt-1" />
+                  <div className="space-y-3">
+                    <p className="text-orange-200 font-bold text-lg">Protecting Minors - Important Safety Rules</p>
+                    <div>
+                      <p className="text-white font-semibold mb-1">If you are under 18:</p>
+                      <p className="text-foreground/90">Do not engage in sexual conduct, share sexual content, participate in dating spaces, or share personal information with strangers. Report adults attempting sexual contact immediately.</p>
+                    </div>
+                    <div>
+                      <p className="text-white font-semibold mb-1">If you are an adult:</p>
+                      <p className="text-foreground/90">Do not engage sexually with anyone under 18, solicit sexual content from minors, groom/exploit minors, or create dating spaces for teens.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
 
               <h4 className="text-xl font-semibold text-white/90 mt-6">8. Self-Harm and Suicide</h4>
-              <p><strong>DO NOT:</strong> Share content encouraging self-harm, provide self-harm instructions, glorify suicide, normalize eating disorders, or use self-harm as manipulation.</p>
-              <p><strong>DO:</strong> Take suicide threats seriously, report concerning discussions, share mental health resources (National Suicide Prevention Lifeline: 988, Crisis Text Line: HOME to 741741).</p>
+              <div className="relative bg-gradient-to-br from-purple-500/20 via-purple-500/10 to-transparent backdrop-blur-xl border-2 border-purple-500/40 rounded-xl p-6 my-4 shadow-[inset_0_1px_0_0_rgba(150,100,255,0.3),0_4px_16px_rgba(150,100,255,0.2)]">
+                <div className="flex items-start gap-3">
+                  <AlertTriangle className="w-6 h-6 text-purple-400 flex-shrink-0 mt-1" />
+                  <div className="space-y-3">
+                    <p className="text-purple-200 font-bold text-lg">Mental Health & Self-Harm - Critical Guidelines</p>
+                    <div>
+                      <p className="text-white font-semibold mb-1">DO NOT:</p>
+                      <p className="text-foreground/90">Share content encouraging self-harm, provide self-harm instructions, glorify suicide, normalize eating disorders, or use self-harm as manipulation.</p>
+                    </div>
+                    <div>
+                      <p className="text-white font-semibold mb-1">DO:</p>
+                      <p className="text-foreground/90">Take suicide threats seriously, report concerning discussions, share mental health resources.</p>
+                    </div>
+                    <div className="bg-black/30 rounded-lg p-3 mt-2">
+                      <p className="text-purple-200 font-semibold mb-1">Crisis Resources:</p>
+                      <p className="text-foreground/90">📞 National Suicide Prevention Lifeline: <span className="text-white font-mono">988</span></p>
+                      <p className="text-foreground/90">💬 Crisis Text Line: Text <span className="text-white font-mono">HOME</span> to <span className="text-white font-mono">741741</span></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
 
               <h3 className="text-2xl font-semibold text-white mt-8">Section 2: Respect the Community</h3>
 
@@ -321,35 +375,44 @@ export default function ToS() {
         </section>
 
         {/* Footer Notice */}
-        <div className="text-center text-muted-foreground text-sm border-t border-white/10 pt-8">
-          <p>By using the Bot or participating in our community, you acknowledge that you have read, understood, and agree to these Terms of Service, Privacy Policy, and Community Guidelines.</p>
+        <div className="text-center border-t border-white/10 pt-8 space-y-8">
+          <p className="text-muted-foreground text-sm">By using the Bot or participating in our community, you acknowledge that you have read, understood, and agree to these Terms of Service, Privacy Policy, and Community Guidelines.</p>
           
-          <div className="mt-6 space-y-2">
-            <p className="text-foreground/60">This service operates on Discord's platform and is subject to:</p>
-            <div className="flex items-center justify-center gap-6">
-              <a 
-                href="https://discord.com/terms" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-primary hover:text-primary/80 transition-colors underline"
-                data-testid="link-discord-tos"
-              >
-                Discord Terms of Service
-              </a>
-              <span className="text-white/20">•</span>
-              <a 
-                href="https://discord.com/guidelines" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-primary hover:text-primary/80 transition-colors underline"
-                data-testid="link-discord-guidelines"
-              >
-                Discord Community Guidelines
-              </a>
+          {/* Prominent Discord Links */}
+          <div className="relative bg-gradient-to-br from-primary/20 via-primary/10 to-transparent backdrop-blur-2xl border-2 border-primary/30 rounded-2xl p-8 shadow-[inset_0_1px_0_0_rgba(88,101,242,0.3),0_8px_32px_rgba(88,101,242,0.2)] after:content-[''] after:absolute after:inset-0 after:bg-[url('/noise.svg')] after:opacity-[0.03] after:pointer-events-none after:rounded-2xl">
+            <div className="relative z-10 space-y-4">
+              <p className="text-white text-lg font-semibold">This service operates on Discord's platform</p>
+              <p className="text-foreground/80 text-sm">By using this bot and community, you also agree to Discord's policies:</p>
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-6">
+                <a 
+                  href="https://discord.com/terms" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="group w-full sm:w-auto px-6 py-3 bg-primary/20 hover:bg-primary/30 backdrop-blur-xl border-2 border-primary/40 hover:border-primary/60 rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-[0_0_20px_rgba(88,101,242,0.4)]"
+                  data-testid="link-discord-tos"
+                >
+                  <div className="flex items-center gap-2 justify-center">
+                    <FileText className="w-5 h-5 text-primary" />
+                    <span className="text-white font-semibold">Discord Terms of Service</span>
+                  </div>
+                </a>
+                <a 
+                  href="https://discord.com/guidelines" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="group w-full sm:w-auto px-6 py-3 bg-primary/20 hover:bg-primary/30 backdrop-blur-xl border-2 border-primary/40 hover:border-primary/60 rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-[0_0_20px_rgba(88,101,242,0.4)]"
+                  data-testid="link-discord-guidelines"
+                >
+                  <div className="flex items-center gap-2 justify-center">
+                    <Shield className="w-5 h-5 text-primary" />
+                    <span className="text-white font-semibold">Discord Community Guidelines</span>
+                  </div>
+                </a>
+              </div>
             </div>
           </div>
           
-          <p className="mt-6">Last Updated: November 25, 2025</p>
+          <p className="text-muted-foreground text-sm">Last Updated: November 25, 2025</p>
         </div>
       </div>
     </div>
