@@ -119,48 +119,6 @@ export function NavigationRail() {
           </div>
         </div>
       </div>
-
-      {/* Mobile Bottom Dock */}
-      <div className={`lg:hidden fixed bottom-0 left-0 right-0 z-40 transition-all duration-500 ${
-        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-full pointer-events-none'
-      }`}>
-        <div className="relative bg-gradient-to-t from-background via-background/95 to-transparent pt-4 pb-safe">
-          {/* Progress Bar */}
-          <div className="absolute top-0 left-0 right-0 h-1 bg-white/5">
-            <div
-              className="h-full bg-gradient-to-r from-primary to-primary/50 transition-all duration-300"
-              style={{ width: `${scrollProgress}%` }}
-            />
-          </div>
-
-          <div className="container mx-auto px-4">
-            <div className="bg-gradient-to-br from-white/10 via-white/5 to-transparent backdrop-blur-2xl border border-white/10 rounded-2xl p-3 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.1)]">
-              <div className="flex gap-2 overflow-x-auto scrollbar-hide snap-x snap-mandatory">
-                {categories.map((cat: CategoryMetadata) => {
-                  const Icon = iconMap[cat.icon];
-                  const isActive = activeCategory === cat.id;
-                  
-                  return (
-                    <button
-                      key={cat.id}
-                      onClick={() => scrollToCategory(cat.id)}
-                      className={`flex-shrink-0 snap-start flex flex-col items-center gap-1 px-3 py-2 rounded-xl transition-all duration-300 ${
-                        isActive
-                          ? 'bg-primary/20 border border-primary/30 text-primary'
-                          : 'bg-white/5 border border-white/10 text-muted-foreground'
-                      }`}
-                      data-testid={`dock-category-${cat.id}`}
-                    >
-                      {Icon && <Icon className="w-4 h-4" />}
-                      <span className="text-xs font-medium whitespace-nowrap">{cat.displayName.split(' ')[0]}</span>
-                    </button>
-                  );
-                })}
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
     </>
   );
 }
