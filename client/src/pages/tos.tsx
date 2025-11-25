@@ -177,7 +177,7 @@ export default function ToS() {
               </p>
 
               <h3 className="text-2xl font-semibold text-white mt-8">1. Age Requirements</h3>
-              <p>You must be at least 13 years old. If under 18, parental/guardian consent is required. Parents are responsible for monitoring participation and may request content removal.</p>
+              <p>You must be at least 13 years old. If under 18, parents are responsible for monitoring participation. You are allowed to request for content removal at any given time granted that there is a probable cause.</p>
 
               <h3 className="text-2xl font-semibold text-white mt-8">2. Community Culture</h3>
               <p>We strive to maintain a community that is welcoming, inclusive, respectful, safe for all ages, and focused on meaningful connections.</p>
@@ -323,7 +323,33 @@ export default function ToS() {
         {/* Footer Notice */}
         <div className="text-center text-muted-foreground text-sm border-t border-white/10 pt-8">
           <p>By using the Bot or participating in our community, you acknowledge that you have read, understood, and agree to these Terms of Service, Privacy Policy, and Community Guidelines.</p>
-          <p className="mt-4">Last Updated: November 25, 2025</p>
+          
+          <div className="mt-6 space-y-2">
+            <p className="text-foreground/60">This service operates on Discord's platform and is subject to:</p>
+            <div className="flex items-center justify-center gap-6">
+              <a 
+                href="https://discord.com/terms" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-primary hover:text-primary/80 transition-colors underline"
+                data-testid="link-discord-tos"
+              >
+                Discord Terms of Service
+              </a>
+              <span className="text-white/20">•</span>
+              <a 
+                href="https://discord.com/guidelines" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-primary hover:text-primary/80 transition-colors underline"
+                data-testid="link-discord-guidelines"
+              >
+                Discord Community Guidelines
+              </a>
+            </div>
+          </div>
+          
+          <p className="mt-6">Last Updated: November 25, 2025</p>
         </div>
       </div>
     </div>
