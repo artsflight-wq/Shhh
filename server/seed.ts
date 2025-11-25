@@ -284,6 +284,86 @@ const allCommands = [
     "category": "info",
     "usage": ",perms [[@user]]"
   },
+  {
+    "name": "search",
+    "aliases": [],
+    "arguments": "[<query>]",
+    "description": "Search the web using Google",
+    "category": "info",
+    "usage": ",search [<query>]"
+  },
+  {
+    "name": "image",
+    "aliases": [],
+    "arguments": "[<query>]",
+    "description": "Search for images using Google",
+    "category": "info",
+    "usage": ",image [<query>]"
+  },
+  {
+    "name": "github",
+    "aliases": ["gh"],
+    "arguments": "[<username>]",
+    "description": "GitHub user profile lookup (bio, repos, followers, location)",
+    "category": "info",
+    "usage": ",github [<username>]"
+  },
+  {
+    "name": "youtube",
+    "aliases": ["yt"],
+    "arguments": "[<channel>]",
+    "description": "YouTube channel lookup (subscribers, views, videos)",
+    "category": "info",
+    "usage": ",youtube [<channel>]"
+  },
+  {
+    "name": "spotify",
+    "aliases": [],
+    "arguments": "[<search/link>]",
+    "description": "Spotify search with Track/Album/Artist pagination",
+    "category": "info",
+    "usage": ",spotify [<search/link>]"
+  },
+  {
+    "name": "spotify track",
+    "aliases": [],
+    "arguments": "[<name>]",
+    "description": "Search for tracks on Spotify",
+    "category": "info",
+    "usage": ",spotify track [<name>]"
+  },
+  {
+    "name": "spotify album",
+    "aliases": [],
+    "arguments": "[<name>]",
+    "description": "Search for albums on Spotify",
+    "category": "info",
+    "usage": ",spotify album [<name>]"
+  },
+  {
+    "name": "spotify playlist",
+    "aliases": [],
+    "arguments": "[<name>]",
+    "description": "Search for playlists on Spotify",
+    "category": "info",
+    "usage": ",spotify playlist [<name>]"
+  },
+  {
+    "name": "instagram",
+    "aliases": ["ig"],
+    "arguments": "[<username>]",
+    "description": "Instagram profile link generator",
+    "category": "info",
+    "usage": ",instagram [<username>]"
+  },
+  {
+    "name": "roblox",
+    "aliases": [],
+    "arguments": "[<username>]",
+    "description": "Roblox user lookup",
+    "category": "info",
+    "usage": ",roblox [<username>]"
+  },
   // ========== MODERATION (45 commands) ==========
   {
     "name": "kick",
@@ -1354,22 +1434,6 @@ const allCommands = [
     "description": "Create quote card for that message",
     "category": "fun",
     "usage": ",quote [[reply to message]]"
-  },
-  {
-    "name": "search",
-    "aliases": [],
-    "arguments": "[<query>]",
-    "description": "Search the web using Google (10s server cooldown)",
-    "category": "utility",
-    "usage": ",search [<query>]"
-  },
-  {
-    "name": "image",
-    "aliases": [],
-    "arguments": "[<query>]",
-    "description": "Search for images using Google (10s server cooldown)",
-    "category": "utility",
-    "usage": ",image [<query>]"
   },
 
   // ========== AUTORESPONDER (13 commands) ==========

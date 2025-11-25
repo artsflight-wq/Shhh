@@ -51,9 +51,9 @@ export const CATEGORIES: CategoryMetadata[] = [
     icon: "Info",
     description: "User, server, channel, and role information",
     featuredCommands: [
-      { name: "userinfo", description: "Get detailed information about a user" },
-      { name: "serverinfo", description: "View server statistics and details" },
-      { name: "roleinfo", description: "Get information about a role" }
+      { name: "search", description: "Search the web using Google" },
+      { name: "github", description: "GitHub user profile lookup" },
+      { name: "youtube", description: "YouTube channel lookup" }
     ]
   },
   {
