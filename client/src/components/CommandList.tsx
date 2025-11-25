@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { Search, ChevronRight, Command as CommandIcon, AlertCircle, LayoutGrid, Shield, Info, Gavel, TrendingUp, Gift, HandMetal, Wrench, MessageSquare, Rocket, Ticket, Gamepad2, Mic, Crosshair, Cake, X } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
@@ -55,10 +55,20 @@ async function fetchCategories(): Promise<Category[]> {
 
 export function CommandList() {
   const [search, setSearch] = useState("");
+  const [debouncedSearch, setDebouncedSearch] = useState("");
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
   const [expandedCard, setExpandedCard] = useState<string | null>(null);
   const [recentSearches, setRecentSearches] = useState<string[]>([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
+  
+  // Debounce search input for performance
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setDebouncedSearch(search);
+    }, 150); // 150ms delay
+    
+    return () => clearTimeout(timer);
+  }, [search]);
 
   const { data: commands = [], isLoading, error } = useQuery({
     queryKey: ["commands"],
@@ -113,33 +123,36 @@ export function CommandList() {
     return () => window.removeEventListener('keydown', handleEscape);
   }, [expandedCard]);
 
-  const filteredCommands = commands.filter((cmd: Command) => {
-    // Enhanced search: trim and split search query into terms
-    const searchTerms = search.trim().toLowerCase().split(/\s+/).filter(term => term.length > 0);
-    
-    // If no search terms, show all (based on category)
-    if (searchTerms.length === 0) {
+  // Memoize filtered commands to prevent re-filtering on every render
+  const filteredCommands = useMemo(() => {
+    return commands.filter((cmd: Command) => {
+      // Enhanced search: trim and split search query into terms
+      const searchTerms = debouncedSearch.trim().toLowerCase().split(/\s+/).filter(term => term.length > 0);
+      
+      // If no search terms, show all (based on category)
+      if (searchTerms.length === 0) {
+        const matchesCategory = activeCategory === null || activeCategory === "all" || cmd.category === activeCategory;
+        return matchesCategory;
+      }
+      
+      // Create searchable text from multiple fields
+      const searchableText = [
+        cmd.name,
+        cmd.description,
+        cmd.arguments,
+        cmd.usage,
+        cmd.category,
+        ...cmd.aliases
+      ].join(' ').toLowerCase();
+      
+      // Check if ALL search terms match (AND logic)
+      const matchesSearch = searchTerms.every(term => searchableText.includes(term));
+      
+      // "all" category shows all commands, otherwise filter by category name
       const matchesCategory = activeCategory === null || activeCategory === "all" || cmd.category === activeCategory;
-      return matchesCategory;
-    }
-    
-    // Create searchable text from multiple fields
-    const searchableText = [
-      cmd.name,
-      cmd.description,
-      cmd.arguments,
-      cmd.usage,
-      cmd.category,
-      ...cmd.aliases
-    ].join(' ').toLowerCase();
-    
-    // Check if ALL search terms match (AND logic)
-    const matchesSearch = searchTerms.every(term => searchableText.includes(term));
-    
-    // "all" category shows all commands, otherwise filter by category name
-    const matchesCategory = activeCategory === null || activeCategory === "all" || cmd.category === activeCategory;
-    return matchesSearch && matchesCategory;
-  });
+      return matchesSearch && matchesCategory;
+    });
+  }, [commands, debouncedSearch, activeCategory]);
 
   if (error) {
     return (

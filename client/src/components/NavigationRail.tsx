@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Shield, AlertCircle, Info, Wrench, Ticket, Mic, Users, Gamepad2, Laugh, Settings, Moon, Users2, MessageCircle, Music, Sliders, LayoutGrid, Gavel, TrendingUp, Rocket, Crosshair, MessageSquare } from "lucide-react";
 import { CATEGORIES, type CategoryMetadata } from "@shared/categoryConfig";
 
@@ -30,6 +30,8 @@ export function NavigationRail() {
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
   const [scrollProgress, setScrollProgress] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
+  const rafRef = useRef<number | null>(null);
+  const lastScrollRef = useRef<number>(0);
 
   // Listen for category changes from CommandList
   useEffect(() => {
@@ -44,22 +46,45 @@ export function NavigationRail() {
 
   useEffect(() => {
     const handleScroll = () => {
-      // Show rail after scrolling past hero
-      const heroHeight = window.innerHeight * 0.8;
-      setIsVisible(window.scrollY > heroHeight);
+      const now = Date.now();
+      
+      // Throttle to ~30fps (33ms between updates)
+      if (now - lastScrollRef.current < 33) {
+        return;
+      }
+      
+      // Cancel any pending animation frame
+      if (rafRef.current) {
+        cancelAnimationFrame(rafRef.current);
+      }
+      
+      // Schedule update on next animation frame
+      rafRef.current = requestAnimationFrame(() => {
+        // Show rail after scrolling past hero
+        const heroHeight = window.innerHeight * 0.8;
+        setIsVisible(window.scrollY > heroHeight);
 
-      // Calculate scroll progress
-      const windowHeight = window.innerHeight;
-      const documentHeight = document.documentElement.scrollHeight;
-      const scrollTop = window.scrollY;
-      const progress = (scrollTop / (documentHeight - windowHeight)) * 100;
-      setScrollProgress(Math.min(progress, 100));
+        // Calculate scroll progress
+        const windowHeight = window.innerHeight;
+        const documentHeight = document.documentElement.scrollHeight;
+        const scrollTop = window.scrollY;
+        const progress = (scrollTop / (documentHeight - windowHeight)) * 100;
+        setScrollProgress(Math.min(progress, 100));
+        
+        lastScrollRef.current = now;
+        rafRef.current = null;
+      });
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll(); // Initial call
     
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      if (rafRef.current) {
+        cancelAnimationFrame(rafRef.current);
+      }
+    };
   }, []);
 
   const scrollToCategory = (categoryId: string) => {
