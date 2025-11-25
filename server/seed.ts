@@ -108,7 +108,7 @@ const allCommands = [
   },
   {
     "name": "panick",
-    "aliases": [],
+    "aliases": ["panic", "lockdown"],
     "arguments": "[<on/off> [reason]]",
     "description": "Emergency server lockdown mode",
     "category": "security",
@@ -116,7 +116,7 @@ const allCommands = [
   },
   {
     "name": "nuke",
-    "aliases": [],
+    "aliases": ["nc"],
     "arguments": "[]",
     "description": "Nuke and recreate current channel",
     "category": "security",
@@ -140,7 +140,7 @@ const allCommands = [
   },
   {
     "name": "ec",
-    "aliases": [],
+    "aliases": ["eventcontrol"],
     "arguments": "[<feature> <on/off>]",
     "description": "Event Control - manage server events and restrictions",
     "category": "security",
@@ -156,7 +156,7 @@ const allCommands = [
   },
   {
     "name": "fp",
-    "aliases": [],
+    "aliases": ["fakepermissions", "fakeperms"],
     "arguments": "[<grant/remove/list/reset> [args]]",
     "description": "Manage fake permissions for users and roles",
     "category": "security",
@@ -198,7 +198,7 @@ const allCommands = [
   // ========== INFO (11 commands) ==========
   {
     "name": "ui",
-    "aliases": [],
+    "aliases": ["userinfo", "whois"],
     "arguments": "[[@user]]",
     "description": "Display detailed user information",
     "category": "info",
@@ -206,7 +206,7 @@ const allCommands = [
   },
   {
     "name": "ri",
-    "aliases": [],
+    "aliases": ["roleinfo"],
     "arguments": "[<role>]",
     "description": "Display detailed role information",
     "category": "info",
@@ -214,7 +214,7 @@ const allCommands = [
   },
   {
     "name": "si",
-    "aliases": [],
+    "aliases": ["serverinfo"],
     "arguments": "[]",
     "description": "Display detailed server information",
     "category": "info",
@@ -222,7 +222,7 @@ const allCommands = [
   },
   {
     "name": "ci",
-    "aliases": [],
+    "aliases": ["channelinfo"],
     "arguments": "[[#channel]]",
     "description": "Display detailed channel information",
     "category": "info",
@@ -230,7 +230,7 @@ const allCommands = [
   },
   {
     "name": "ii",
-    "aliases": [],
+    "aliases": ["inviteinfo"],
     "arguments": "[<invite>]",
     "description": "Display detailed Discord invite information",
     "category": "info",
@@ -238,7 +238,7 @@ const allCommands = [
   },
   {
     "name": "mc",
-    "aliases": [],
+    "aliases": ["membercount"],
     "arguments": "[]",
     "description": "Display server member count breakdown",
     "category": "info",
@@ -358,7 +358,7 @@ const allCommands = [
   },
   {
     "name": "roblox",
-    "aliases": [],
+    "aliases": ["rblx"],
     "arguments": "[<username>]",
     "description": "Roblox user lookup",
     "category": "info",
@@ -399,7 +399,7 @@ const allCommands = [
   },
   {
     "name": "timeout",
-    "aliases": [],
+    "aliases": ["to"],
     "arguments": "[@member [duration] [reason]]",
     "description": "Timeout a member (default: 5 minutes)",
     "category": "moderation",
@@ -407,7 +407,7 @@ const allCommands = [
   },
   {
     "name": "untimeout",
-    "aliases": [],
+    "aliases": ["removetimeout", "uto"],
     "arguments": "[@member [reason]]",
     "description": "Remove timeout from a member",
     "category": "moderation",
@@ -423,7 +423,7 @@ const allCommands = [
   },
   {
     "name": "hackban",
-    "aliases": [],
+    "aliases": ["hb", "hardban"],
     "arguments": "[<user_id> [reason]]",
     "description": "Ban a user before they join (preemptive ban). Cannot be unbanned except by antinuke admins",
     "category": "moderation",
@@ -431,7 +431,7 @@ const allCommands = [
   },
   {
     "name": "purge",
-    "aliases": [],
+    "aliases": ["clear", "prune", "c"],
     "arguments": "[<amount> | bots/humans/@user/reactions/contains/mentions/links [amount]]",
     "description": "Purge messages with various filters",
     "category": "moderation",
@@ -447,7 +447,7 @@ const allCommands = [
   },
   {
     "name": "raid",
-    "aliases": [],
+    "aliases": ["raidmode"],
     "arguments": "[<duration> <action> | <on|off>]",
     "description": "RAID protection with two modes",
     "category": "moderation",
@@ -455,7 +455,7 @@ const allCommands = [
   },
   {
     "name": "r",
-    "aliases": [],
+    "aliases": ["role"],
     "arguments": "[<subcommand> [args]]",
     "description": "Role management - see subcommands below",
     "category": "moderation",
@@ -543,7 +543,7 @@ const allCommands = [
   },
   {
     "name": "ir",
-    "aliases": [],
+    "aliases": ["inrole"],
     "arguments": "[<role>]",
     "description": "List all members with a specific role",
     "category": "moderation",
@@ -551,7 +551,7 @@ const allCommands = [
   },
   {
     "name": "strip",
-    "aliases": [],
+    "aliases": ["stripstaff"],
     "arguments": "[@member [reason]]",
     "description": "Remove all roles from a member",
     "category": "moderation",
@@ -559,7 +559,7 @@ const allCommands = [
   },
   {
     "name": "lock",
-    "aliases": [],
+    "aliases": ["l"],
     "arguments": "[[all]]",
     "description": "Lock current channel or all channels",
     "category": "moderation",
@@ -567,7 +567,7 @@ const allCommands = [
   },
   {
     "name": "unlock",
-    "aliases": [],
+    "aliases": ["ul"],
     "arguments": "[[#channel]]",
     "description": "Unlock specified channel (or current)",
     "category": "moderation",
@@ -703,7 +703,7 @@ const allCommands = [
   },
   {
     "name": "nick",
-    "aliases": [],
+    "aliases": ["nickname"],
     "arguments": "[@user <nickname>]",
     "description": "Change a user's nickname",
     "category": "moderation",
@@ -711,7 +711,7 @@ const allCommands = [
   },
   {
     "name": "fn",
-    "aliases": [],
+    "aliases": ["forcenick", "forcenickname"],
     "arguments": "[@user <nickname>]",
     "description": "Force a user's nickname (prevents changes)",
     "category": "moderation",
@@ -719,7 +719,7 @@ const allCommands = [
   },
   {
     "name": "mh",
-    "aliases": [],
+    "aliases": ["modhistory", "cases"],
     "arguments": "[[@user]]",
     "description": "View moderation history for a user",
     "category": "moderation",
@@ -729,7 +729,7 @@ const allCommands = [
   // ========== ENGAGEMENT (36 commands) ==========
   {
     "name": "levels",
-    "aliases": [],
+    "aliases": ["lev"],
     "arguments": "[<subcommand> [args]]",
     "description": "Levels/XP system commands",
     "category": "engagement",
@@ -1149,7 +1149,7 @@ const allCommands = [
   // ========== UTILITY (54 commands) ==========
   {
     "name": "afk",
-    "aliases": [],
+    "aliases": ["away"],
     "arguments": "[[message]]",
     "description": "Set your AFK status with an optional message",
     "category": "utility",
@@ -1405,7 +1405,7 @@ const allCommands = [
   },
   {
     "name": "media",
-    "aliases": [],
+    "aliases": ["m"],
     "arguments": "[<caption/quote> [args]]",
     "description": "Media manipulation commands",
     "category": "fun",
@@ -1413,7 +1413,7 @@ const allCommands = [
   },
   {
     "name": "media caption",
-    "aliases": [],
+    "aliases": ["c"],
     "arguments": "[(text) [attach image]]",
     "description": "Add caption to an image",
     "category": "fun",
@@ -1421,7 +1421,7 @@ const allCommands = [
   },
   {
     "name": "media quote",
-    "aliases": [],
+    "aliases": ["q"],
     "arguments": "[[reply to message]]",
     "description": "Create quote card for that message",
     "category": "fun",
@@ -1439,7 +1439,7 @@ const allCommands = [
   // ========== AUTORESPONDER (13 commands) ==========
   {
     "name": "autoresponder",
-    "aliases": [],
+    "aliases": ["ar"],
     "arguments": "[]",
     "description": "Manage autoresponder triggers that send custom messages",
     "category": "autoresponder",
@@ -1949,7 +1949,7 @@ const allCommands = [
   },
   {
     "name": "ttt",
-    "aliases": [],
+    "aliases": ["tictactoe"],
     "arguments": "[@user]",
     "description": "Play tic tac toe with someone",
     "category": "fun",
@@ -1967,7 +1967,7 @@ const allCommands = [
   // ========== VOICE (21 commands) ==========
   {
     "name": "vc",
-    "aliases": [],
+    "aliases": ["vm"],
     "arguments": "[<setup/category/name/bypass/kick/ban/lock> [args]]",
     "description": "VoiceMaster system - temporary voice channels",
     "category": "voice",
@@ -2111,7 +2111,7 @@ const allCommands = [
   },
   {
     "name": "massmute",
-    "aliases": [],
+    "aliases": ["mm"],
     "arguments": "[]",
     "description": "Mute everyone in your current VC except admins/mute_members holders",
     "category": "voice",
@@ -2119,7 +2119,7 @@ const allCommands = [
   },
   {
     "name": "massdeafen",
-    "aliases": [],
+    "aliases": ["md"],
     "arguments": "[]",
     "description": "Deafen everyone in your current VC except admins/mute_members holders",
     "category": "voice",
@@ -2127,7 +2127,7 @@ const allCommands = [
   },
   {
     "name": "d",
-    "aliases": [],
+    "aliases": ["drag"],
     "arguments": "[<@user> <voice channel>]",
     "description": "Move a user from their current VC to a new VC",
     "category": "voice",
@@ -2137,7 +2137,7 @@ const allCommands = [
   // ========== SNIPE (4 commands) ==========
   {
     "name": "s",
-    "aliases": [],
+    "aliases": ["snipe"],
     "arguments": "[[index]]",
     "description": "Display deleted messages from the current channel",
     "category": "snipe",
@@ -2145,7 +2145,7 @@ const allCommands = [
   },
   {
     "name": "es",
-    "aliases": [],
+    "aliases": ["editsnipe"],
     "arguments": "[[index]]",
     "description": "Display edited messages from the current channel",
     "category": "snipe",
@@ -2153,7 +2153,7 @@ const allCommands = [
   },
   {
     "name": "rs",
-    "aliases": [],
+    "aliases": ["reactionsnipe"],
     "arguments": "[[index]]",
     "description": "Display removed reactions from the current channel",
     "category": "snipe",
@@ -2161,7 +2161,7 @@ const allCommands = [
   },
   {
     "name": "cs",
-    "aliases": [],
+    "aliases": ["clearsnipe"],
     "arguments": "[[channel|server]]",
     "description": "Clear snipe data for current channel or entire server",
     "category": "snipe",
