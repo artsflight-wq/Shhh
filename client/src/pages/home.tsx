@@ -1,5 +1,6 @@
 import { Navbar } from "@/components/Navbar";
 import { Hero } from "@/components/Hero";
+import { FeaturedCommandsSection } from "@/components/FeaturedCommandsSection";
 import { NavigationRail } from "@/components/NavigationRail";
 import { ParallaxBackground } from "@/components/ParallaxBackground";
 import { CommandList } from "@/components/CommandList";
@@ -13,6 +14,7 @@ export default function Home() {
       <NavigationRail />
       <main>
         <Hero />
+        <FeaturedCommandsSection />
         <CommandList />
       </main>
       <Footer />

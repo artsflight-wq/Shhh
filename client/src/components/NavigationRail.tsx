@@ -31,6 +31,17 @@ export function NavigationRail() {
   const [scrollProgress, setScrollProgress] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
 
+  // Listen for category changes from CommandList
+  useEffect(() => {
+    const handleCategoryChange = (e: Event) => {
+      const customEvent = e as CustomEvent<{ categoryId: string }>;
+      setActiveCategory(customEvent.detail.categoryId);
+    };
+
+    window.addEventListener('categoryChange', handleCategoryChange);
+    return () => window.removeEventListener('categoryChange', handleCategoryChange);
+  }, []);
+
   useEffect(() => {
     const handleScroll = () => {
       // Show rail after scrolling past hero
@@ -43,24 +54,6 @@ export function NavigationRail() {
       const scrollTop = window.scrollY;
       const progress = (scrollTop / (documentHeight - windowHeight)) * 100;
       setScrollProgress(Math.min(progress, 100));
-
-      // Detect active section
-      const commandsSection = document.getElementById('commands');
-      if (commandsSection) {
-        const categoryButtons = commandsSection.querySelectorAll('[data-testid^="button-category-"]');
-        let foundActive = false;
-        
-        categoryButtons.forEach((button) => {
-          const rect = button.getBoundingClientRect();
-          if (rect.top <= window.innerHeight / 2 && rect.bottom >= 0 && !foundActive) {
-            const categoryId = button.getAttribute('data-testid')?.replace('button-category-', '');
-            if (categoryId) {
-              setActiveCategory(categoryId);
-              foundActive = true;
-            }
-          }
-        });
-      }
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });

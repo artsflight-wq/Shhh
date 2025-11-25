@@ -70,6 +70,30 @@ export function CommandList() {
     queryFn: fetchCategories,
   });
 
+  // Listen for external category change events (from FeaturedCommandsSection and NavigationRail)
+  useEffect(() => {
+    const handleExternalCategoryChange = (e: Event) => {
+      const customEvent = e as CustomEvent<{ categoryId: string; source?: string }>;
+      // Only update if the event came from an external source
+      if (customEvent.detail.source !== 'CommandList') {
+        setActiveCategory(customEvent.detail.categoryId);
+      }
+    };
+
+    window.addEventListener('categoryChange', handleExternalCategoryChange);
+    return () => window.removeEventListener('categoryChange', handleExternalCategoryChange);
+  }, []);
+
+  // Emit custom event when category changes (mark as coming from CommandList)
+  useEffect(() => {
+    if (activeCategory !== null) {
+      const event = new CustomEvent('categoryChange', { 
+        detail: { categoryId: activeCategory, source: 'CommandList' } 
+      });
+      window.dispatchEvent(event);
+    }
+  }, [activeCategory]);
+
   // Set first category ("all") as default once loaded
   useEffect(() => {
     if (categories.length > 0 && activeCategory === null) {
