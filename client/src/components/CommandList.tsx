@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo } from "react";
-import { Search, ChevronRight, Command as CommandIcon, AlertCircle, LayoutGrid, Shield, Info, Gavel, TrendingUp, Gift, HandMetal, Wrench, MessageSquare, Rocket, Ticket, Gamepad2, Mic, Crosshair, Cake, X } from "lucide-react";
+import { Search, ChevronRight, Command as CommandIcon, AlertCircle, LayoutGrid, Shield, Info, Gavel, TrendingUp, Gift, HandMetal, Wrench, MessageSquare, Rocket, Ticket, Gamepad2, Mic, Crosshair, Cake, X, ChevronLeft } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { useQuery } from "@tanstack/react-query";
@@ -60,6 +60,8 @@ export function CommandList() {
   const [expandedCard, setExpandedCard] = useState<string | null>(null);
   const [recentSearches, setRecentSearches] = useState<string[]>([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
+  const [currentPage, setCurrentPage] = useState(0);
+  const COMMANDS_PER_PAGE = 25;
   
   // Debounce search input for performance
   useEffect(() => {
@@ -154,6 +156,18 @@ export function CommandList() {
     });
   }, [commands, debouncedSearch, activeCategory]);
 
+  // Calculate pagination
+  const totalPages = Math.ceil(filteredCommands.length / COMMANDS_PER_PAGE);
+  const paginatedCommands = useMemo(() => {
+    const startIndex = currentPage * COMMANDS_PER_PAGE;
+    return filteredCommands.slice(startIndex, startIndex + COMMANDS_PER_PAGE);
+  }, [filteredCommands, currentPage, COMMANDS_PER_PAGE]);
+
+  // Reset to page 0 when filtering changes
+  useEffect(() => {
+    setCurrentPage(0);
+  }, [debouncedSearch, activeCategory]);
+
   if (error) {
     return (
       <section id="commands" className="py-8 bg-card/30 relative">
@@ -242,7 +256,7 @@ export function CommandList() {
         ) : (
           <>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-6xl mx-auto">
-              {filteredCommands.map((cmd: Command) => {
+              {paginatedCommands.map((cmd: Command) => {
                 return (
                 <div 
                   key={cmd.id}
@@ -375,6 +389,38 @@ export function CommandList() {
                 </div>
               );
             })()}
+
+            {/* Pagination Controls */}
+            {totalPages > 1 && (
+              <div className="flex items-center justify-center gap-4 mt-12 mb-8">
+                <button
+                  onClick={() => setCurrentPage((prev) => Math.max(0, prev - 1))}
+                  disabled={currentPage === 0}
+                  className="group flex items-center gap-2 px-6 py-3 bg-gradient-to-br from-white/10 via-white/5 to-transparent backdrop-blur-xl border border-white/10 rounded-xl transition-all duration-300 hover:from-white/20 hover:via-white/10 hover:to-white/5 hover:border-white/20 hover:scale-105 hover:shadow-[0_8px_24px_-8px_rgba(0,0,0,0.4)] disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:scale-100 disabled:hover:from-white/10 disabled:hover:via-white/5"
+                  data-testid="button-prev-page"
+                >
+                  <ChevronLeft className="w-5 h-5 transition-transform duration-300 group-hover:-translate-x-1" />
+                  <span className="font-medium">Previous</span>
+                </button>
+
+                <div className="flex items-center gap-2 px-6 py-3 bg-gradient-to-br from-primary/20 via-primary/10 to-transparent backdrop-blur-xl border border-primary/20 rounded-xl shadow-[inset_0_1px_0_0_rgba(88,101,242,0.2)]">
+                  <span className="text-sm text-foreground/60">Page</span>
+                  <span className="text-lg font-bold text-primary">{currentPage + 1}</span>
+                  <span className="text-sm text-foreground/60">of</span>
+                  <span className="text-lg font-bold text-primary">{totalPages}</span>
+                </div>
+
+                <button
+                  onClick={() => setCurrentPage((prev) => Math.min(totalPages - 1, prev + 1))}
+                  disabled={currentPage >= totalPages - 1}
+                  className="group flex items-center gap-2 px-6 py-3 bg-gradient-to-br from-white/10 via-white/5 to-transparent backdrop-blur-xl border border-white/10 rounded-xl transition-all duration-300 hover:from-white/20 hover:via-white/10 hover:to-white/5 hover:border-white/20 hover:scale-105 hover:shadow-[0_8px_24px_-8px_rgba(0,0,0,0.4)] disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:scale-100 disabled:hover:from-white/10 disabled:hover:via-white/5"
+                  data-testid="button-next-page"
+                >
+                  <span className="font-medium">Next</span>
+                  <ChevronRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
+                </button>
+              </div>
+            )}
 
             {filteredCommands.length === 0 && (
               <div className="text-center py-20 text-muted-foreground" data-testid="text-no-commands">
