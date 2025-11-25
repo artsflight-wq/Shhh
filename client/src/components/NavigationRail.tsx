@@ -136,7 +136,6 @@ export function NavigationRail() {
                   {/* Tooltip */}
                   <div className="absolute right-full mr-3 top-1/2 -translate-y-1/2 px-3 py-2 bg-black/90 backdrop-blur-xl border border-white/10 rounded-lg text-sm whitespace-nowrap opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity duration-200">
                     <span className="font-medium">{cat.displayName}</span>
-                    <span className="ml-2 text-xs text-muted-foreground">({cat.commandCount})</span>
                   </div>
                 </button>
               );
