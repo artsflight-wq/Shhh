@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Search, ChevronRight, Command as CommandIcon, AlertCircle, LayoutGrid, Shield, Info, Gavel, TrendingUp, Gift, HandMetal, Wrench, MessageSquare, Rocket, Ticket, Gamepad2, Mic, Crosshair, Cake } from "lucide-react";
+import { Search, ChevronRight, Command as CommandIcon, AlertCircle, LayoutGrid, Shield, Info, Gavel, TrendingUp, Gift, HandMetal, Wrench, MessageSquare, Rocket, Ticket, Gamepad2, Mic, Crosshair, Cake, X } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { useQuery } from "@tanstack/react-query";
@@ -100,6 +100,18 @@ export function CommandList() {
       setActiveCategory(categories[0].id);
     }
   }, [categories, activeCategory]);
+
+  // Close modal on ESC key
+  useEffect(() => {
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && expandedCard) {
+        setExpandedCard(null);
+      }
+    };
+
+    window.addEventListener('keydown', handleEscape);
+    return () => window.removeEventListener('keydown', handleEscape);
+  }, [expandedCard]);
 
   const filteredCommands = commands.filter((cmd: Command) => {
     // Enhanced search: trim and split search query into terms
@@ -218,12 +230,11 @@ export function CommandList() {
           <>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-6xl mx-auto">
               {filteredCommands.map((cmd: Command) => {
-                const isExpanded = expandedCard === cmd.id;
                 return (
                 <div 
                   key={cmd.id}
-                  onClick={() => setExpandedCard(isExpanded ? null : cmd.id)}
-                  className={`command-card group relative overflow-hidden p-6 rounded-2xl bg-gradient-to-br from-white/10 via-white/5 to-transparent backdrop-blur-xl border border-white/10 transition-all duration-700 cursor-pointer shadow-[inset_0_1px_0_0_rgba(255,255,255,0.1)] hover:shadow-[inset_0_2px_0_0_rgba(255,255,255,0.3),0_20px_40px_-12px_rgba(0,0,0,0.6)] hover:-translate-y-2 hover:scale-[1.02] hover:border-white/20 after:content-[''] after:absolute after:inset-0 after:bg-[url('/noise.svg')] after:opacity-[0.03] after:pointer-events-none ${isExpanded ? 'md:col-span-2 lg:col-span-3 scale-[1.01]' : ''}`}
+                  onClick={() => setExpandedCard(cmd.id)}
+                  className="command-card group relative overflow-hidden p-6 rounded-2xl bg-gradient-to-br from-white/10 via-white/5 to-transparent backdrop-blur-xl border border-white/10 transition-all duration-700 cursor-pointer shadow-[inset_0_1px_0_0_rgba(255,255,255,0.1)] hover:shadow-[inset_0_2px_0_0_rgba(255,255,255,0.3),0_20px_40px_-12px_rgba(0,0,0,0.6)] hover:-translate-y-2 hover:scale-[1.02] hover:border-white/20 after:content-[''] after:absolute after:inset-0 after:bg-[url('/noise.svg')] after:opacity-[0.03] after:pointer-events-none"
                   data-testid={`card-command-${cmd.id}`}
                 >
                   {/* Glass Reflection Layer */}
@@ -255,47 +266,102 @@ export function CommandList() {
                         {cmd.usage}
                       </code>
                     </div>
+                  </div>
+                </div>
+              );
+              })}
+            </div>
 
-                    {/* Expandable Details */}
-                    {isExpanded && (
-                      <div className="mt-6 pt-6 border-t border-white/10 space-y-4 animate-in fade-in slide-in-from-bottom-2 duration-500">
+            {/* Full Screen Modal */}
+            {expandedCard && (() => {
+              const cmd = filteredCommands.find((c: Command) => c.id === expandedCard);
+              if (!cmd) return null;
+              
+              return (
+                <div 
+                  className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-xl animate-in fade-in duration-300"
+                  onClick={() => setExpandedCard(null)}
+                  data-testid="modal-command-expanded"
+                >
+                  <div 
+                    className="relative w-full max-w-4xl max-h-[90vh] overflow-y-auto bg-gradient-to-br from-white/10 via-white/5 to-transparent backdrop-blur-2xl border border-white/20 rounded-3xl p-8 md:p-12 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.2),0_20px_60px_rgba(0,0,0,0.8)] animate-in zoom-in-95 duration-300"
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    {/* Close Button */}
+                    <button
+                      onClick={() => setExpandedCard(null)}
+                      className="absolute top-6 right-6 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 flex items-center justify-center transition-all duration-300 hover:scale-110"
+                      data-testid="button-close-modal"
+                    >
+                      <X className="w-5 h-5 text-white" />
+                    </button>
+
+                    {/* Content */}
+                    <div className="space-y-8">
+                      <div>
+                        <div className="flex items-center gap-4 mb-4">
+                          <CommandIcon className="w-8 h-8 text-primary" />
+                          <h2 className="font-mono text-primary font-bold text-3xl md:text-4xl" data-testid={`modal-command-name-${cmd.id}`}>
+                            {cmd.name}
+                          </h2>
+                          <Badge variant="outline" className="bg-primary/10 text-primary border-primary/20 text-sm" data-testid={`modal-badge-category-${cmd.id}`}>
+                            {cmd.category}
+                          </Badge>
+                        </div>
+                        <p className="text-foreground/80 text-lg leading-relaxed" data-testid={`modal-description-${cmd.id}`}>
+                          {cmd.description}
+                        </p>
+                      </div>
+
+                      <div className="space-y-6">
+                        <div>
+                          <h3 className="text-white font-semibold text-xl mb-3 flex items-center gap-2">
+                            <ChevronRight className="w-5 h-5 text-primary" />
+                            Usage
+                          </h3>
+                          <code className="text-base font-mono text-muted-foreground bg-black/40 px-4 py-3 rounded-xl block break-words border border-white/10" data-testid={`modal-usage-${cmd.id}`}>
+                            {cmd.usage}
+                          </code>
+                        </div>
+
                         {cmd.arguments && (
                           <div>
-                            <h4 className="text-sm font-semibold text-white mb-2 flex items-center gap-2">
-                              <ChevronRight className="w-4 h-4 text-primary" />
+                            <h3 className="text-white font-semibold text-xl mb-3 flex items-center gap-2">
+                              <ChevronRight className="w-5 h-5 text-primary" />
                               Arguments
-                            </h4>
-                            <code className="text-xs font-mono text-muted-foreground bg-white/5 px-3 py-2 rounded block">
+                            </h3>
+                            <code className="text-base font-mono text-muted-foreground bg-black/40 px-4 py-3 rounded-xl block border border-white/10">
                               {cmd.arguments}
                             </code>
                           </div>
                         )}
+
                         {cmd.aliases && cmd.aliases.length > 0 && (
                           <div>
-                            <h4 className="text-sm font-semibold text-white mb-2 flex items-center gap-2">
-                              <ChevronRight className="w-4 h-4 text-primary" />
+                            <h3 className="text-white font-semibold text-xl mb-3 flex items-center gap-2">
+                              <ChevronRight className="w-5 h-5 text-primary" />
                               Aliases
-                            </h4>
+                            </h3>
                             <div className="flex flex-wrap gap-2">
                               {cmd.aliases.map((alias, idx) => (
-                                <Badge key={idx} variant="secondary" className="bg-white/5 text-muted-foreground">
+                                <Badge key={idx} variant="secondary" className="bg-white/10 text-foreground border border-white/10 text-base px-3 py-1">
                                   {alias}
                                 </Badge>
                               ))}
                             </div>
                           </div>
                         )}
-                        <div className="flex items-center gap-2 text-xs text-muted-foreground/60">
-                          <CommandIcon className="w-3 h-3" />
-                          <span>Click again to collapse</span>
-                        </div>
                       </div>
-                    )}
+
+                      <div className="pt-6 border-t border-white/10 flex items-center gap-2 text-sm text-muted-foreground/60">
+                        <CommandIcon className="w-4 h-4" />
+                        <span>Press ESC or click outside to close</span>
+                      </div>
+                    </div>
                   </div>
                 </div>
               );
-              })}
-            </div>
+            })()}
 
             {filteredCommands.length === 0 && (
               <div className="text-center py-20 text-muted-foreground" data-testid="text-no-commands">
