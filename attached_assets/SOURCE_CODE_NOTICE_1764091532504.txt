@@ -1,0 +1,124 @@
+SOURCE CODE - COMPLETELY PRIVATE
+
+================================================================================
+
+STATUS: Completely Private
+ACCESS: None (Proprietary Code)
+DISTRIBUTION: Restricted
+
+================================================================================
+
+NOTICE
+
+The source code for this Discord Bot is completely private and proprietary.
+
+YOU MAY NOT:
+- View the source code
+- Copy the source code
+- Distribute the source code
+- Modify the source code
+- Create derivative works
+- Reverse engineer or decompile
+- Attempt to access source code
+- Share source code with others
+- Publish source code
+- Use source code for any purpose
+
+================================================================================
+
+LICENSING
+
+This Bot is provided AS A SERVICE only. You receive no license to:
+- Source code
+- Internal documentation
+- Architecture details
+- Implementation specifics
+- Technical details of operation
+- Compiled or runtime artifacts intended for analysis
+
+================================================================================
+
+INTELLECTUAL PROPERTY
+
+All source code, including but not limited to:
+- Python code and scripts
+- Configuration files
+- Data models and schemas
+- API integrations
+- Database queries
+- Algorithms and logic
+- Documentation and comments
+- Design patterns and structure
+
+Are the exclusive intellectual property of the Bot operator.
+
+All rights are reserved. No implicit or explicit licenses are granted.
+
+================================================================================
+
+RESTRICTIONS
+
+You may NOT:
+- Decompile or attempt to reverse engineer
+- Disassemble the Bot
+- Attempt to extract source code
+- Use decompilers, analyzers, or tools to view code
+- Document the internal workings
+- Share implementation details
+- Use reverse-engineered code
+- Create similar bots using extracted code
+- Patent any extracted technology
+
+Violation of these restrictions may result in:
+- Immediate Bot removal
+- Legal action for copyright infringement
+- Claims for damages
+- Injunctive relief
+- Criminal prosecution if applicable
+
+================================================================================
+
+WHY SOURCE CODE IS PRIVATE
+
+Reasons for keeping source code private include:
+- Protection of intellectual property
+- Security of systems and data
+- Prevention of unauthorized modifications
+- Protection of third-party integrations
+- Compliance with Terms of Service
+- Commercial confidentiality
+
+================================================================================
+
+ALTERNATIVE: SELF-HOSTED DEPLOYMENT
+
+If you require a self-hosted solution or open-source alternative:
+- This Bot is not available as self-hosted software
+- This Bot is not open-source
+- Please seek alternative open-source bots
+- See Discord's Bot Developer documentation for creating your own
+
+================================================================================
+
+SECURITY
+
+Attempting to access, reverse engineer, or extract source code is:
+- A violation of these terms
+- Potentially illegal under copyright law
+- Potentially illegal under the DMCA (USA)
+- Potentially illegal under similar laws in other jurisdictions
+- A violation of our property rights
+
+================================================================================
+
+CONTACT
+
+Questions about source code, licensing, or open-sourcing should be directed to:
+- Community moderators
+- Official support channels
+
+Requests for source code access will be denied.
+
+================================================================================
+
+Last Updated: November 25, 2025

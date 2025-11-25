@@ -1,0 +1,102 @@
+TERMS OF SERVICE
+
+Last Updated: November 25, 2025
+
+AGREEMENT TO TERMS
+
+These Terms of Service ("Terms") constitute a legal agreement between you and the Discord Bot ("Bot", "Service", "we", "our", "us") and govern your use of the Bot and all associated features, services, and materials provided through it.
+
+By accessing, installing, or using the Bot, you agree to be bound by these Terms. If you do not agree to abide by the above, please do not use this service.
+
+1. USE LICENSE
+
+Permission is granted to temporarily access and use the Bot for lawful purposes only. You agree not to:
+- Reproduce, duplicate, copy, sell, resell, or exploit any portion of the Bot
+- Attempt to reverse engineer, disassemble, or decompile the Bot
+- Use the Bot for any unlawful purpose or in violation of any laws or regulations
+- Access or search the Bot by any means other than the Bot's publicly supported interfaces
+- Scrape, crawl, or use automated tools to extract data
+- Engage in harassment, threats, defamation, or hate speech
+- Spam, flood, or abuse the Bot's features
+- Attempt to gain unauthorized access to the Bot or its systems
+- Impersonate or misrepresent your identity
+
+2. DISCLAIMER OF WARRANTIES
+
+The Bot is provided on an "AS IS" and "AS AVAILABLE" basis. We make no warranties, expressed or implied, regarding:
+- The Bot's operation or functionality
+- The Bot's uninterrupted or error-free operation
+- The accuracy, reliability, or completeness of any data provided
+- Fitness for a particular purpose
+- Non-infringement of third-party rights
+
+3. LIMITATION OF LIABILITY
+
+In no event shall we be liable for any indirect, incidental, special, consequential, or punitive damages, including but not limited to:
+- Loss of profits, revenue, or data
+- Business interruption
+- Loss of use or goodwill
+- Any damages arising from your use or inability to use the Bot
+
+4. TERMINATION
+
+We reserve the right to terminate or suspend access to the Bot at any time, with or without cause, and with or without notice. Upon termination:
+- Your right to use the Bot immediately ceases
+- All data associated with your account may be permanently deleted
+- All provisions of these Terms survive termination
+
+5. MODIFICATIONS TO THE SERVICE
+
+We reserve the right to modify, suspend, or discontinue the Bot or any features at any time without notice. We may also modify these Terms at any time. Your continued use of the Bot following any changes constitutes your acceptance of the new Terms.
+
+6. USER RESPONSIBILITY
+
+You are responsible for:
+- Maintaining the confidentiality of your account information
+- All activities that occur under your account
+- Complying with all applicable laws and regulations
+- Your use of the Bot and any consequences thereof
+- Any content you create, transmit, or display through the Bot
+
+7. THIRD-PARTY SERVICES
+
+The Bot may integrate with or access third-party services and APIs. We are not responsible for:
+- The availability, functionality, or content of third-party services
+- Any damages or losses resulting from third-party service failures
+- Third-party policies or terms of service
+
+8. INTELLECTUAL PROPERTY
+
+All content, features, and functionality of the Bot, including but not limited to software, design, text, graphics, and interfaces, are the exclusive property of us and our licensors. You grant us a license to use any feedback or suggestions you provide.
+
+9. PROHIBITED CONTENT
+
+The Bot shall not be used to create, transmit, or display:
+- Illegal content or content that promotes illegal activity
+- Hate speech, harassment, or threats
+- Sexually explicit or child abuse material
+- Malware, viruses, or malicious code
+- Content that infringes on intellectual property rights
+- Misinformation or false information with intent to deceive
+
+10. DATA RETENTION
+
+We may retain user data as necessary to provide the Bot and comply with legal obligations. Data may be deleted at our discretion. We are not liable for any loss of data.
+
+11. GOVERNING LAW
+
+These Terms are governed by and construed in accordance with applicable laws, and you irrevocably submit to the exclusive jurisdiction of the courts in that location.
+
+12. SEVERABILITY
+
+If any provision of these Terms is found to be invalid or unenforceable, the remaining provisions shall continue in full force and effect.
+
+13. ENTIRE AGREEMENT
+
+These Terms, along with our Privacy Policy, constitute the entire agreement between you and us regarding the Bot and supersede all prior agreements and understandings.
+
+14. CONTACT
+
+For questions about these Terms of Service, please contact us through Discord or via the official support channels.
+
+By using the Bot, you acknowledge that you have read, understood, and agree to be bound by these Terms of Service.

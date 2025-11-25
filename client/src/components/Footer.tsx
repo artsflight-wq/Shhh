@@ -1,3 +1,5 @@
+import { Link } from 'wouter';
+
 export function Footer() {
   return (
     <footer className="py-16 border-t border-white/5 bg-black/20">
@@ -17,9 +19,10 @@ export function Footer() {
             &copy; 2024 YELL. All rights reserved.
           </div>
           <div className="flex items-center gap-6">
-            <a href="#" className="text-sm text-muted-foreground hover:text-white transition-colors">Terms</a>
-            <a href="#" className="text-sm text-muted-foreground hover:text-white transition-colors">Privacy</a>
-            <a href="#" className="text-sm text-muted-foreground hover:text-white transition-colors">Contact</a>
+            <Link href="/tos">
+              <a className="text-sm text-muted-foreground hover:text-white transition-colors" data-testid="link-footer-tos">Terms & Privacy</a>
+            </Link>
+            <a href="https://discord.gg/yell" className="text-sm text-muted-foreground hover:text-white transition-colors" data-testid="link-footer-contact">Contact</a>
           </div>
         </div>
       </div>
