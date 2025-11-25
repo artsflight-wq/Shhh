@@ -1,4 +1,5 @@
-import { ArrowRight, Sparkles } from "lucide-react";
+import { useState } from "react";
+import { ArrowRight, Sparkles, ChevronLeft, ChevronRight } from "lucide-react";
 import { CATEGORIES, type CategoryMetadata } from "@shared/categoryConfig";
 import {
   Shield,
@@ -29,6 +30,8 @@ const iconMap: Record<string, any> = {
 };
 
 export function FeaturedCommandsSection() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
   const handleViewCategory = (categoryId: string) => {
     const event = new CustomEvent("categoryChange", {
       detail: { categoryId },
@@ -44,6 +47,14 @@ export function FeaturedCommandsSection() {
   const categoriesWithFeatured = CATEGORIES.filter(
     (cat: CategoryMetadata) => cat.featuredCommands && cat.featuredCommands.length > 0
   );
+
+  const handlePrevious = () => {
+    setCurrentIndex((prev) => (prev - 1 + categoriesWithFeatured.length) % categoriesWithFeatured.length);
+  };
+
+  const handleNext = () => {
+    setCurrentIndex((prev) => (prev + 1) % categoriesWithFeatured.length);
+  };
 
   return (
     <section className="relative py-24 px-6 overflow-hidden">
@@ -63,64 +74,112 @@ export function FeaturedCommandsSection() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {categoriesWithFeatured.map((category: CategoryMetadata) => {
-            const Icon = iconMap[category.icon];
+        <div className="relative">
+          {/* Navigation Buttons */}
+          <button
+            onClick={handlePrevious}
+            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 md:-translate-x-12 z-10 w-12 h-12 rounded-full bg-gradient-to-br from-white/10 via-white/5 to-transparent backdrop-blur-xl border border-white/20 flex items-center justify-center text-white hover:border-primary/40 hover:bg-primary/10 transition-all duration-300 shadow-lg group"
+            data-testid="button-carousel-previous"
+            aria-label="Previous category"
+          >
+            <ChevronLeft className="w-6 h-6 group-hover:-translate-x-0.5 transition-transform" />
+          </button>
 
-            return (
-              <div
-                key={category.id}
-                className="group relative bg-gradient-to-br from-white/[0.07] via-white/[0.03] to-transparent backdrop-blur-2xl border border-white/10 rounded-2xl p-6 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.1)] hover:border-primary/30 transition-all duration-300 hover:shadow-[0_0_30px_rgba(88,101,242,0.15)] overflow-hidden"
-                data-testid={`card-featured-category-${category.id}`}
-              >
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+          <button
+            onClick={handleNext}
+            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 md:translate-x-12 z-10 w-12 h-12 rounded-full bg-gradient-to-br from-white/10 via-white/5 to-transparent backdrop-blur-xl border border-white/20 flex items-center justify-center text-white hover:border-primary/40 hover:bg-primary/10 transition-all duration-300 shadow-lg group"
+            data-testid="button-carousel-next"
+            aria-label="Next category"
+          >
+            <ChevronRight className="w-6 h-6 group-hover:translate-x-0.5 transition-transform" />
+          </button>
 
-                <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+          {/* Carousel Container */}
+          <div className="overflow-hidden">
+            <div
+              className="flex transition-transform duration-500 ease-out"
+              style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+            >
+              {categoriesWithFeatured.map((category: CategoryMetadata) => {
+                const Icon = iconMap[category.icon];
 
-                <div className="relative">
-                  <div className="flex items-center gap-3 mb-4">
-                    {Icon && (
-                      <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center border border-primary/20 group-hover:scale-110 transition-transform duration-300">
-                        <Icon className="w-5 h-5 text-primary" />
-                      </div>
-                    )}
-                    <h3 className="text-xl font-semibold text-white">
-                      {category.displayName}
-                    </h3>
-                  </div>
-
-                  <div className="space-y-3 mb-5">
-                    {category.featuredCommands?.map((cmd, idx) => (
-                      <div
-                        key={idx}
-                        className="flex items-start gap-2 text-sm group/cmd"
-                        data-testid={`item-featured-command-${cmd.name}`}
-                      >
-                        <div className="mt-1 w-1.5 h-1.5 rounded-full bg-primary/60 group-hover/cmd:bg-primary transition-colors flex-shrink-0" />
-                        <div>
-                          <code className="text-primary font-semibold">
-                            {cmd.name}
-                          </code>
-                          <p className="text-muted-foreground mt-0.5">
-                            {cmd.description}
-                          </p>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-
-                  <button
-                    onClick={() => handleViewCategory(category.id)}
-                    className="group/btn flex items-center gap-2 text-sm font-medium text-primary hover:text-primary/80 transition-colors"
-                    data-testid={`button-view-category-${category.id}`}
+                return (
+                  <div
+                    key={category.id}
+                    className="w-full flex-shrink-0 px-2"
                   >
-                    View all commands
-                    <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
-                  </button>
-                </div>
-              </div>
-            );
-          })}
+                    <div
+                      className="group relative bg-gradient-to-br from-white/[0.07] via-white/[0.03] to-transparent backdrop-blur-2xl border border-white/10 rounded-2xl p-8 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.1)] hover:border-primary/30 transition-all duration-300 hover:shadow-[0_0_30px_rgba(88,101,242,0.15)] overflow-hidden max-w-2xl mx-auto"
+                      data-testid={`card-featured-category-${category.id}`}
+                    >
+                      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+
+                      <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+
+                      <div className="relative">
+                        <div className="flex items-center gap-4 mb-6">
+                          {Icon && (
+                            <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center border border-primary/20 group-hover:scale-110 transition-transform duration-300">
+                              <Icon className="w-7 h-7 text-primary" />
+                            </div>
+                          )}
+                          <h3 className="text-2xl md:text-3xl font-semibold text-white">
+                            {category.displayName}
+                          </h3>
+                        </div>
+
+                        <div className="space-y-4 mb-6">
+                          {category.featuredCommands?.map((cmd, idx) => (
+                            <div
+                              key={idx}
+                              className="flex items-start gap-3 text-base group/cmd"
+                              data-testid={`item-featured-command-${cmd.name}`}
+                            >
+                              <div className="mt-1.5 w-2 h-2 rounded-full bg-primary/60 group-hover/cmd:bg-primary transition-colors flex-shrink-0" />
+                              <div>
+                                <code className="text-primary font-semibold text-lg">
+                                  {cmd.name}
+                                </code>
+                                <p className="text-muted-foreground mt-1">
+                                  {cmd.description}
+                                </p>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+
+                        <button
+                          onClick={() => handleViewCategory(category.id)}
+                          className="group/btn flex items-center gap-2 text-base font-medium text-primary hover:text-primary/80 transition-colors"
+                          data-testid={`button-view-category-${category.id}`}
+                        >
+                          View all commands
+                          <ArrowRight className="w-5 h-5 group-hover/btn:translate-x-1 transition-transform" />
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Slide Indicators */}
+          <div className="flex justify-center gap-2 mt-8">
+            {categoriesWithFeatured.map((_, idx) => (
+              <button
+                key={idx}
+                onClick={() => setCurrentIndex(idx)}
+                className={`h-2 rounded-full transition-all duration-300 ${
+                  idx === currentIndex
+                    ? "w-8 bg-primary"
+                    : "w-2 bg-white/20 hover:bg-white/40"
+                }`}
+                data-testid={`indicator-slide-${idx}`}
+                aria-label={`Go to slide ${idx + 1}`}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </section>
