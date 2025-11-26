@@ -188,13 +188,13 @@ export function CommandList() {
       <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-gradient-to-br from-primary/5 to-transparent rounded-full blur-3xl opacity-30 pointer-events-none" />
       
       <div className="container mx-auto px-6 relative z-10">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4">System Commands</h2>
+        <div className="text-center mb-8 md:mb-12">
+          <h2 className="text-3xl md:text-4xl font-heading font-bold mb-3">System Commands</h2>
           <p className="text-muted-foreground">Explore the full capabilities of Yell.</p>
         </div>
 
         {/* Glass Divider */}
-        <div className="h-px w-full bg-gradient-to-r from-transparent via-white/20 to-transparent mb-12" />
+        <div className="h-px w-full bg-gradient-to-r from-transparent via-white/20 to-transparent mb-8" />
 
         {/* Search and Filter */}
         <div className="max-w-4xl mx-auto mb-6 space-y-6">
@@ -392,7 +392,7 @@ export function CommandList() {
 
             {/* Pagination Controls */}
             {totalPages > 1 && (
-              <div className="flex items-center justify-center gap-2 sm:gap-4 mt-12 mb-8">
+              <div className="flex items-center justify-center gap-2 sm:gap-4 mt-8 mb-6">
                 <button
                   onClick={() => setCurrentPage((prev) => Math.max(0, prev - 1))}
                   disabled={currentPage === 0}
