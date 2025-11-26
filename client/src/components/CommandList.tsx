@@ -392,7 +392,7 @@ export function CommandList() {
 
             {/* Pagination Controls */}
             {totalPages > 1 && (
-              <div className="max-w-4xl mx-auto px-6 py-10 md:py-12">
+              <div className="max-w-4xl mx-auto px-6 pt-8 pb-4 md:pt-10 md:pb-6">
                 <div className="flex items-center justify-center gap-3 sm:gap-4">
                   <button
                     onClick={() => setCurrentPage((prev) => Math.max(0, prev - 1))}
