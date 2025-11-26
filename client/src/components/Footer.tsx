@@ -1,5 +1,5 @@
 import { Link } from 'wouter';
-import { MessageCircle } from 'lucide-react';
+import { MessageCircle, FileText, Mail } from 'lucide-react';
 
 export function Footer() {
   return (
@@ -21,13 +21,19 @@ export function Footer() {
           </div>
           <div className="flex items-center gap-6">
             <Link href="/tos">
-              <span className="text-sm text-muted-foreground hover:text-white transition-colors cursor-pointer" data-testid="link-footer-tos">Terms & Privacy</span>
+              <span className="flex items-center gap-1.5 text-sm text-muted-foreground hover:text-white transition-colors cursor-pointer" data-testid="link-footer-tos">
+                <FileText className="w-4 h-4" />
+                Terms & Privacy
+              </span>
             </Link>
             <a href="https://discord.gg/while" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 text-sm text-muted-foreground hover:text-white transition-colors" data-testid="link-footer-discord">
               <MessageCircle className="w-4 h-4" />
               Discord
             </a>
-            <a href="mailto:reach@yell.rest" className="text-sm text-muted-foreground hover:text-white transition-colors" data-testid="link-footer-contact">Contact</a>
+            <a href="mailto:reach@yell.rest" className="flex items-center gap-1.5 text-sm text-muted-foreground hover:text-white transition-colors" data-testid="link-footer-contact">
+              <Mail className="w-4 h-4" />
+              Contact
+            </a>
           </div>
         </div>
       </div>

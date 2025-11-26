@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "wouter";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import logoUrl from "@assets/generated_images/a_minimal_abstract_sound_wave_icon_in_blue.png";
 
@@ -16,9 +16,12 @@ export function Navbar() {
         </Link>
 
         {/* CTA - Always visible */}
-        <Button className="rounded-full px-6 bg-primary hover:bg-primary/90 text-white shadow-[0_0_20px_-5px_hsl(var(--primary))]">
-          Contact Us
-        </Button>
+        <a href="mailto:reach@yell.rest">
+          <Button className="rounded-full px-6 bg-primary hover:bg-primary/90 text-white shadow-[0_0_20px_-5px_hsl(var(--primary))] flex items-center gap-2" data-testid="button-contact-header">
+            <Mail className="w-4 h-4" />
+            Contact Us
+          </Button>
+        </a>
       </div>
     </nav>
   );
