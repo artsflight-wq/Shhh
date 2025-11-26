@@ -10,7 +10,7 @@ export function Hero() {
     },
     {
       title: "Capable",
-      description: "300+ Commands",
+      description: "250+ Commands",
       icon: Terminal
     },
     {
