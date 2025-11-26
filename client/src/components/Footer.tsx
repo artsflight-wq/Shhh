@@ -2,11 +2,11 @@ import { Link } from 'wouter';
 
 export function Footer() {
   return (
-    <footer className="py-8 md:py-12 border-t border-white/5 bg-black/20">
-      <div className="container mx-auto px-6">
+    <footer className="py-10 md:py-12 border-t border-white/5 bg-black/20">
+      <div className="max-w-4xl mx-auto px-6">
         {/* Cool Typography */}
-        <div className="text-center mb-6 md:mb-8">
-          <h2 className="text-5xl md:text-6xl font-heading font-bold tracking-tighter select-none drop-shadow-[0_0_20px_rgba(59,130,246,0.4)]">
+        <div className="text-center mb-8 md:mb-10">
+          <h2 className="text-[clamp(3.5rem,10vw,7rem)] font-heading font-bold tracking-tighter select-none drop-shadow-[0_0_20px_rgba(59,130,246,0.4)]">
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-blue-300 to-blue-500">
               YELL
             </span>
