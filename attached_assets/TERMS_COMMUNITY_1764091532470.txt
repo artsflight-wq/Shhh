@@ -1,0 +1,421 @@
+TERMS OF SERVICE - COMMUNITY PARTICIPATION
+
+Last Updated: November 25, 2025
+
+STATUS: Public Community Spaces
+ACCESS: Open to all Discord users
+SCOPE: Terms for our public community Discord server and social spaces
+
+Based on and adapted from Discord's Terms of Service
+
+================================================================================
+
+IMPORTANT NOTE: This section governs your participation in our public community 
+Discord server and other public social media spaces. Separate terms apply to 
+Bot Usage. By joining our community, you accept these terms in their entirety.
+
+================================================================================
+
+1. WHO WE ARE
+
+We are a Discord community. When we say "we," "us," "our," we mean the community 
+operators and administrators managing our public Discord server and social spaces.
+
+When we say "services" or "community," we mean our public Discord server, associated 
+channels, social media presence, forums, and publicly accessible spaces.
+
+When we say "you" or "your," we mean any individual participating in our community.
+
+================================================================================
+
+2. AGE REQUIREMENTS AND PARENTAL RESPONSIBILITY
+
+2.1 MINIMUM AGE
+By participating in our community, you confirm that:
+- You are at least 13 years old
+- You meet the minimum age required by laws in your country
+- If under 18, you have parental/guardian consent to participate
+
+2.2 PARENTAL RESPONSIBILITY
+Parents and legal guardians of users under 18:
+- Are responsible for monitoring community participation
+- May request content removal involving their child
+- Should review our Community Guidelines
+- Can report concerning behavior to community moderators
+
+2.3 AGE VERIFICATION
+We reserve the right to:
+- Request age verification
+- Restrict access to age-gated content
+- Remove underage users from adult-oriented channels
+- Remove users who misrepresent their age
+
+================================================================================
+
+3. COMMUNITY FEATURES AND EXPECTATIONS
+
+3.1 HOW OUR COMMUNITY WORKS
+Our community is built on Discord's infrastructure. Members:
+- Join through invite links or public discovery
+- Participate in text channels, voice channels, and forums
+- Share content via messages, media, links, and reactions
+- Communicate through direct messages with other members
+- Access pinned messages and community resources
+
+3.2 CHANNEL ORGANIZATION
+Our community is organized by:
+- Topic-specific channels for different discussions
+- Voice channels for real-time communication
+- Role-based permissions for access and participation
+- Moderation guidelines enforced by administrators
+- Public and private spaces as determined by administrators
+
+3.3 COMMUNITY CULTURE
+We strive to maintain a community that is:
+- Welcoming and inclusive
+- Respectful of all members
+- Free from harassment and discrimination
+- Safe for all age groups (subject to restrictions)
+- Focused on meaningful connections
+
+3.4 ADMINISTRATORS AND MODERATORS
+Community administrators and moderators:
+- Enforce community guidelines and rules
+- May remove members or content that violates rules
+- Make decisions about channel access and permissions
+- Are not liable for their enforcement decisions
+- May deny participation to users at their discretion
+
+================================================================================
+
+4. YOUR COMMUNITY ACCOUNT
+
+4.1 ACCOUNT REQUIREMENTS
+To participate, you must:
+- Have a valid Discord account
+- Provide accurate information
+- Maintain account security
+- Notify moderators of unauthorized access
+- Accept member verification requirements if requested
+
+4.2 YOUR RESPONSIBILITY
+You are responsible for:
+- All activity under your account
+- The security of your account credentials
+- Accurate information associated with your account
+- Compliance with community rules
+- Content you create and share
+
+4.3 ACCOUNT TERMINATION
+We may remove your account if:
+- These terms are violated
+- Community guidelines are violated
+- You engage in harmful behavior
+- You pose a risk to community safety
+- Applicable laws are violated
+
+================================================================================
+
+5. CONTENT IN OUR COMMUNITY
+
+5.1 YOUR CONTENT
+"Your content" includes:
+- Text messages and posts
+- Images, videos, and media
+- Links and documents
+- Voice messages and recordings
+- Reactions and emoji
+- Any other material you share
+
+5.2 YOUR RIGHTS AND RESPONSIBILITIES
+When you share content:
+- You represent that you have the right to share it
+- You grant us a license to use it as necessary for community operations
+- You are responsible for ensuring legality
+- You may not infringe on others' rights
+- You remain responsible for your content
+
+5.3 CONTENT REMOVAL
+We may remove content that:
+- Violates these terms or community guidelines
+- Is illegal or promotes illegal activity
+- Infringes on intellectual property rights
+- Is defamatory, harassing, or threatening
+- Contains graphic violence or CSAM
+- Is spam or advertising
+- Violates Discord's policies
+- Creates risk for community members
+
+5.4 THIRD-PARTY CONTENT
+We are not responsible for:
+- Third-party content shared by members
+- Accuracy or legality of member content
+- Content that violates rights
+- Actions of other community members
+
+5.5 PUBLIC VS. PRIVATE CONTENT
+- Content in public channels is accessible to all members
+- Private channels have restricted access
+- Archive and search may make content retrievable long-term
+- Deleted content may persist in backups temporarily
+
+================================================================================
+
+6. COMMUNITY RULES AND CONDUCT
+
+6.1 RESPECT EACH OTHER
+Members must not:
+- Engage in harassment, bullying, or intimidation
+- Make threats against individuals or groups
+- Share personally identifiable information without consent
+- Use hate speech or hateful conduct
+- Engage in discrimination
+- Create sexually explicit content involving minors
+- Share non-consensual intimate media
+- Glorify or promote self-harm or suicide
+- Share graphic violence or animal cruelty
+
+6.2 RESPECT THE COMMUNITY
+Members must not:
+- Spam or flood channels
+- Impersonate others or create fake profiles
+- Engage in fraud or scams
+- Share misinformation or false information
+- Manipulate community metrics or engagement
+- Evade bans or suspensions
+- Sell or trade community roles or permissions
+- Engage in phishing or security breaches
+- Distribute malware or malicious code
+
+6.3 FOLLOW APPLICABLE LAWS
+Members must comply with all applicable laws, including:
+- Laws against harassment and threats
+- Laws protecting minors
+- Laws against fraud and scams
+- Intellectual property laws
+- Laws prohibiting illegal goods or services
+- Laws against discrimination
+
+================================================================================
+
+7. ENFORCEMENT AND MODERATION
+
+7.1 VIOLATION REPORTING
+If you observe violations:
+- Report to community moderators
+- Do not take action yourself
+- Provide clear descriptions and evidence
+- Be truthful in reports
+- Do not abuse the report system
+
+7.2 ENFORCEMENT ACTIONS
+For violations, we may:
+- Issue warnings or cautions
+- Temporarily suspend account access
+- Permanently remove accounts
+- Delete problematic content
+- Report illegal activity to authorities
+- Take combination approaches based on severity
+
+7.3 APPEALS
+Users may appeal enforcement actions by:
+- Contacting moderators through DM
+- Providing explanation of circumstances
+- Demonstrating understanding of violations
+- Committing to compliance going forward
+- Understanding appeals are not guaranteed to succeed
+
+7.4 ZERO TOLERANCE
+Some violations result in immediate permanent removal:
+- Child sexual abuse material
+- Serious threats or violence
+- Illegal activity
+- Multiple policy violations
+
+================================================================================
+
+8. INTELLECTUAL PROPERTY
+
+8.1 COMMUNITY CONTENT
+Our community materials (rules, guides, designs, etc.) are our property. 
+You may not reproduce or distribute without permission.
+
+8.2 MEMBER CONTENT
+Your content remains your property, but you grant us a license to:
+- Use it in community operations
+- Archive and backup data
+- Display in community contexts
+- Use for safety and enforcement purposes
+
+8.3 THIRD-PARTY CONTENT
+Members must not share:
+- Copyrighted works without permission
+- Trademarked materials improperly
+- Patented technologies without rights
+- Content owned by others
+- Copyrighted software or pirated media
+
+================================================================================
+
+9. WARRANTIES AND DISCLAIMERS
+
+9.1 "AS IS" BASIS
+Our community is provided on an "AS IS" basis.
+
+9.2 NO WARRANTIES
+We make no warranties regarding:
+- Availability or uptime of community
+- Accuracy of member content
+- Safety of community spaces
+- Suitability for any purpose
+- Security of your data
+
+9.3 YOUR RISK
+You participate at your own risk:
+- You assume responsibility for your online safety
+- You assume responsibility for content you encounter
+- You assume responsibility for interactions with members
+- You are responsible for protecting your account
+
+================================================================================
+
+10. LIMITATION OF LIABILITY
+
+10.1 NO LIABILITY
+We are not liable for:
+- Loss of data or content
+- Community downtime or unavailability
+- Member conduct or interactions
+- Content shared by members
+- Third-party actions
+- Emotional or psychological harm
+- Any indirect or consequential damages
+
+10.2 LIABILITY CAP
+Our total liability is limited to $0 USD (community typically provided free).
+
+================================================================================
+
+11. TERM AND TERMINATION
+
+11.1 PARTICIPATION TERM
+You may participate as long as you comply with terms and guidelines.
+
+11.2 YOUR TERMINATION
+You may leave at any time by leaving the Discord server.
+
+11.3 OUR TERMINATION RIGHTS
+We may remove you at any time for:
+- Violation of these terms
+- Violation of community guidelines
+- Behavior harmful to community
+- Discord's Terms of Service violations
+- Any reason at moderator discretion
+
+11.4 EFFECTS OF TERMINATION
+Upon removal:
+- Your access ceases immediately
+- Message history may be retained
+- Backup data may persist temporarily
+- You may be re-invited at moderator discretion
+
+================================================================================
+
+12. MODIFICATIONS
+
+12.1 RULE CHANGES
+We may modify community rules and terms at any time.
+Changes are effective immediately upon posting.
+
+12.2 NOTICE
+For significant changes affecting community access or conduct, 
+we will announce changes in a designated channel.
+
+12.3 ACCEPTANCE
+Continued participation after changes constitutes acceptance.
+
+================================================================================
+
+13. COMMUNITY GUIDELINES
+
+These terms are incorporated with and supplemented by our Community Guidelines 
+(docs/COMMUNITY_GUIDELINES.txt), which provide detailed conduct expectations.
+
+All Community Guidelines are binding and enforceable as part of these terms.
+
+================================================================================
+
+14. PRIVACY
+
+Your participation is subject to our Privacy Policy (docs/PRIVACY_POLICY.txt).
+
+We collect:
+- Discord user information
+- Participation data
+- Content metadata
+- IP addresses
+- Communication patterns
+
+Data is used for community operations, safety, and improvements.
+
+================================================================================
+
+15. THIRD-PARTY SERVICES
+
+Our community operates on Discord's platform. Your participation is also 
+subject to:
+- Discord's Terms of Service
+- Discord's Community Guidelines
+- Discord's Privacy Policy
+
+We are not responsible for Discord's policies or operations.
+
+================================================================================
+
+16. DISPUTES AND GOVERNING LAW
+
+16.1 GOOD FAITH RESOLUTION
+Disputes should be resolved through discussion with moderators first.
+
+16.2 GOVERNING LAW
+These terms are governed by applicable law.
+
+16.3 FINAL DECISION
+Community administrators have final authority over:
+- Interpretation of rules
+- Enforcement decisions
+- Appeal outcomes
+- Community policy
+
+================================================================================
+
+17. ADDITIONAL POLICIES
+
+Our community is governed by:
+- These Terms of Service
+- Community Guidelines (docs/COMMUNITY_GUIDELINES.txt)
+- Privacy Policy (docs/PRIVACY_POLICY.txt)
+- Discord's Terms of Service
+- Discord's Community Guidelines
+
+All are incorporated by reference and are binding.
+
+================================================================================
+
+ACKNOWLEDGMENT
+
+By joining and participating in our community, you:
+- Have read and understood these terms
+- Accept all terms and conditions
+- Agree to comply with community guidelines
+- Consent to community rules and enforcement
+- Accept potential removal for violations
+
+Violations may result in immediate removal and ban from the community.
+
+================================================================================
+
+For questions or concerns about community participation, contact moderators 
+through Discord channels or direct messages.
+
+Last Updated: November 25, 2025
