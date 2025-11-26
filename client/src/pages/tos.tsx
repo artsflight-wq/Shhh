@@ -393,7 +393,7 @@ export default function ToS() {
                 >
                   <div className="flex items-center gap-2 justify-center">
                     <FileText className="w-5 h-5 text-primary" />
-                    <span className="text-white font-semibold">Discord Terms of Service</span>
+                    <span className="text-white font-semibold">Terms of Service</span>
                   </div>
                 </a>
                 <a 
@@ -405,7 +405,7 @@ export default function ToS() {
                 >
                   <div className="flex items-center gap-2 justify-center">
                     <Shield className="w-5 h-5 text-primary" />
-                    <span className="text-white font-semibold">Discord Community Guidelines</span>
+                    <span className="text-white font-semibold">Community Guidelines</span>
                   </div>
                 </a>
               </div>
