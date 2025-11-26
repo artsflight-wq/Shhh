@@ -69,6 +69,9 @@ export function Hero() {
                 View Commands
               </Button>
             </a>
+            <Button size="lg" variant="outline" className="h-12 px-8 rounded-full border-white/10 bg-white/5 hover:bg-white/10 hover:text-white text-muted-foreground backdrop-blur-sm" disabled>
+              Restricted Access <Lock className="ml-2 w-4 h-4" />
+            </Button>
           </div>
 
           {/* Feature Grid */}

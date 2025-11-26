@@ -188,13 +188,13 @@ export function CommandList() {
       <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-gradient-to-br from-primary/5 to-transparent rounded-full blur-3xl opacity-30 pointer-events-none" />
       
       <div className="container mx-auto px-6 relative z-10">
-        <div className="text-center mb-8 md:mb-12">
-          <h2 className="text-3xl md:text-4xl font-heading font-bold mb-3">System Commands</h2>
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4">System Commands</h2>
           <p className="text-muted-foreground">Explore the full capabilities of Yell.</p>
         </div>
 
         {/* Glass Divider */}
-        <div className="h-px w-full bg-gradient-to-r from-transparent via-white/20 to-transparent mb-8" />
+        <div className="h-px w-full bg-gradient-to-r from-transparent via-white/20 to-transparent mb-12" />
 
         {/* Search and Filter */}
         <div className="max-w-4xl mx-auto mb-6 space-y-6">
@@ -392,35 +392,33 @@ export function CommandList() {
 
             {/* Pagination Controls */}
             {totalPages > 1 && (
-              <div className="max-w-4xl mx-auto px-4 pt-4 pb-2 sm:px-6 sm:pt-8 sm:pb-4 md:pt-10 md:pb-6">
-                <div className="flex items-center justify-center gap-2 sm:gap-3 md:gap-4">
-                  <button
-                    onClick={() => setCurrentPage((prev) => Math.max(0, prev - 1))}
-                    disabled={currentPage === 0}
-                    className="group flex items-center gap-1 sm:gap-2 px-3 py-2 sm:px-6 sm:py-3 bg-gradient-to-br from-white/10 via-white/5 to-transparent backdrop-blur-xl border border-white/10 rounded-xl transition-all duration-300 hover:from-white/20 hover:via-white/10 hover:to-white/5 hover:border-white/20 hover:scale-105 hover:shadow-[0_8px_24px_-8px_rgba(0,0,0,0.4)] disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:scale-100 disabled:hover:from-white/10 disabled:hover:via-white/5"
-                    data-testid="button-prev-page"
-                  >
-                    <ChevronLeft className="w-5 h-5 transition-transform duration-300 group-hover:-translate-x-1" />
-                    <span className="font-medium text-sm sm:text-base hidden xs:inline">Previous</span>
-                  </button>
+              <div className="flex items-center justify-center gap-2 sm:gap-4 mt-12 mb-8">
+                <button
+                  onClick={() => setCurrentPage((prev) => Math.max(0, prev - 1))}
+                  disabled={currentPage === 0}
+                  className="group flex items-center gap-1 sm:gap-2 px-3 py-2 sm:px-6 sm:py-3 bg-gradient-to-br from-white/10 via-white/5 to-transparent backdrop-blur-xl border border-white/10 rounded-xl transition-all duration-300 hover:from-white/20 hover:via-white/10 hover:to-white/5 hover:border-white/20 hover:scale-105 hover:shadow-[0_8px_24px_-8px_rgba(0,0,0,0.4)] disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:scale-100 disabled:hover:from-white/10 disabled:hover:via-white/5"
+                  data-testid="button-prev-page"
+                >
+                  <ChevronLeft className="w-5 h-5 transition-transform duration-300 group-hover:-translate-x-1" />
+                  <span className="font-medium text-sm sm:text-base hidden xs:inline">Previous</span>
+                </button>
 
-                  <div className="flex items-center gap-1.5 sm:gap-2 px-4 py-2 sm:px-6 sm:py-3 bg-gradient-to-br from-primary/20 via-primary/10 to-transparent backdrop-blur-xl border border-primary/20 rounded-xl shadow-[inset_0_1px_0_0_rgba(88,101,242,0.2)]">
-                    <span className="text-xs sm:text-sm text-foreground/60 hidden sm:inline">Page</span>
-                    <span className="text-lg sm:text-xl font-bold text-primary">{currentPage + 1}</span>
-                    <span className="text-sm sm:text-base text-foreground/60">/</span>
-                    <span className="text-lg sm:text-xl font-bold text-primary">{totalPages}</span>
-                  </div>
-
-                  <button
-                    onClick={() => setCurrentPage((prev) => Math.min(totalPages - 1, prev + 1))}
-                    disabled={currentPage >= totalPages - 1}
-                    className="group flex items-center gap-1 sm:gap-2 px-3 py-2 sm:px-6 sm:py-3 bg-gradient-to-br from-white/10 via-white/5 to-transparent backdrop-blur-xl border border-white/10 rounded-xl transition-all duration-300 hover:from-white/20 hover:via-white/10 hover:to-white/5 hover:border-white/20 hover:scale-105 hover:shadow-[0_8px_24px_-8px_rgba(0,0,0,0.4)] disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:scale-100 disabled:hover:from-white/10 disabled:hover:via-white/5"
-                    data-testid="button-next-page"
-                  >
-                    <span className="font-medium text-sm sm:text-base hidden xs:inline">Next</span>
-                    <ChevronRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
-                  </button>
+                <div className="flex items-center gap-1.5 sm:gap-2 px-3 py-2 sm:px-6 sm:py-3 bg-gradient-to-br from-primary/20 via-primary/10 to-transparent backdrop-blur-xl border border-primary/20 rounded-xl shadow-[inset_0_1px_0_0_rgba(88,101,242,0.2)]">
+                  <span className="text-xs sm:text-sm text-foreground/60 hidden sm:inline">Page</span>
+                  <span className="text-base sm:text-lg font-bold text-primary">{currentPage + 1}</span>
+                  <span className="text-xs sm:text-sm text-foreground/60">/</span>
+                  <span className="text-base sm:text-lg font-bold text-primary">{totalPages}</span>
                 </div>
+
+                <button
+                  onClick={() => setCurrentPage((prev) => Math.min(totalPages - 1, prev + 1))}
+                  disabled={currentPage >= totalPages - 1}
+                  className="group flex items-center gap-1 sm:gap-2 px-3 py-2 sm:px-6 sm:py-3 bg-gradient-to-br from-white/10 via-white/5 to-transparent backdrop-blur-xl border border-white/10 rounded-xl transition-all duration-300 hover:from-white/20 hover:via-white/10 hover:to-white/5 hover:border-white/20 hover:scale-105 hover:shadow-[0_8px_24px_-8px_rgba(0,0,0,0.4)] disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:scale-100 disabled:hover:from-white/10 disabled:hover:via-white/5"
+                  data-testid="button-next-page"
+                >
+                  <span className="font-medium text-sm sm:text-base hidden xs:inline">Next</span>
+                  <ChevronRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
+                </button>
               </div>
             )}
 
