@@ -375,7 +375,7 @@ export default function ToS() {
         </section>
 
         {/* Footer Notice */}
-        <div className="text-center border-t border-white/10 pt-8 space-y-8">
+        <div className="text-center border-t border-white/10 pt-8 space-y-3">
           <p className="text-muted-foreground text-sm">By using the Bot or participating in our community, you acknowledge that you have read, understood, and agree to these Terms of Service, Privacy Policy, and Community Guidelines.</p>
           
           {/* Prominent Discord Links */}
