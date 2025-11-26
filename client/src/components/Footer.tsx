@@ -6,7 +6,7 @@ export function Footer() {
       <div className="container mx-auto px-6">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="text-sm text-muted-foreground">
-            &copy; 2024 YELL. All rights reserved.
+            &copy; 2025 FLIGHT MEDIA / ZETRO. All rights reserved.
           </div>
           <div className="flex items-center gap-6">
             <Link href="/tos">
