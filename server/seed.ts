@@ -107,6 +107,30 @@ const allCommands = [
     "usage": ",filter spam [<on|off>]"
   },
   {
+    "name": "filter setup",
+    "aliases": [],
+    "arguments": "[]",
+    "description": "Creates a Discord AutoMod rule named 'Custom Keywords'",
+    "category": "security",
+    "usage": ",filter setup"
+  },
+  {
+    "name": "filter add",
+    "aliases": [],
+    "arguments": "[content]",
+    "description": "Adds keywords (comma-separated)",
+    "category": "security",
+    "usage": ",filter add [content]"
+  },
+  {
+    "name": "filter remove",
+    "aliases": [],
+    "arguments": "[content]",
+    "description": "Removes keywords (comma-separated)",
+    "category": "security",
+    "usage": ",filter remove [content]"
+  },
+  {
     "name": "panick",
     "aliases": ["panic", "lockdown"],
     "arguments": "[<on/off> [reason]]",
