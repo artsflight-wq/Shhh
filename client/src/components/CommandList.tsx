@@ -392,8 +392,8 @@ export function CommandList() {
 
             {/* Pagination Controls */}
             {totalPages > 1 && (
-              <div className="max-w-4xl mx-auto px-6 pt-8 pb-4 md:pt-10 md:pb-6">
-                <div className="flex items-center justify-center gap-3 sm:gap-4">
+              <div className="max-w-4xl mx-auto px-4 pt-4 pb-2 sm:px-6 sm:pt-8 sm:pb-4 md:pt-10 md:pb-6">
+                <div className="flex items-center justify-center gap-2 sm:gap-3 md:gap-4">
                   <button
                     onClick={() => setCurrentPage((prev) => Math.max(0, prev - 1))}
                     disabled={currentPage === 0}
