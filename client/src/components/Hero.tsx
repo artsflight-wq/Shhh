@@ -50,7 +50,7 @@ export function Hero() {
               <span className="text-xs font-medium text-muted-foreground tracking-wide uppercase">System Operational</span>
             </div>
             
-            <h1 className="text-8xl md:text-[10rem] lg:text-[16rem] leading-[0.8] font-heading font-bold tracking-tighter mb-4 animate-in fade-in slide-in-from-bottom-6 duration-700 delay-100 select-none drop-shadow-[0_0_30px_rgba(255,255,255,0.3)]">
+            <h1 className="shimmer text-8xl md:text-[10rem] lg:text-[16rem] leading-[0.8] font-heading font-bold tracking-tighter mb-4 animate-in fade-in slide-in-from-bottom-6 duration-700 delay-100 select-none drop-shadow-[0_0_30px_rgba(255,255,255,0.3)]">
               <span className="bg-clip-text text-transparent bg-gradient-to-b from-white via-white/80 to-white/20">
                 YELL
               </span>
@@ -65,7 +65,7 @@ export function Hero() {
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12 animate-in fade-in slide-in-from-bottom-10 duration-700 delay-300">
             <a href="#commands">
-              <Button size="lg" className="h-12 px-8 rounded-full bg-white text-black hover:bg-white/90 font-semibold text-base">
+              <Button size="lg" className="shimmer h-12 px-8 rounded-full bg-white text-black hover:bg-white/90 font-semibold text-base">
                 View Commands
               </Button>
             </a>
