@@ -34,9 +34,20 @@ Preferred communication style: Simple, everyday language.
 
 **Key Frontend Components:**
 - `Hero` - Landing section with feature highlights and call-to-action
-- `CommandList` - Searchable, filterable command documentation with category organization
-- `Navbar` - Fixed navigation with branding
-- `Footer` - Site footer with links and branding
+- `CommandList` - Searchable, filterable command documentation with category organization and pagination
+- `NavigationRail` - Category navigation sidebar
+- `ParallaxBackground` - Animated background effects
+- `Navbar` - Fixed navigation with contact button
+- `Footer` - Minimal footer with copyright and links
+
+**UI Components (Minimized):**
+Only essential shadcn/ui components are included:
+- `badge` - Category and command badges
+- `button` - Interactive buttons
+- `card` - Content cards
+- `input` - Search and form inputs
+- `toaster` - Toast notifications
+- `tooltip` - Hover tooltips
 
 **State Management:**
 - React Query for async data fetching and caching
