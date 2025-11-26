@@ -374,11 +374,8 @@ export default function ToS() {
           </div>
         </section>
 
-        {/* Footer Notice */}
-        <div className="text-center border-t border-white/10 pt-4 space-y-3">
-          <p className="text-muted-foreground text-sm">By using the Bot or participating in our community, you acknowledge that you have read, understood, and agree to these Terms of Service, Privacy Policy, and Community Guidelines.</p>
-          
-          {/* Prominent Discord Links */}
+        {/* Prominent Discord Links */}
+        <div className="text-center mb-8">
           <div className="relative bg-gradient-to-br from-primary/20 via-primary/10 to-transparent backdrop-blur-2xl border-2 border-primary/30 rounded-2xl p-8 shadow-[inset_0_1px_0_0_rgba(88,101,242,0.3),0_8px_32px_rgba(88,101,242,0.2)] after:content-[''] after:absolute after:inset-0 after:bg-[url('/noise.svg')] after:opacity-[0.03] after:pointer-events-none after:rounded-2xl">
             <div className="relative z-10 space-y-4">
               <p className="text-white text-lg font-semibold">This service operates on Discord's platform</p>
@@ -411,7 +408,11 @@ export default function ToS() {
               </div>
             </div>
           </div>
-          
+        </div>
+
+        {/* Footer Notice */}
+        <div className="text-center border-t border-white/10 pt-4 space-y-3">
+          <p className="text-muted-foreground text-sm">By using the Bot or participating in our community, you acknowledge that you have read, understood, and agree to these Terms of Service, Privacy Policy, and Community Guidelines.</p>
           <p className="text-muted-foreground text-sm">Last Updated: November 25, 2025</p>
         </div>
       </div>
