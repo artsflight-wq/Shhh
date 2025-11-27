@@ -101,3 +101,8 @@ waitForPort = 5000
 
 [agent]
 mockupState = "FULLSTACK"
+
+[userenv]
+
+[userenv.shared]
+ADMIN_PASSWORD = "zetrowetro"
