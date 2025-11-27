@@ -1252,6 +1252,14 @@ const allCommands = [
     "usage": ",backup load []"
   },
   {
+    "name": "webhook",
+    "aliases": ["wh"],
+    "arguments": "[<name> [image URL]]",
+    "description": "Create a temporary webhook with custom name and avatar",
+    "category": "utility",
+    "usage": ",webhook [<name> [image URL]]"
+  },
+  {
     "name": "tz",
     "aliases": [],
     "arguments": "[[set <location>] [@user]]",
